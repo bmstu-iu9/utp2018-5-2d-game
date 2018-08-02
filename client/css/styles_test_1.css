@@ -1,0 +1,29 @@
+#centerLayer {
+    
+    position: relative;
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    width: 768px;
+    left: 0;
+    top: 0;
+}
+
+#main {
+
+    position: absolute;
+    z-index: 0;
+}
+
+#condition {
+
+    position: absolute;
+    z-index: 1;
+}
+
+#pop_up_window {
+
+    position: absolute;
+    z-index: 2;
+}
