@@ -126,6 +126,9 @@ document.onmouseup = function () {
 
         intervalID_pop_up_window = setInterval(drawIsThrowAway(), 10);
         bool_pop_up_window = false;
+    } else if (bool_pop_up_window) {
+        
+        selected = false;
     }
 }
 
