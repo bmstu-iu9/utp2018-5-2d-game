@@ -84,7 +84,7 @@ function enemyStep() {
 		}
 		
 	else if (hero.health <= 0) {
-		const youLoseImg = new Image('images/youLoseImg.png');
+		const youLoseImg = new Image("../design/fight/youLoseImg.png");
 		battle = false;
 		context_fighting.clearRect(0, 0, canvas_fighting.width, canvas_fighting.height);
 		context_pop_up_window.drawImage(youLoseImg, 234, 309);
