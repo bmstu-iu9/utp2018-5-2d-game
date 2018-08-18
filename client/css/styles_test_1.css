@@ -27,3 +27,9 @@
     position: absolute;
     z-index: 2;
 }
+
+#fighting {
+	position: absolute;
+    z-index: 3;
+	cursor: url(sniper.cur), pointer;
+}

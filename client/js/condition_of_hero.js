@@ -47,6 +47,20 @@ function isCursorInButtonNo() {
         (mouse.y < button_no.y + button_no.height)
 }
 
+function isCursorInButtonAttack() {
+	return ((mouse.x > button_attack.x) && 
+	(mouse.x < button_attack.x + button_attack.width) && 
+	(mouse.y > button_attack.y) && 
+	(mouse.y < button_attack.y + button_attack.height))
+}
+
+function isCursorInButtonDefend() {
+	return ((mouse.x > button_defend.x) && 
+	(mouse.x < button_defend.x + button_defend.width) && 
+	(mouse.y > button_defend.y) && 
+	(mouse.y < button_defend.y + button_defend.height))
+}
+
 function outside_the_inventory() {
 
     return selected &&
@@ -93,9 +107,25 @@ const button_no = {
     height: 20
 }
 
-document.addEventListener("click", clickThrowAway, false);
+const button_attack = {
 
-function clickThrowAway() {
+    x: 45.5,
+    y: 642,
+    width: 70,
+    height: 57
+}
+
+const button_defend = {
+
+    x: 168.5,
+    y: 642,
+    width: 70,
+    height: 57
+}
+
+document.addEventListener("click", clickYesNo, false);
+
+function clickYesNo() {
 
     if (is_throw_away.bool) {
 
@@ -117,8 +147,41 @@ function clickThrowAway() {
             context_pop_up_window.clearRect(0, 0, canvas_pop_up_window.width, canvas_pop_up_window.height);
         }
     }
+    
+    else if (is_join_the_fight.bool) {
+		
+		if(isCursorInButtonYes()) {
+			
+			is_join_the_fight.bool = false;
+			drawFighting();
+			bool_pop_up_window = true;
+			clearInterval(intervalID_pop_up_window);
+            context_pop_up_window.clearRect(0, 0, canvas_pop_up_window.width, canvas_pop_up_window.height);
+		}
+		else if (isCursorInButtonNo()) {
+			
+			is_join_the_fight.bool = false;
+			bool_pop_up_window = true;
+            clearInterval(intervalID_pop_up_window);
+            context_pop_up_window.clearRect(0, 0, canvas_pop_up_window.width, canvas_pop_up_window.height);
+		}
+	}
 }
 
+document.addEventListener('click', function() {
+	if (battle) {
+		
+		if (isCursorInButtonAttack()) {
+			
+			attack();
+		}
+		
+		else if (isCursorInButtonDefend()) {
+						
+			defend();
+		}
+	}
+}, false);
 
 document.onmouseup = function () {
 
