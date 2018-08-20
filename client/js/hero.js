@@ -42,7 +42,7 @@ let animate = {};
 animate['hero'] = {
     'to_the_left': {
         'el'    : null,
-        'src'   : "images/animation-hero-64px.png",
+        'src'   : "../design/hero/animation-hero-64px.png",
         'currentFrame'  : 0, 
         'frames' : 7,
 	'step' : 0,
@@ -50,7 +50,7 @@ animate['hero'] = {
     },
     'to_the_right': {
                         'el'    : null,
-                        'src'   : "images/animation-hero-64px-right.png",
+                        'src'   : "../design/hero/animation-hero-64px-right.png",
 			'currentFrame': 0,
 			'frames' : 7,
 	    		'step' : 0,
@@ -58,7 +58,7 @@ animate['hero'] = {
     },
 	'stand' : {
 			'el'    : null,
-                        'src'   : "images/hero-64 (1).png",
+                        'src'   : "../design/hero/hero-64 (1).png",
 			'currentFrame': 0,
 			'frames' : 0,
 			'step' : 0,
@@ -66,7 +66,7 @@ animate['hero'] = {
 	},
 	'fight-position' : {
 		'el' : null,
-		'src' : 'images/fighting-hero.png',
+		'src' : '../design/hero/fighting-hero.png',
 		'currentFrame' : 0,
 		'frames' : 1,
 		'step' : 0,
@@ -77,7 +77,7 @@ animate['hero'] = {
 animate['enemies'] = {
 	'fighting-position': {
 		'el' : null,
-		'src' : 'images/enemies-type-1.png',
+		'src' : "../design/enemies/enemies-type-1.png",
 		'currentFrame' : 0,
 		'frames' : 1,
 		'step' : 0,
