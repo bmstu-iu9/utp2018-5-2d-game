@@ -523,7 +523,6 @@ function town_transition() {
     return transition(town);
 }
 
-
 function interaction(things, enemies) {
 
     let distX = 0;
@@ -533,15 +532,15 @@ function interaction(things, enemies) {
 		const len = things[i].x.length;
 		for (let k = 0; k < len; k++) { 
 			if (things[i].status[k] === 1) {
-
+				
 				distX = Math.abs(hero.x + hero.radiusW -
 					things[i].x[k] - things[i].width / 2);
 				distY = Math.abs(hero.y + hero.radiusH -
 					things[i].y[k] - things[i].height / 2);
-
+					
 				if ((distX <= (things[i].width / 2) + hero.radiusW) &&
 					(distY <= (things[i].height / 2) + hero.radiusH)) {
-
+							
 					if (hero.interaction) {	
 						if ((i === 'artifacts') || (i === 'armors')) {				
 							inventory.slots.splice(inventory.slots.length, 0, things[i]);
@@ -555,7 +554,7 @@ function interaction(things, enemies) {
 							hero.health = 100;
 							console.log('здоровье героя: ' + hero.health);
 						}
-
+						
 						things[i].status[k] = 0;
 					}
 					if (hero.y + 2 * hero.radiusH <
@@ -573,7 +572,7 @@ function interaction(things, enemies) {
 				}
 			}
 		}
-	}
+    }
 	
 	for (let i in enemies) {
 		if (enemies[i].status === 1) {
@@ -581,13 +580,13 @@ function interaction(things, enemies) {
 				enemies[i].x - enemies[i].width / 2);
 			distY = Math.abs(hero.y + hero.radiusH -
 				enemies[i].y - enemies[i].height / 2);
-
+				
 			if ((distX <= (enemies[i].width / 2) + hero.radiusW) &&
 				(distY <= (enemies[i].height / 2) + hero.radiusH)) {
-
+					
 				curEnemy(enemies[i]);
 				drawIsJoinTheFight();
-
+				
 				if (hero.y + 2 * hero.radiusH < (enemies[i].y + 5)) {
 					hero.y -= hero.dy;
 				} else if (hero.x >
@@ -601,5 +600,5 @@ function interaction(things, enemies) {
 				}
 			}
 		}
-	}	
+	}
 }
