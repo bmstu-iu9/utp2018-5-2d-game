@@ -5,6 +5,9 @@ const context_main = canvas_main.getContext("2d");
 
 const speed = 10;
 
+const animateImg = new Image();
+animateImg.src = "..design/hero/animation-hero-64px.png";
+
 let hero = {
 
     x: 256,
@@ -23,6 +26,7 @@ let hero = {
 	skillDefense: 10,
 	gold: 0,
 	type: 'usual',
+	name: 'Имя пользователя',
 
     right_pressed: false,
     left_pressed: false,
@@ -36,68 +40,61 @@ let hero = {
     health_y: 745,
     health_x2: 330
 };
-
 let animate = {};
 
 animate['hero'] = {
     'to_the_left': {
-        'el'    : null,
-        'src'   : "../design/hero/animation-hero-64px.png",
-        'currentFrame'  : 0, 
-        'frames' : 7,
-	'step' : 0,
-	'speed' : 8
+		'sy': 0,
+		'width': 43,
+		'height': 64,
+		'currentFrame'  : 0, 
+		'frames' : 7,
+		'step' : 0,
+		'speed' : 8
     },
     'to_the_right': {
-                        'el'    : null,
-                        'src'   : "../design/hero/animation-hero-64px-right.png",
-			'currentFrame': 0,
-			'frames' : 7,
-	    		'step' : 0,
-	    		'speed' : 8
+		'sy': 64,
+		'width': 43,
+		'height': 64,
+		'currentFrame': 0,
+		'frames' : 7,
+		'step' : 0,
+		'speed' : 8
     },
+	'down' : {
+		'sy': 128,
+		'width': 43,
+		'height': 64,
+		'currentFrame': 0,
+		'frames' : 3,
+		'step' : 0,
+		'speed' : 8
+	},
 	'stand' : {
-			'el'    : null,
-                        'src'   : "../design/hero/hero-64 (1).png",
-			'currentFrame': 0,
-			'frames' : 0,
-			'step' : 0,
-			'speed' : 10
+		'sy': 256,
+		'width': 48,
+		'height': 64,
+		'currentFrame': 0,
+		'frames' : 1,
+		'step' : 0,
+		'speed' : 8
 	},
 	'fight-position' : {
-		'el' : null,
-		'src' : '../design/hero/fighting-hero.png',
+		'x': 54,
+		'y': 245,
+		'sy': 320,
+		'width': 221,
+		'height': 300,
 		'currentFrame' : 0,
 		'frames' : 1,
 		'step' : 0,
 		'speed' : 8
 	}
 };
-
-animate['enemies'] = {
-	'fighting-position': {
-		'el' : null,
-		'src' : "../design/enemies/enemies-type-1.png",
-		'currentFrame' : 0,
-		'frames' : 1,
-		'step' : 0,
-		'speed' : 8
-	}
-};
-
-
-for (let i in animate) {
-	for (let j in animate[i]) {                        
-		let img = new Image();                        
-		img.src = animate[i][j].src;
-		animate[i][j].el = img;
-	 }
-}
 
 document.addEventListener("keydown", keyDownHandler, false);
 document.addEventListener("keyup", keyUpHandler, false);
 let cond_bool = false;
-
 
 function keyDownHandler(e) {
 
@@ -178,10 +175,11 @@ function drawHero() {
 
         hero.y += hero.dy;
     }
-    if (hero.type === 'usual') {
+	
+	if (hero.type === 'usual') {
 		if (hero.left_pressed) {
-		context_main.drawImage(animate['hero']['to_the_left'].el, 
-						Math.round(hero.radiusW*2*animate['hero']['to_the_left'].currentFrame), 0, 
+		context_main.drawImage(animateImg, 
+						Math.round(hero.radiusW*2*animate['hero']['to_the_left'].currentFrame), animate['hero']['to_the_left'].sy, 
 						hero.radiusW*2, hero.radiusH*2, 
 						hero.x, hero.y,
 						hero.radiusW*2, hero.radiusH*2);
@@ -196,8 +194,8 @@ function drawHero() {
 			else animate['hero']['to_the_left'].step++;
 		}
 		else if (hero.right_pressed) {
-			context_main.drawImage(animate['hero']['to_the_right'].el, 
-						Math.round(hero.radiusW*2*animate['hero']['to_the_right'].currentFrame), 0, 
+			context_main.drawImage(animateImg, 
+						Math.round(hero.radiusW*2*animate['hero']['to_the_right'].currentFrame), animate['hero']['to_the_right'].sy, 
 						hero.radiusW*2, hero.radiusH*2, 
 						hero.x, hero.y,
 						hero.radiusW*2, hero.radiusH*2);
@@ -211,19 +209,36 @@ function drawHero() {
 			}
 			else animate['hero']['to_the_right'].step++;
 		}
-
+		else if (hero.down_pressed) {
+			context_main.drawImage(animateImg, 
+						Math.round(hero.radiusW*2*animate['hero']['down'].currentFrame), animate['hero']['down'].sy, 
+						hero.radiusW*2, hero.radiusH*2, 
+						hero.x, hero.y,
+						hero.radiusW*2, hero.radiusH*2);
+		if (animate['hero']['down'].step >= animate['hero']['down'].speed) {				
+			if (animate['hero']['down'].currentFrame == animate['hero']['down'].frames) {
+				animate['hero']['down'].currentFrame = 0;
+			 } else {
+				animate['hero']['down'].currentFrame++;
+				animate['hero']['down'].step = 0;
+			 }
+			}
+			else animate['hero']['down'].step++;
+		}
+		
 		else {
-			context_main.drawImage(animate['hero']['stand'].el, 
-							0, 0,
-							hero.radiusW*2, hero.radiusH*2, 
+			context_main.drawImage(animateImg, 
+							0, animate['hero']['stand'].sy,
+							animate['hero']['stand'].width, animate['hero']['stand'].height, 
 							hero.x, hero.y,
-							hero.radiusW*2, hero.radiusH*2);
+							animate['hero']['stand'].width, animate['hero']['stand'].height);
 		}
 	}
+	
 	else if (hero.type === 'fight-position') {
 		//сделать небольшие движения героя, чтобы оне не рисовался один поверх другого
-		context_fighting.drawImage(animate['hero']['fight-position'].el, 
-							0, 0,
+		context_fighting.drawImage(animateImg, 
+							0, animate['hero']['fight-position'].sy,
 							hero.FW, hero.FH, 
 							hero.fightX, hero.fightY,
 							hero.FW, hero.FH);
@@ -232,7 +247,7 @@ function drawHero() {
 		//нарисовать движения героя при атаке
 	}
 	else if (hero.type === 'defend') {
-		//нарисовать движения героя при атаке
+		//нарисовать движения героя при защите
 	}
 	else if (hero.type === 'damaged') {
 		//нарисовать движения героя при получении урона
