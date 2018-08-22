@@ -23,15 +23,6 @@ const barriers_of_the_dungeon_1 = [
     town_of_the_dungeon_1
 ];
 
-
-
-
-
-
-
-
-
-
 //dungeon_2
 const barrier_walls_of_the_dungeon_2 = {
 
@@ -45,15 +36,6 @@ const barriers_of_the_dungeon_2 = [
 
     barrier_walls_of_the_dungeon_2
 ];
-
-
-
-
-
-
-
-
-
 
 //dungeon_3
 const barrier_walls_of_the_dungeon_3_1 = {
@@ -86,14 +68,6 @@ const barriers_of_the_dungeon_3 = [
     barrier_walls_of_the_dungeon_3_2,
     barrier_walls_of_the_dungeon_3_3
 ];
-
-
-
-
-
-
-
-
 
 //dungeon_4
 const barrier_walls_of_the_dungeon_4_1 = {
@@ -135,9 +109,6 @@ const barriers_of_the_dungeon_4 = [
     barrier_walls_of_the_dungeon_4_3,
     barrier_walls_of_the_dungeon_4_4
 ];
-
-
-
 
 //town
 const barrier_start = {
@@ -307,7 +278,6 @@ const barriers_of_the_town = [
     barrier_tavern_4
 ];
 
-
 function collision(barriers) {
 
     let distX = 0;
@@ -343,16 +313,6 @@ function collision(barriers) {
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
 
 const barrier_fence = {
 
@@ -397,23 +357,6 @@ function collision_with_fence_in_the_town() {
         return "under";
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 //transition
 const dungeon_2_from_dungeon_1 = {
@@ -531,16 +474,13 @@ function interaction(things, enemies) {
     for (let i in things) {
 		const len = things[i].x.length;
 		for (let k = 0; k < len; k++) { 
-			if (things[i].status[k] === 1) {
-				
+			if (things[i].status[k] === 1) {				
 				distX = Math.abs(hero.x + hero.radiusW -
 					things[i].x[k] - things[i].width / 2);
 				distY = Math.abs(hero.y + hero.radiusH -
-					things[i].y[k] - things[i].height / 2);
-					
+					things[i].y[k] - things[i].height / 2);	
 				if ((distX <= (things[i].width / 2) + hero.radiusW) &&
-					(distY <= (things[i].height / 2) + hero.radiusH)) {
-							
+					(distY <= (things[i].height / 2) + hero.radiusH)) {	
 					if (hero.interaction) {	
 						if ((i === 'artifacts') || (i === 'armors')) {				
 							inventory.slots.splice(inventory.slots.length, 0, things[i]);
@@ -554,7 +494,6 @@ function interaction(things, enemies) {
 							hero.health = 100;
 							console.log('здоровье героя: ' + hero.health);
 						}
-						
 						things[i].status[k] = 0;
 					}
 					if (hero.y + 2 * hero.radiusH <
@@ -573,20 +512,16 @@ function interaction(things, enemies) {
 			}
 		}
     }
-	
 	for (let i in enemies) {
 		if (enemies[i].status === 1) {
 			distX = Math.abs(hero.x + hero.radiusW -
 				enemies[i].x - enemies[i].width / 2);
 			distY = Math.abs(hero.y + hero.radiusH -
-				enemies[i].y - enemies[i].height / 2);
-				
+				enemies[i].y - enemies[i].height / 2);	
 			if ((distX <= (enemies[i].width / 2) + hero.radiusW) &&
-				(distY <= (enemies[i].height / 2) + hero.radiusH)) {
-					
+				(distY <= (enemies[i].height / 2) + hero.radiusH)) {	
 				curEnemy(enemies[i]);
 				drawIsJoinTheFight();
-				
 				if (hero.y + 2 * hero.radiusH < (enemies[i].y + 5)) {
 					hero.y -= hero.dy;
 				} else if (hero.x >
