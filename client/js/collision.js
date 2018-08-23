@@ -483,7 +483,21 @@ function interaction(things, enemies) {
 					(distY <= (things[i].height / 2) + hero.radiusH)) {	
 					if (hero.interaction) {	
 						if ((i === 'artifacts') || (i === 'armors')) {				
-							inventory.slots.splice(inventory.slots.length, 0, things[i]);
+							
+							const elem = {
+
+                                x: things[i].x[k],
+                                y: things[i].y[k],
+                                sx: things[i].sx[k],
+                                sy: things[i].sy,
+                                sWidth: things[i].sWidth,
+                                sHeight: things[i].sHeight,
+                                type: things[i].type[k],
+                                width: things[i].width,
+                                height: things[i].height,
+                            }
+                            
+                            inventory.slots.splice(inventory.slots.length, 0, elem);
 						}
 						else if (i === 'gold') {
 							things[i].value = Math.floor(Math.random() * (1200 - 500 + 1)) + 500;
