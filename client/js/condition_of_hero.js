@@ -20,8 +20,56 @@ let inventory = {
     y: 0,
     width: 519,
     height: 519,
-    slots: []
-}
+
+    slots: [],
+	
+    equipment: [
+
+        //slot_of_armor_on_head
+        {
+            x: 126.5,
+            y: 3,
+            width: 64,
+            height: 64,
+            activity: false
+        },
+
+        //slot_of_armor_on_chest
+        {
+            x: 126.5,
+            y: 68,
+            width: 64,
+            height: 64,
+            activity: false
+        },
+
+        //slot_of_weapon
+        {
+            x: 126.5,
+            y: 132,
+            width: 64,
+            height: 64,
+            activity: false
+        },
+
+        //slot_of_armor_on_legs
+        {
+            x: 126.5,
+            y: 196,
+            width: 64,
+            height: 64,
+            activity: false
+        }
+    ]
+};
+
+const slots = {
+
+    x: 126,
+    y: 324,
+    width: 515,
+    height: 193
+};
 
 function isCursorInItem(item) {
 
@@ -29,6 +77,52 @@ function isCursorInItem(item) {
         (mouse.x < item.x + item.width) &&
         (mouse.y > item.y) &&
         (mouse.y < item.y + item.height)
+}
+
+function isCursorInArmorOnHead() {
+
+    return selected && (selected.type === "armor_on_head") &&
+        (mouse.x > inventory.equipment[0].x) &&
+        (mouse.x < inventory.equipment[0].x + inventory.equipment[0].width) &&
+        (mouse.y > inventory.equipment[0].y) &&
+        (mouse.y < inventory.equipment[0].y + inventory.equipment[0].height)
+}
+
+function isCursorInArmorOnChest() {
+
+    return selected && (selected.type === "armor_on_chest") &&
+        (mouse.x > inventory.equipment[1].x) &&
+        (mouse.x < inventory.equipment[1].x + inventory.equipment[1].width) &&
+        (mouse.y > inventory.equipment[1].y) &&
+        (mouse.y < inventory.equipment[1].y + inventory.equipment[1].height)
+}
+
+function isCursorInWeapon() {
+
+    return selected && (selected.type === "weapon") &&
+        (mouse.x > inventory.equipment[2].x) &&
+        (mouse.x < inventory.equipment[2].x + inventory.equipment[2].width) &&
+        (mouse.y > inventory.equipment[2].y) &&
+        (mouse.y < inventory.equipment[2].y + inventory.equipment[2].height)
+}
+
+function isCursorInArmorOnLegs() {
+
+    return selected && (selected.type === "armor_on_legs") &&
+        (mouse.x > inventory.equipment[3].x) &&
+        (mouse.x < inventory.equipment[3].x + inventory.equipment[3].width) &&
+        (mouse.y > inventory.equipment[3].y) &&
+        (mouse.y < inventory.equipment[3].y + inventory.equipment[3].height)
+}
+
+function isCursorInSlots() {
+
+    return selected &&
+        (findInArray(inventory.slots, selected) === undefined) &&
+        (mouse.x > slots.x) &&
+        (mouse.x < slots.x + slots.width) &&
+        (mouse.y > slots.y) &&
+        (mouse.y < slots.y + slots.height)
 }
 
 function isCursorInButtonYes() {
@@ -45,6 +139,14 @@ function isCursorInButtonNo() {
         (mouse.x < button_no.x + button_no.width) &&
         (mouse.y > button_no.y) &&
         (mouse.y < button_no.y + button_no.height)
+}
+
+function isCursorInButtonClose() {
+
+    return (mouse.x > 700) &&
+        (mouse.x < 768) &&
+        (mouse.y > 0) &&
+        (mouse.y < 68)
 }
 
 function isCursorInButtonAttack() {
@@ -81,13 +183,29 @@ document.onmousemove = function (e) {
 document.onmousedown = function () {
 
     if (!selected) {
+	    
+	for (let i = 0; i < 4; i++) {
+            if (isCursorInItem(inventory.equipment[i])) {
+
+                selected = inventory.equipment[i].activity;
+                return;
+            }
+        }
 
         const len = inventory.slots.length;
         for (let i = 0; i < len; i++) {
             if (isCursorInItem(inventory.slots[i])) {
+		    
                 selected = inventory.slots[i];
+		return;
             }
         }
+    }
+	
+    if (isCursorInButtonClose()) {
+
+        clearInterval(intervalID_shop);
+        context_shop.clearRect(0, 0, canvas_shop.width, canvas_shop.height);
     }
 }
 
@@ -138,8 +256,21 @@ function clickYesNo() {
             context_pop_up_window.clearRect(0, 0, canvas_pop_up_window.width, canvas_pop_up_window.height);
         } else if (isCursorInButtonYes()) {
          
-            const index = findInArray(inventory.slots, selected);
-            inventory.slots.splice(index, index + 1);
+            let i = 0;
+            for (; i < 4; i++) {
+                if (inventory.equipment[i].activity === selected) {
+
+                    inventory.equipment[i].activity = false;
+                    break;
+                }
+            }
+
+            if (i === 4) {
+
+                const index = findInArray(inventory.slots, selected);
+                inventory.slots.splice(index, 1);
+            }
+	
             selected = false;
             is_throw_away.bool = false;
             bool_pop_up_window = true;
@@ -183,12 +314,47 @@ document.addEventListener('click', function() {
 	}
 }, false);
 
+function equipment(num) {
+
+    const index = findInArray(inventory.slots, selected);
+    inventory.slots.splice(index, 1);
+    selected.x = inventory.equipment[num].x;
+    selected.y = inventory.equipment[num].y;
+    inventory.equipment[num].activity = selected;
+    selected = false;
+}
+
 document.onmouseup = function () {
 
-    if (outside_the_inventory()) {
+    if (!is_throw_away.bool) {
 
-        intervalID_pop_up_window = setInterval(drawIsThrowAway(), 10);
-        bool_pop_up_window = false;
+        if (outside_the_inventory()) {
+
+            bool_pop_up_window = false;
+            intervalID_pop_up_window = setInterval(drawIsThrowAway(), speed);
+        } else if (isCursorInArmorOnHead()) {
+            equipment(0);
+        } else if (isCursorInArmorOnChest()) {
+            equipment(1);
+        } else if (isCursorInWeapon()) {
+            equipment(2);
+        } else if (isCursorInArmorOnLegs()) {
+            equipment(3);
+        } else if (isCursorInSlots()) {
+
+            for (let i = 0; i < 4; i++) {
+                if (inventory.equipment[i].activity === selected) {
+
+                    inventory.equipment[i].activity = false;
+                    break;
+                }
+            }
+
+            inventory.slots.splice(inventory.slots.length, 0, selected);
+            selected = false;
+        } else if (bool_pop_up_window) {
+            selected = false;
+        }
     }
 }
 
