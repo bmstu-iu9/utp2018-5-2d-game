@@ -150,6 +150,7 @@ function isCursorInButtonClose() {
 }
 
 function isCursorInButtonAttack() {
+	
 	return ((mouse.x > button_attack.x) && 
 	(mouse.x < button_attack.x + button_attack.width) && 
 	(mouse.y > button_attack.y) && 
@@ -157,6 +158,7 @@ function isCursorInButtonAttack() {
 }
 
 function isCursorInButtonDefend() {
+	
 	return ((mouse.x > button_defend.x) && 
 	(mouse.x < button_defend.x + button_defend.width) && 
 	(mouse.y > button_defend.y) && 
