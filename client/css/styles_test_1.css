@@ -29,7 +29,13 @@
 }
 
 #fighting {
-	position: absolute;
+    position: absolute;
     z-index: 3;
-	cursor: url(sniper.cur), pointer;
+}
+
+#statistic {
+	
+    position: absolute;
+    z-index: 4;
+    cursor: url(sniper.cur), pointer;	
 }

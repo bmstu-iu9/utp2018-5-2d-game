@@ -34,8 +34,17 @@ function historyLine(damageToEnemy, isHeroDefend) {
 	let historyLineX = 308;
 	let historyLineY = 750;
 	context_fighting.fillStyle = "#ffffff";
-    context_fighting.font = '15px Arial';
-    context_fighting.fillText("Начало боя.", historyLineX, historyLineY, 344);
+        context_fighting.font = '15px Arial';
+        context_fighting.fillText("Начало боя.", historyLineX, historyLineY, 344);
+	
+	if (was_attack_bool) {
+		
+		context_fighting.fillText(hero.name + "нанёс " + damageToEnemy + " урона.", historyLineX, historyLineY, 344);
+	}
+	else if (was_defend_bool) {
+		
+		context_fighting.fillText(hero.name + "принял защитную стойку.", historyLineX, historyLineY, 344);
+	}
 }
 
 function heroStep() {
@@ -48,7 +57,8 @@ function heroStep() {
 	}
 	
 	else if (hero.health <= 0) {
-		const youLoseImg = new Image('images/youLoseImg.png');
+		const youLoseImg = new Image();
+		youLoseImg.src = "..design/fight/youLoseImg.png";
 		battle = false;
 		context_fighting.clearRect(0, 0, canvas_fighting.width, canvas_fighting.height);
 		context_pop_up_window.drawImage(youLoseImg, 234, 309);
@@ -57,6 +67,7 @@ function heroStep() {
 	else {
 		hero.type = 'fight-position';
 		damageToHero = Math.floor(Math.random() * (hero.max - hero.min + 1)) + hero.min;
+		historyLine();
 		
 		if (was_attack_bool) {
 			hero.type = 'damaged';
@@ -84,7 +95,8 @@ function enemyStep() {
 		}
 		
 	else if (hero.health <= 0) {
-		const youLoseImg = new Image("../design/fight/youLoseImg.png");
+		const youLoseImg = new Image();
+		youLoseImg.src = "../design/fight/youLoseImg.png";
 		battle = false;
 		context_fighting.clearRect(0, 0, canvas_fighting.width, canvas_fighting.height);
 		context_pop_up_window.drawImage(youLoseImg, 234, 309);
@@ -129,16 +141,16 @@ function curEnemy(enemy) {
 function drawFightingEnemy() {
 	if (currentEnemy.type === 'fighting-position') {
 		console.log('нарисовал обычного врага');
-	context_fighting.drawImage(animate['enemies']['fighting-position'].el, 
-							0, 0,
+	context_fighting.drawImage(enemiesImg, 
+							0, animate['enemies']['fighting-position'].sy,
 							currentEnemy.FW, currentEnemy.FH, 
 							currentEnemy.fightX, currentEnemy.fightY,
 							currentEnemy.FW, currentEnemy.FH);
 	}
 	else if (currentEnemy.type === 'defend') {
 		console.log('нарисовал защищающегося врага');
-	context_fighting.drawImage(animate['enemies']['fighting-position'].el, 
-							0, 0,
+	context_fighting.drawImage(enemiesImg, 
+							0, animate['enemies']['fighting-position'].sy,
 							currentEnemy.FW, currentEnemy.FH, 
 							currentEnemy.fightX, currentEnemy.fightY,
 							currentEnemy.FW, currentEnemy.FH);

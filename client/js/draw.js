@@ -20,11 +20,13 @@ function drawDungeon_1() {
     }
 
     locInitialization = "dungeon-1";
+    hero.health_x2 = 33 + hero.health * 3;
     context_main.clearRect(0, 0, canvas_main.width, canvas_main.height);
     context_main.drawImage(dungeon_image_1, 0, 0);
     drawEnemies();
     drawHero();
-    draw_loots_from_dungeon_1();
+    draw_loots();
+    drawStatistic();
     interaction(loots[locInitialization], enemies[locInitialization]);
     drawConditionOfHero();
     collision(barriers_of_the_dungeon_1);
@@ -57,11 +59,14 @@ function drawDungeon_2() {
         return;
     }
     
-	locInitialization = "dungeon-2";
+    locInitialization = "dungeon-2";
+    hero.health_x2 = 33 + hero.health * 3;
     context_main.clearRect(0, 0, canvas_main.width, canvas_main.height);
     context_main.drawImage(dungeon_image_2, 0, 0);
     drawEnemies();
     drawHero();
+    draw_loots();
+    drawStatistic();
     interaction(loots[locInitialization], enemies[locInitialization]);
     drawConditionOfHero();
     collision(barriers_of_the_dungeon_2);
@@ -94,10 +99,13 @@ function drawDungeon_3() {
     }
 
     locInitialization = "dungeon-3";
+    hero.health_x2 = 33 + hero.health * 3;
     context_main.clearRect(0, 0, canvas_main.width, canvas_main.height);
     context_main.drawImage(dungeon_image_3, 0, 0);
     drawEnemies();
     drawHero();
+    draw_loots();
+    drawStatistic();
     interaction(loots[locInitialization], enemies[locInitialization]);
     drawConditionOfHero();
     collision(barriers_of_the_dungeon_3);
@@ -130,10 +138,13 @@ function drawDungeon_4() {
     }
 
     locInitialization = "dungeon-4";
+    hero.health_x2 = 33 + hero.health * 3;
     context_main.clearRect(0, 0, canvas_main.width, canvas_main.height);
     context_main.drawImage(dungeon_image_4, 0, 0);
     drawEnemies();
     drawHero();
+    draw_loots();
+    drawStatistic();
     interaction(loots[locInitialization], enemies[locInitialization]);
     drawConditionOfHero();
     collision(barriers_of_the_dungeon_4);
@@ -160,6 +171,7 @@ function drawTown() {
     }
 
     locInitialization = "town";
+    hero.health_x2 = 33 + hero.health * 3;
     context_main.clearRect(0, 0, canvas_main.width, canvas_main.height);
     context_main.drawImage(town_image, 0, 0);
     drawEnemies();
@@ -175,6 +187,8 @@ function drawTown() {
         drawHero();
     }
 
+    draw_loots();
+    drawStatistic();
     interaction(loots[locInitialization], enemies[locInitialization]);
     drawConditionOfHero();
     context_main.drawImage(decoration, 0, 0);
@@ -192,7 +206,7 @@ function drawConditionOfHero() {
     if (hero.condition) {
 
         drawInventory();
-        drawHealth();
+	    
     } else {
 
         context_condition.clearRect(0, 0, canvas_condition.width, canvas_condition.height);
@@ -265,16 +279,25 @@ const is_join_the_fight = {
 }
 
 //health
-function drawHealth() {
+const canvas_statistic = document.getElementById("statistic");
+const context_statistic = canvas_statistic.getContext("2d");
 
-    context_condition.beginPath();
-    context_condition.lineWidth = 30;
-    context_condition.moveTo(hero.health_x1, hero.health_y);
-    context_condition.lineTo(hero.health_x2, hero.health_y);
-    context_condition.strokeStyle = "red";
-    context_condition.lineCap = "round";
-    context_condition.stroke();
-    context_condition.closePath();
+function drawStatistic() {
+    context_statistic.clearRect(0, 0, canvas_statistic.width, canvas_statistic.height);
+
+    context_statistic.fillStyle = "#ffffff";
+    context_statistic.font = '15px Arial';
+    context_statistic.fillText("Здоровье:", hero.health_x1, hero.health_y - 10);
+    context_statistic.beginPath();
+    context_statistic.lineWidth = 10;
+    context_statistic.moveTo(hero.health_x1, hero.health_y);
+    context_statistic.lineTo(hero.health_x2, hero.health_y);
+    context_statistic.strokeStyle = "red";
+    context_statistic.lineCap = "round";
+    context_statistic.stroke();
+    context_statistic.closePath();
+	
+    context_statistic.fillText("Золото: " + hero.gold, hero.health_x1, hero.health_y + 20);
 }
 
 

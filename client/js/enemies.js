@@ -1,12 +1,13 @@
 'use strict';
 
+const enemiesImg = new Image();
+enemiesImg.src = "..design/enemies/enemiesImg.png";
+
 let enemies = {};
  
 
 enemies['dungeon-1'] = {
 	'enemy-1': { 
-				'el': null,
-				'src': "../design/enemies/enemies-type-1-64px.png" ,
 				'name': 'Злыдень',
 				'max': 25,
 				'min': 10,
@@ -22,8 +23,6 @@ enemies['dungeon-1'] = {
 				'type': 'enemy-on-map'
 	},
 	'enemy-2': { 
-				'el': null,
-				'src': "../design/enemies/enemies-type-1-64px.png" ,
 				'name': 'Злыдень',
 				'max': 25,
 				'min': 10,
@@ -42,8 +41,6 @@ enemies['dungeon-1'] = {
 
 enemies['dungeon-2'] = {
 	'enemy-1': { 
-				'el': null,
-				'src': "../design/enemies/enemies-type-1-64px.png" ,
 				'name': 'Злыдень',
 				'max': 25,
 				'min': 10,
@@ -59,8 +56,6 @@ enemies['dungeon-2'] = {
 				'type': 'enemy-on-map'
 	},
 	'enemy-2': { 
-				'el': null,
-				'src': "../design/enemies/enemies-type-1-64px.png" ,
 				'name': 'Злыдень',
 				'max': 25,
 				'min': 10,
@@ -79,8 +74,6 @@ enemies['dungeon-2'] = {
 
 enemies['dungeon-3'] = {
 	'enemy-1': { 
-				'el': null,
-				'src': "../design/enemies/enemies-type-1-64px.png" ,
 				'name': 'Злыдень',
 				'max': 25,
 				'min': 10,
@@ -96,8 +89,6 @@ enemies['dungeon-3'] = {
 				'type': 'enemy-on-map'
 	},
 	'enemy-2': { 
-				'el': null,
-				'src': "../design/enemies/enemies-type-1-64px.png" ,
 				'name': 'Злыдень',
 				'max': 25,
 				'min': 10,
@@ -116,8 +107,6 @@ enemies['dungeon-3'] = {
 
 enemies['dungeon-4'] = {
 	'enemy-1': { 
-				'el': null,
-				'src': "../design/enemies/enemies-type-1-64px.png" ,
 				'name': 'Злыдень',
 				'max': 25,
 				'min': 10,
@@ -133,8 +122,6 @@ enemies['dungeon-4'] = {
 				'type': 'enemy-on-map'
 	},
 	'enemy-2': { 
-				'el': null,
-				'src': "../design/enemies/enemies-type-1-64px.png" ,
 				'name': 'Злыдень',
 				'max': 25,
 				'min': 10,
@@ -153,8 +140,6 @@ enemies['dungeon-4'] = {
 
 enemies['town'] = {
 	'enemy-1': { 
-				'el': null,
-				'src': "../design/enemies/enemies-type-1-64px.png" ,
 				'name': 'Злыдень',
 				'max': 25,
 				'min': 10,
@@ -170,8 +155,6 @@ enemies['town'] = {
 				'type': 'enemy-on-map'
 	},
 	'enemy-2': { 
-				'el': null,
-				'src': "../design/enemies/enemies-type-1-64px.png" ,
 				'name': 'Злыдень',
 				'max': 25,
 				'min': 10,
@@ -188,20 +171,35 @@ enemies['town'] = {
 	}
 }
 
-for (let i in enemies) {
-	for (let j in enemies[i]) {                        
-							let img = new Image();                        
-							img.src = enemies[i][j].src;
-							enemies[i][j].el = img;
+animate['enemies'] = {
+	'map': {
+		'sy': 0,
+		'currentFrame' : 0,
+		'frames' : 1,
+		'step' : 0,
+		'speed' : 10
+		
+	},
+	'fighting-position': {
+		'sy': 64,
+		'currentFrame' : 0,
+		'frames' : 1,
+		'step' : 0,
+		'speed' : 10
 	}
- }
- 
- function drawEnemies() {
+};
+
+
+function drawEnemies() {
 	for (let i in enemies) {
 		if (locInitialization == i) {
 			for (let j in enemies[i]) {
 				if (enemies[i][j].status === 1) {
-					context_main.drawImage(enemies[i][j].el, enemies[i][j].x, enemies[i][j].y);
+					context_main.drawImage(enemiesImg, 
+					0, animate['enemies']['map'].sy,
+					enemies[i][j].width, enemies[i][j].height,
+					enemies[i][j].x, enemies[i][j].y,
+					enemies[i][j].width, enemies[i][j].height);
 				}
 			}
 		}
