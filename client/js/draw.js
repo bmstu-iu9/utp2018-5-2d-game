@@ -218,6 +218,32 @@ function drawInventory() {
     context_condition.clearRect(0, 0, canvas_condition.width, canvas_condition.height);
     context_condition.drawImage(inventory_image, inventory.x, inventory.y);
 
+    for (let i = 0; i < 4; i++) {
+        if (inventory.equipment[i].activity) {
+
+            if ((inventory.equipment[i].activity === selected) &&
+                bool_pop_up_window) {
+
+                selected.x = mouse.x - selected.width / 2;
+                selected.y = mouse.y - selected.height / 2;
+                context_condition.drawImage(lootsImg,
+                    selected.sx, selected.sy,
+                    selected.sWidth, selected.sHeight,
+                    selected.x, selected.y,
+                    selected.width, selected.height);
+            } else {
+
+                inventory.equipment[i].activity.x = inventory.equipment[i].x;
+                inventory.equipment[i].activity.y = inventory.equipment[i].y;
+                context_condition.drawImage(lootsImg,
+                    inventory.equipment[i].activity.sx, inventory.equipment[i].activity.sy,
+                    inventory.equipment[i].activity.sWidth, inventory.equipment[i].activity.sHeight,
+                    inventory.equipment[i].activity.x, inventory.equipment[i].activity.y,
+                    inventory.equipment[i].activity.width, inventory.equipment[i].activity.height);
+            }
+        }
+    }
+	
     const len = inventory.slots.length;
     let bool_size = false;
     for (let i = 0; i < 3; i++) {
@@ -236,14 +262,21 @@ function drawInventory() {
 
                 selected.x = mouse.x - selected.width / 2;
                 selected.y = mouse.y - selected.height / 2;
-                context_condition.drawImage(selected.image, selected.x, selected.y);
+                context_condition.drawImage(lootsImg,
+                    selected.sx, selected.sy,
+                    selected.sWidth, selected.sHeight,
+                    selected.x, selected.y,
+                    selected.width, selected.height);
 
             } else {
 
                 inventory.slots[index].x = 130 + j * 64;
                 inventory.slots[index].y = 325 + i * 64;
-
-                context_condition.drawImage(inventory.slots[index].image, inventory.slots[index].x, inventory.slots[index].y);
+                context_condition.drawImage(lootsImg,
+                    inventory.slots[index].sx, inventory.slots[index].sy,
+                    inventory.slots[index].sWidth, inventory.slots[index].sHeight,
+                    inventory.slots[index].x, inventory.slots[index].y,
+                    inventory.slots[index].width, inventory.slots[index].height);
             }
         }
 
@@ -255,6 +288,7 @@ function drawInventory() {
 
 const is_throw_away_image = new Image();
 is_throw_away_image.src = "../design/inventory/is_throw_away.png";
+
 const is_join_the_fight_image = new Image();
 is_join_the_fight_image.src = "../design/fight/isJoinTheFight.png";
 
