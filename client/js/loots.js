@@ -131,7 +131,7 @@ loots['dungeon-2'] = {
 	}
 }
 
-function draw_loots_from_dungeon_1() {
+function draw_loots() {
 	for (let i in loots) {
 		if (locInitialization == i) {
 			for (let j in loots[i]) {
