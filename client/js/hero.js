@@ -6,7 +6,7 @@ const context_main = canvas_main.getContext("2d");
 const speed = 10;
 
 const animateImg = new Image();
-animateImg.src = "..design/hero/animation-hero-64px.png";
+animateImg.src = "../design/hero/animation-hero-64px.png";
 
 let hero = {
 
