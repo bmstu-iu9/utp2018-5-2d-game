@@ -1,7 +1,7 @@
 'use strict';
 
 const enemiesImg = new Image();
-enemiesImg.src = "..design/enemies/enemiesImg.png";
+enemiesImg.src = "../design/enemies/enemiesImg.png";
 
 let enemies = {};
  
