@@ -35,6 +35,7 @@ let hero = {
 
     condition: false,
     interaction: false,
+    isQuest: false,
 
     health_x1: 20,
     health_y: 745,
@@ -129,6 +130,13 @@ function keyDownHandler(e) {
 
     if (e.keyCode === 70) {
         hero.interaction = true;
+    }
+
+    if (e.keyCode === 73) {
+        if (hero.isQuest == false)
+        	hero.isQuest = true;
+        else
+        	hero.isQuest = false;
     }
 }
 
