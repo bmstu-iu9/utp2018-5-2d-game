@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset = "utf-8">
+  <title> Игра </title>
+  <link rel="stylesheet" href="/home/uma/игра/вход/ind.css">
+  <script src = "form.js"></script>
+</head>
+<body>
+  <h1> Добро пожаловать </h1>
+  <h1><span class="log-in"> Войдите </span> или <span class="sign-up"> Зарегистрируйтесь </span></h1>
+  <form action="javascript:window.open('/home/uma/utp2018-5-2d-game-develop/client/html/realize_test_1.html', '_self'); void(0);" method="post" name="test" onsubmit="return valid(this);">
+      <label for="name"> Имя пользователя:</label>
+      <input type="text" name= "name" placeholder="Имя" id="name" required/> <br /><br />
+      <label for="name"> Пароль:</label>
+      <input type="password" name= "password" placeholder="Пароль" id="password" required/> <br /><br />
+      <a href="/home/uma/игра/регистрация/registration.html">Регистрация</a>
+      <input type="submit" class="superbutton" name="submit" value="Вход"/> <br /><br />
+      <a href = "/home/uma/utp2018-5-2d-game-develop/client/html/realize_test_1.html">Начать без регистрации</a>
+</form>
+</body>
+</html>
