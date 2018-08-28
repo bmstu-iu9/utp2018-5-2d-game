@@ -1,0 +1,99 @@
+html{
+  background: #c7b39b url(1.jpg);
+  background-size: 100%;
+  overflow: auto; /* Добавляем полосы прокрутки */
+  padding-left: 0px; /* Отступ от текста слева */
+  padding: 0px;
+  padding-bottom: 0px;
+  padding-right: 0px;
+  padding-top: 100px;
+  align-content: center;
+  align-items: center;
+  align-self: center;
+
+}
+
+body{
+    align-content: center;
+    border: 2px solid black;
+    background: #c7b39b url(2.jpg);
+    height: 350px; /* Высота блока */
+    width: 500px;
+    text-align: center;
+    background-size: 100%;
+    padding-left: 0px; /* Отступ от текста слева */
+    padding-bottom: 0px;
+    padding-right: 0px;
+    padding-top: 0px;
+    padding: 10px; /* Поля вокруг текста */
+    margin: auto; /* Выравниваем по центру */
+    position: relative;
+}
+
+a{
+  background: -moz-linear-gradient(#8B4513, #8B4513, #8B4513);
+  background: -webkit-gradient(linear, 0 0, 0  100%, from(#CD853F), to(#8B4513), color-stop(0.5, #CD853F));
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#8B4513', endColorstr='#8B4513');
+  padding: 3px 7px;
+  color: #000000;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  border: 1px solid #000000;
+  font-size:1.4vw;
+}
+
+a:hover { background: #A0522D; } /* при наведении курсора мышки */
+a:active { background: #808000; } /* при нажатии */
+
+h1{
+  color: #000000 ;
+  font-family: Courier;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  height: 200;
+}
+
+.superbutton {
+  background: -moz-linear-gradient(#8B4513, #8B4513, #8B4513);
+  background: -webkit-gradient(linear, 0 0, 0  100%, from(#CD853F), to(#8B4513), color-stop(0.5, #CD853F));
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#8B4513', endColorstr='#8B4513');
+  padding: 3px 7px;
+  color: #000000;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  border: 1px solid #000000;
+  cursor:pointer;
+  font-size:1.4vw;
+}
+.superbutton:focus{
+outline:none;
+}
+.superbutton:hover { background: #A0522D; } /* при наведении курсора мышки */
+.superbutton:active { background: #808000; } /* при нажатии */
+
+#number {
+  position: relative;
+  top: -20px;
+}
+
+.menu:invalid + span:after {
+  content: '\2718';
+  color: red;
+  margin-left: 7px;
+}
+
+.menu:valid + span:after {
+  content: '\2714';
+  color: green;
+  margin-left: 7px;
+}
+
+#button {
+  display: none;
+}
+#form label:nth-of-type(3n) {
+  margin-bottom: 30px;
+}
