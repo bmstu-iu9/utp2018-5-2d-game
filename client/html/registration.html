@@ -1,0 +1,27 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset = "utf-8"/>
+  <title> Регистрация </title>
+  <link rel="stylesheet" href="/home/uma/игра/регистрация/rgst.css">
+  <script src = "form.js"></script>
+</head>
+<body>
+  <h1> Заполните информацию </h1>
+  <form action="javascript:window.open('/home/uma/utp2018-5-2d-game-develop/client/html/realize_test_1.html', '_self'); void(0);" method="post" name="test" onsubmit="return valid(this);">
+    <label for="name"> Имя:</label>
+    <input type="text" name= "name" placeholder="Имя" id="name" required/> <br /><br />
+    <label for="email"> Email:</label>
+    <input type="text" name= "email" placeholder="Email" id="email" required/> <br /><br />
+    <label for="name"> Пароль:</label>
+    <input type="password" name= "password" placeholder="Пароль" id="password" required/> <br /><br />
+    <label for="name"> Проверка пароля:</label>
+    <input type="password" name= "RePassword" placeholder="Введите пароль" id="RePassword" required/> <br /><br />
+    <span> Пол: </span>
+    <input type="radio" name="state" id="male" value="Мужской" /> <label for="male">Мужской</label>
+    <input type="radio" name="state" id="female" value="Женский" /> <label for="female">Женский</label><br /><br />
+    <input type="submit" class="superbutton" name="submit" value="Готово"/>
+</form>
+</body>
+</html>
