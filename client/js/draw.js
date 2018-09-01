@@ -29,6 +29,7 @@ function drawDungeon_1() {
     drawStatistic();
     interaction(loots[locInitialization], enemies[locInitialization]);
     drawConditionOfHero();
+    drawQuest();
     collision(barriers_of_the_dungeon_1);
 }
 
@@ -69,6 +70,7 @@ function drawDungeon_2() {
     drawStatistic();
     interaction(loots[locInitialization], enemies[locInitialization]);
     drawConditionOfHero();
+    drawQuest();
     collision(barriers_of_the_dungeon_2);
 }
 
@@ -108,6 +110,7 @@ function drawDungeon_3() {
     drawStatistic();
     interaction(loots[locInitialization], enemies[locInitialization]);
     drawConditionOfHero();
+    drawQuest();
     collision(barriers_of_the_dungeon_3);
 }
 
@@ -147,6 +150,7 @@ function drawDungeon_4() {
     drawStatistic();
     interaction(loots[locInitialization], enemies[locInitialization]);
     drawConditionOfHero();
+    drawQuest();
     collision(barriers_of_the_dungeon_4);
 }
 
@@ -191,6 +195,7 @@ function drawTown() {
     drawStatistic();
     interaction(loots[locInitialization], enemies[locInitialization]);
     drawConditionOfHero();
+    drawQuest();
     context_main.drawImage(decoration, 0, 0);
     collision(barriers_of_the_town);
 }
@@ -210,6 +215,49 @@ function drawConditionOfHero() {
     } else {
 
         context_condition.clearRect(0, 0, canvas_condition.width, canvas_condition.height);
+    }
+}
+
+const quest_image = new Image();
+quest_image.src = "../design/quest/quest_test.png";
+
+function drawQuest() {
+
+    if (hero.isQuest) {
+        console.log(1);
+        context_condition.clearRect(0, 0, canvas_condition.width, canvas_condition.height);
+        context_condition.drawImage(quest_image, 0, 0);
+        let questtable = [];
+        
+        let j = 0;
+
+        for (let i = 0 ; i < Quest.length ; i++)
+            if (Quest[i].status != "No active" && Quest[i].status != "Finished") {
+                questtable[j] = {
+                    questNomber : i,
+                    x : 15,
+                    y : 15 + j * 100
+                };
+                j++;
+            }
+      
+        context_condition.beginPath();
+        for (let i = 0 ; i < questtable.length ; i++){
+            context_condition.strokeStyle = "red";
+            context_condition.lineWidth = 5;
+            context_condition.rect(questtable[i].x, questtable[i].y, 800 , 80);
+            context_condition.font = "24px Arial";
+            context_condition.fillStyle = "red";
+            let str;
+            if (Quest[questtable[i].questNomber].status == "active")
+                str = 'Осталось : ' + (Quest[questtable[i].questNomber].target_count - Quest[questtable[i].questNomber].count).toString();
+            else 
+                str = 'Выполнен';
+            context_condition.fillText(Quest[questtable[i].questNomber].text,questtable[i].x + 10, questtable[i].y + 40); 
+            context_condition.fillText(str , 600 , questtable[i].y + 40);
+            context_condition.stroke(); 
+        }
+        context_condition.closePath();
     }
 }
 

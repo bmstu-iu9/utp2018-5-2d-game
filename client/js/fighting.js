@@ -53,6 +53,7 @@ function heroStep() {
 		currentEnemy.status = 0;
 		enemyHealth = 100;
 		battle = false;
+		cheakKillerQuest();
 		context_fighting.clearRect(0, 0, canvas_fighting.width, canvas_fighting.height);
 	}
 	
@@ -91,6 +92,7 @@ function enemyStep() {
 			currentEnemy.status = 0;
 			enemyHealth = 100;
 			battle = false;
+			cheakKillerQuest();
 			context_fighting.clearRect(0, 0, canvas_fighting.width, canvas_fighting.height);
 		}
 		
