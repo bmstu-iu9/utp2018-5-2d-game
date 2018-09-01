@@ -58,7 +58,7 @@ function historyLine(damageToEnemy, isHeroDefend) {
 }
 
 function heroStep() {
-
+  
 	if ((enemyHealth <= 0) || (hero.health <= 0)) {
 		finish();
 	}
@@ -90,6 +90,7 @@ function heroStep() {
 }
 
 function enemyStep() {
+  
 	if ((enemyHealth <= 0) || (hero.health <= 0)) {
 		finish();
 	}

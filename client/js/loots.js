@@ -103,7 +103,7 @@ loots['dungeon-2'] = {
 		sWidth: 64,
 		sHeight: 64,
 		status: [1],
-		type: ["artifact"],
+		type: [""],
 		width: 64,
 		height: 64
 		
