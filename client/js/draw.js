@@ -340,6 +340,15 @@ is_throw_away_image.src = "../design/inventory/is_throw_away.png";
 const is_join_the_fight_image = new Image();
 is_join_the_fight_image.src = "../design/fight/isJoinTheFight.png";
 
+const you_lose_image = new Image();
+you_lose_image.src = "../design/fight/YouLoseImg.png";
+
+const is_capitulation_image = new Image();
+is_capitulation_image.src = "../design/fight/capitulationImg.png";
+
+const is_capitulation_image_2 = new Image();
+is_capitulation_image_2.src = "../design/fight/capitulationImg2.png";
+
 const is_throw_away = {
 
     x: 127.5,
@@ -360,28 +369,53 @@ const is_join_the_fight = {
     image: is_join_the_fight_image
 }
 
+const is_capitulation = {
+    x: 234,
+    y: 309,
+    width: 313,
+    height: 150,
+    bool: false,
+    image: is_capitulation_image,
+    image_2: is_capitulation_image_2
+}
+
+const you_lose = {
+    x: 234,
+    y: 309,
+    width: 313,
+    height: 150,
+    bool: false,
+    image: you_lose_image
+}
+
+
 //health
 const canvas_statistic = document.getElementById("statistic");
 const context_statistic = canvas_statistic.getContext("2d");
 
 function drawStatistic() {
-    context_statistic.clearRect(0, 0, canvas_statistic.width, canvas_statistic.height);
-
-    context_statistic.fillStyle = "#ffffff";
-    context_statistic.font = '15px Arial';
-    context_statistic.fillText("Здоровье:", hero.health_x1, hero.health_y - 10);
-    context_statistic.beginPath();
-    context_statistic.lineWidth = 10;
-    context_statistic.moveTo(hero.health_x1, hero.health_y);
-    context_statistic.lineTo(hero.health_x2, hero.health_y);
-    context_statistic.strokeStyle = "red";
-    context_statistic.lineCap = "round";
-    context_statistic.stroke();
-    context_statistic.closePath();
+	context_statistic.clearRect(0, 0, canvas_statistic.width, canvas_statistic.height);
 	
-    context_statistic.fillText("Золото: " + hero.gold, hero.health_x1, hero.health_y + 20);
-}
+	if (!you_lose.bool) {
+		context_statistic.fillStyle = "#ffffff";
+		context_statistic.font = '15px Arial';
+		context_statistic.fillText("Здоровье:", hero.health_x1, hero.health_y - 10);
+		
+		if (hero.health > 0) {
 
+		context_statistic.beginPath();
+		context_statistic.lineWidth = 10;
+		context_statistic.moveTo(hero.health_x1, hero.health_y);
+		context_statistic.lineTo(hero.health_x2, hero.health_y);
+		context_statistic.strokeStyle = "red";
+		context_statistic.lineCap = "round";
+		context_statistic.stroke();
+		context_statistic.closePath();
+		}
+		
+		context_statistic.fillText("Золото: " + hero.gold, hero.health_x1, hero.health_y + 20);
+	}
+}
 
 //pop_up_windows
 const canvas_pop_up_window = document.getElementById("pop_up_window");
@@ -400,4 +434,25 @@ function drawIsJoinTheFight() {
     context_pop_up_window.clearRect(0, 0, context_pop_up_window.width, context_pop_up_window.height);
     context_pop_up_window.drawImage(is_join_the_fight.image, is_join_the_fight.x, is_join_the_fight.y);
     is_join_the_fight.bool = true;
+}
+
+function drawIsCapitulation() {
+	context_pop_up_window.clearRect(0, 0, context_pop_up_window.width, context_pop_up_window.height);
+	if (hero.gold - currentEnemy.bribe >= 0) {
+		context_pop_up_window.drawImage(is_capitulation.image, is_capitulation.x, is_capitulation.y);
+	}
+	else {
+		context_pop_up_window.drawImage(is_capitulation.image_2, is_capitulation.x, is_capitulation.y);
+	}
+	context_pop_up_window.fillStyle = "#4d4546";
+	context_pop_up_window.font = "bold 18px Batang";
+	context_pop_up_window.fillText(currentEnemy.name, is_capitulation.x + 19, is_capitulation.y + 35, 65);
+	context_pop_up_window.fillText(currentEnemy.bribe, is_capitulation.x + 85, is_capitulation.y + 57, 60);
+       is_capitulation.bool = true;
+}
+
+function drawYouLose() {
+	context_pop_up_window.clearRect(0, 0, context_pop_up_window.width, context_pop_up_window.height);
+        context_pop_up_window.drawImage(you_lose.image, you_lose.x, you_lose.y);
+        you_lose.bool = true;
 }

@@ -63,7 +63,7 @@ loots['dungeon-1'] = {
 		sy: 228,
 		sWidth: 32,
 		sHeight: 32,
-		status: [1, 1],
+		status: [1],
 		width: 32,
 		height: 32
 	}
@@ -124,12 +124,12 @@ loots['dungeon-2'] = {
 		x: [640],
 		y: [640],
 		sx: [64],
-		sy: 196,
-		sWidth: 64,
-		sHeight: 64,
+		sy: 228,
+		sWidth: 32,
+		sHeight: 32,
 		status: [1, 1],
-		width: 64,
-		height: 64
+		width: 32,
+		height: 32
 	}
 }
 

@@ -1,3 +1,7 @@
+body {
+	background: gray;
+}
+
 #centerLayer {
     
     position: relative;
@@ -25,12 +29,12 @@
 #pop_up_window {
 
     position: absolute;
-    z-index: 2;
+    z-index: 3;
 }
 
 #fighting {
     position: absolute;
-    z-index: 3;
+    z-index: 2;
 }
 
 #statistic {
