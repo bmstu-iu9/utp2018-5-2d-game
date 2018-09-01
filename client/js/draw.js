@@ -399,7 +399,7 @@ function drawIsCapitulation() {
 	context_pop_up_window.fillStyle = "#4d4546";
 	context_pop_up_window.font = "bold 18px Batang";
 	context_pop_up_window.fillText(currentEnemy.name, is_capitulation.x + 19, is_capitulation.y + 35, 65);
-	context_pop_up_window.fillText(currentEnemy.bribe, is_capitulation.x + 111, is_capitulation.y + 57);
+	context_pop_up_window.fillText(currentEnemy.bribe, is_capitulation.x + 85, is_capitulation.y + 57, 60);
        is_capitulation.bool = true;
 }
 
