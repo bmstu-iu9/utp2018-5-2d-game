@@ -195,7 +195,7 @@ function drawFightingEnemy() {
 function drawWin() {
 	clearInterval(intervalID);
 	const winImg = new Image();
-	winImg.src = '../design/fighting/winImg.png';
+	winImg.src = '../design/fight/winImg.png';
 	context_statistic.clearRect(0, 0, canvas_statistic.width, canvas_statistic.height);
 	context_statistic.drawImage(winImg, 0, 0);
 }
