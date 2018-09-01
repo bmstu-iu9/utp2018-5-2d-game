@@ -195,7 +195,7 @@ function outside_the_inventory() {
             (mouse.y > inventory.y + inventory.height))
 }
 
-document.onmousemove = function (e) {
+document.onmousemove = function (event) {
 
     const rect = canvas_pop_up_window.getBoundingClientRect()
     mouse.y = event.clientY - rect.top;
