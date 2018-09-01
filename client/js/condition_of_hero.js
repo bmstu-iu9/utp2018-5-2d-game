@@ -165,6 +165,27 @@ function isCursorInButtonDefend() {
 	(mouse.y < button_defend.y + button_defend.height))
 }
 
+function isCursorInButtonСapitulation() {
+	return ((mouse.x > button_capitulation.x) && 
+	(mouse.x < button_capitulation.x + button_capitulation.width) && 
+	(mouse.y > button_capitulation.y) && 
+	(mouse.y < button_capitulation.y + button_capitulation.height))
+}
+
+function isCursorInButtonEscape() {
+	return ((mouse.x > button_escape.x) && 
+	(mouse.x < button_escape.x + button_escape.width) && 
+	(mouse.y > button_escape.y) && 
+	(mouse.y < button_escape.y + button_escape.height))
+}
+
+function isCursorInButtonOk() {
+	return ((mouse.x > button_ok.x) && 
+	(mouse.x < button_ok.x + button_ok.width) && 
+	(mouse.y > button_ok.y) && 
+	(mouse.y < button_ok.y + button_ok.height))
+}
+
 function outside_the_inventory() {
 
     return selected &&
@@ -243,6 +264,28 @@ const button_defend = {
     height: 57
 }
 
+const button_capitulation = {
+	 
+	x: 631,
+    y: 15,
+    width: 56,
+    height: 49
+}
+
+const button_escape = {
+	x: 699,
+    y: 15,
+    width: 56,
+    height: 49
+}
+
+const button_ok = {
+	x: 124,
+    y: 114,
+    width: 63,
+    height: 17
+}
+
 document.addEventListener("click", clickYesNo, false);
 
 function clickYesNo() {
@@ -283,37 +326,76 @@ function clickYesNo() {
     
     else if (is_join_the_fight.bool) {
 		
-		if(isCursorInButtonYes()) {
+	if(isCursorInButtonYes()) {
+		
+		is_join_the_fight.bool = false;
+		drawFighting();
+		bool_pop_up_window = true;
+		clearInterval(intervalID_pop_up_window);
+                context_pop_up_window.clearRect(0, 0, canvas_pop_up_window.width, canvas_pop_up_window.height);
+	}
+	else if (isCursorInButtonNo()) {
 			
-			is_join_the_fight.bool = false;
-			drawFighting();
+		is_join_the_fight.bool = false;
+		bool_pop_up_window = true;
+                clearInterval(intervalID_pop_up_window);
+                context_pop_up_window.clearRect(0, 0, canvas_pop_up_window.width, canvas_pop_up_window.height);
+	}
+    }
+    else if (is_capitulation.bool) {
+
+	if(isCursorInButtonYes()) {
+		if (hero.gold - currentEnemy.bribe >= 0) {
+			is_capitulation.bool = false;
 			bool_pop_up_window = true;
 			clearInterval(intervalID_pop_up_window);
-            context_pop_up_window.clearRect(0, 0, canvas_pop_up_window.width, canvas_pop_up_window.height);
-		}
-		else if (isCursorInButtonNo()) {
+			context_pop_up_window.clearRect(0, 0, canvas_pop_up_window.width, canvas_pop_up_window.height);
 			
-			is_join_the_fight.bool = false;
-			bool_pop_up_window = true;
-            clearInterval(intervalID_pop_up_window);
-            context_pop_up_window.clearRect(0, 0, canvas_pop_up_window.width, canvas_pop_up_window.height);
+			hero.gold -= currentEnemy.bribe;
+			battle = false;
+			hero.type = 'usual';
+			context_fighting.clearRect(0, 0, canvas_fighting.width, canvas_fighting.height);
 		}
+    }
+    else if (isCursorInButtonNo()) {
+		is_capitulation.bool = false;
+		bool_pop_up_window = true;
+		clearInterval(intervalID_pop_up_window);
+                context_pop_up_window.clearRect(0, 0, canvas_pop_up_window.width, canvas_pop_up_window.height);
 	}
+    }
+	
+    else if (you_lose.bool) {
+	if (isCursorInButtonOk) {
+		setInterval(drawLose, 10);
+		you_lose.bool = false;
+		bool_pop_up_window = true;
+		clearInterval(intervalID_pop_up_window);
+                context_pop_up_window.clearRect(0, 0, canvas_pop_up_window.width, canvas_pop_up_window.height);
+	}
+    }
 }
 
 document.addEventListener('click', function() {
-	if (battle) {
+    if (battle) {
 		
-		if (isCursorInButtonAttack()) {
-			
-			attack();
-		}
-		
-		else if (isCursorInButtonDefend()) {
-						
-			defend();
-		}
+	if (isCursorInButtonAttack()) {	
+		attack();
 	}
+		
+	else if (isCursorInButtonDefend()) {
+		defend();
+	}
+	else if (isCursorInButtonСapitulation()) {
+		drawIsCapitulation();
+	}
+		
+	else if (isCursorInButtonEscape()) {
+	    if (hero.health >= 10) {
+		escape();
+	    }
+	}
+    }
 }, false);
 
 function equipment(num) {
