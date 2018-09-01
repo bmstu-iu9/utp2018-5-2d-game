@@ -200,7 +200,7 @@ function drawWin() {
 function drawLose() {
 	clearInterval(intervalID);
 	const loseImg = new Image();
-	loseImg.src = '../design/fighting/loseImg.png';
+	loseImg.src = '../design/fight/loseImg.png';
 	context_statistic.clearRect(0, 0, canvas_statistic.width, canvas_statistic.height);
 	context_statistic.drawImage(loseImg, 0, 0);
 }
