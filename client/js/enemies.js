@@ -8,7 +8,7 @@ let enemies = {};
 
 enemies['dungeon-1'] = {
 	'enemy-1': { 
-				'name': 'Злыдень',
+				'name': 'Глум',
 				'max': 25,
 				'min': 10,
 				'x': 512,
@@ -20,10 +20,11 @@ enemies['dungeon-1'] = {
 				'FW': 175,
 				'FH': 292,
 				'status': 1,
+				'isBoss': false,
 				'type': 'enemy-on-map'
 	},
 	'enemy-2': { 
-				'name': 'Злыдень',
+				'name': 'Иллуги',
 				'max': 25,
 				'min': 10,
 				'x': 650,
@@ -35,13 +36,14 @@ enemies['dungeon-1'] = {
 				'FW': 175,
 				'FH': 292,
 				'status': 1,
+				'isBoss': false,
 				'type': 'enemy-on-map'
 	}
 }
 
 enemies['dungeon-2'] = {
 	'enemy-1': { 
-				'name': 'Злыдень',
+				'name': 'Кетиль',
 				'max': 25,
 				'min': 10,
 				'x': 270,
@@ -53,10 +55,11 @@ enemies['dungeon-2'] = {
 				'FW': 175,
 				'FH': 292,
 				'status': 1,
+				'isBoss': false,
 				'type': 'enemy-on-map'
 	},
 	'enemy-2': { 
-				'name': 'Злыдень',
+				'name': 'Льот',
 				'max': 25,
 				'min': 10,
 				'x': 50,
@@ -68,13 +71,14 @@ enemies['dungeon-2'] = {
 				'FW': 175,
 				'FH': 292,
 				'status': 1,
+				'isBoss': false,
 				'type': 'enemy-on-map'
 	}
 }
 
 enemies['dungeon-3'] = {
 	'enemy-1': { 
-				'name': 'Злыдень',
+				'name': 'Нарви',
 				'max': 25,
 				'min': 10,
 				'x': 505,
@@ -86,10 +90,11 @@ enemies['dungeon-3'] = {
 				'FW': 175,
 				'FH': 292,
 				'status': 1,
+				'isBoss': false,
 				'type': 'enemy-on-map'
 	},
 	'enemy-2': { 
-				'name': 'Злыдень',
+				'name': 'Мёрд',
 				'max': 25,
 				'min': 10,
 				'x': 125,
@@ -101,13 +106,14 @@ enemies['dungeon-3'] = {
 				'FW': 175,
 				'FH': 292,
 				'status': 1,
+				'isBoss': false,
 				'type': 'enemy-on-map'
 	}
 }
 
 enemies['dungeon-4'] = {
 	'enemy-1': { 
-				'name': 'Злыдень',
+				'name': 'Рьюпа',
 				'max': 25,
 				'min': 10,
 				'x': 200,
@@ -119,10 +125,11 @@ enemies['dungeon-4'] = {
 				'FW': 175,
 				'FH': 292,
 				'status': 1,
+				'isBoss': false,
 				'type': 'enemy-on-map'
 	},
 	'enemy-2': { 
-				'name': 'Злыдень',
+				'name': 'Оттар',
 				'max': 25,
 				'min': 10,
 				'x': 64,
@@ -134,13 +141,14 @@ enemies['dungeon-4'] = {
 				'FW': 175,
 				'FH': 292,
 				'status': 1,
+				'isBoss': false,
 				'type': 'enemy-on-map'
 	}
 }
 
 enemies['town'] = {
 	'enemy-1': { 
-				'name': 'Злыдень',
+				'name': 'Унн',
 				'max': 25,
 				'min': 10,
 				'x': 448,
@@ -152,10 +160,11 @@ enemies['town'] = {
 				'FW': 175,
 				'FH': 292,
 				'status': 1,
+				'isBoss': false,
 				'type': 'enemy-on-map'
 	},
 	'enemy-2': { 
-				'name': 'Злыдень',
+				'name': 'Хеймир',
 				'max': 25,
 				'min': 10,
 				'x': 128,
@@ -167,7 +176,25 @@ enemies['town'] = {
 				'FW': 175,
 				'FH': 292,
 				'status': 1,
+				'isBoss': false,
 				'type': 'enemy-on-map'
+	},
+	'boss': { 
+				'name': 'Геллир',
+				'max': 60,
+				'min': 35,
+				'bribe' : 1000000000000,
+				'x': 320,
+				'y': -64,
+				'width': 64,
+				'height': 64,
+				'fightX': 500,
+				'fightY': 250,
+				'FW': 215,
+				'FH': 287,
+				'status': 1,
+				'isBoss': true,
+				'type': 'boss'
 	}
 }
 
@@ -182,6 +209,13 @@ animate['enemies'] = {
 	},
 	'fighting-position': {
 		'sy': 64,
+		'currentFrame' : 0,
+		'frames' : 1,
+		'step' : 0,
+		'speed' : 10
+	},
+	'boss': {
+		'sy': 384,
 		'currentFrame' : 0,
 		'frames' : 1,
 		'step' : 0,
