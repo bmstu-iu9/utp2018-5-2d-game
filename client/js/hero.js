@@ -21,9 +21,9 @@ let hero = {
 	FW: 221,
 	FH: 300,
 	health: 100,
-	max: 20,
+	max: 30,
 	min: 10,
-	skillDefense: 10,
+	skillDefense: 20,
 	gold: 0,
 	type: 'usual',
 	name: 'Имя пользователя',
@@ -36,9 +36,9 @@ let hero = {
     condition: false,
     interaction: false,
 
-    health_x1: 20,
-    health_y: 745,
-    health_x2: 330
+    health_x1: 23,
+    health_y: 30,
+    health_x2: 333
 };
 let animate = {};
 
@@ -68,7 +68,16 @@ animate['hero'] = {
 		'currentFrame': 0,
 		'frames' : 3,
 		'step' : 0,
-		'speed' : 8
+		'speed' : 9
+	},
+	'up' : {
+		'sy': 192,
+		'width': 43,
+		'height': 64,
+		'currentFrame': 0,
+		'frames' : 3,
+		'step' : 0,
+		'speed' : 10
 	},
 	'stand' : {
 		'sy': 256,
@@ -85,6 +94,15 @@ animate['hero'] = {
 		'sy': 320,
 		'width': 221,
 		'height': 300,
+		'currentFrame' : 0,
+		'frames' : 1,
+		'step' : 0,
+		'speed' : 8
+	},
+	'dead' : {
+		'sy': 276,
+		'width': 35,
+		'height': 44,
 		'currentFrame' : 0,
 		'frames' : 1,
 		'step' : 0,
@@ -251,6 +269,15 @@ function drawHero() {
 	}
 	else if (hero.type === 'damaged') {
 		//нарисовать движения героя при получении урона
+	}
+	else if (hero.type === 'dead') {
+		context_main.drawImage(animateImg, 
+							49, animate['hero']['dead'].sy,
+							animate['hero']['dead'].width, animate['hero']['dead'].height, 
+							hero.x+hero.radiusW-15, hero.y+hero.radiusH-15,
+							animate['hero']['dead'].width, animate['hero']['dead'].height);
+		document.removeEventListener("keydown", keyDownHandler, false);
+		document.removeEventListener("keyup", keyUpHandler, false);
 	}
 }
 
