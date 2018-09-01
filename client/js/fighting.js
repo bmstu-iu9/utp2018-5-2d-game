@@ -5,6 +5,9 @@ const context_fighting = canvas_fighting.getContext("2d");
 
 const bg = new Image();
 bg.src = "../design/fight/fighting-back.png";
+
+const boss_bg = new Image();
+boss_bg.src = '../design/fight/boss-back.png';
 //размер героя в файтинге 189х292
 
 let battle = false;
