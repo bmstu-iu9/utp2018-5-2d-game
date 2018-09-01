@@ -243,7 +243,22 @@ function drawHero() {
 			}
 			else animate['hero']['down'].step++;
 		}
-		
+		else if (hero.up_pressed) {
+			context_main.drawImage(animateImg, 
+						Math.round(hero.radiusW*2*animate['hero']['up'].currentFrame), animate['hero']['up'].sy, 
+						hero.radiusW*2, hero.radiusH*2, 
+						hero.x, hero.y,
+						hero.radiusW*2, hero.radiusH*2);
+		if (animate['hero']['up'].step >= animate['hero']['up'].speed) {				
+			if (animate['hero']['up'].currentFrame == animate['hero']['up'].frames) {
+				animate['hero']['up'].currentFrame = 0;
+			 } else {
+				animate['hero']['up'].currentFrame++;
+				animate['hero']['up'].step = 0;
+			 }
+			}
+			else animate['hero']['up'].step++;
+		}
 		else {
 			context_main.drawImage(animateImg, 
 							0, animate['hero']['stand'].sy,
