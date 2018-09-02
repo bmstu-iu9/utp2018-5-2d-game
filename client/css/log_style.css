@@ -26,7 +26,6 @@ body{
   padding: 10px; /* Поля вокруг текста */
   margin: auto; /* Выравниваем по центру */
 }
-
 h1{
   color: #000000 ;
   font-family: Courier;
@@ -35,16 +34,13 @@ h1{
   text-align: center;
   height: 200;
 }
-
 i{
   color: #808000;
   text-align: center;
 }
 p{
   text-align: center;
-
 }
-
 a{
   background: -moz-linear-gradient(#8B4513, #8B4513, #8B4513);
   background: -webkit-gradient(linear, 0 0, 0  100%, from(#CD853F), to(#8B4513), color-stop(0.5, #CD853F));
@@ -79,8 +75,6 @@ outline:none;
 }
 .superbutton:hover { background: #A0522D; } /* при наведении курсора мышки */
 .superbutton:active { background: #808000; } /* при нажатии */
-
-
 k{
   background: -moz-linear-gradient(#8B4513, #8B4513, #8B4513);
   background: -webkit-gradient(linear, 0 0, 0  100%, from(#CD853F), to(#8B4513), color-stop(0.5, #CD853F));
@@ -93,6 +87,5 @@ k{
   border: 1px solid #000000;
   font-size:1.4vw;
 }
-
 k:hover { background: #A0522D; } /* при наведении курсора мышки */
 k:active { background: #808000; } /* при нажатии */
