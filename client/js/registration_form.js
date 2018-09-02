@@ -13,7 +13,7 @@ function valid(form) {
   else if (email.split('@').length - 1 == 0)
     fail = "Вы ввели email неправильно";
   else if (Person.password == "")
-    fail = "Вы не ввели своё пароль";
+    fail = "Вы не ввели свой пароль";
   else if (Person.password != RePassword)
     fail = "Пароли не совпадают";
   else if (Person.state == "")
