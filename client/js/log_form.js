@@ -1,5 +1,5 @@
 function valid(form) {
-//  localStorage.clear();
+//localStorage.clear();
   var name = form.name.value;
   var password = form.password.value;
   var Person = JSON.parse(localStorage.getItem(name));
