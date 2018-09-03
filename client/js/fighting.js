@@ -60,6 +60,7 @@ function historyLine(damageToEnemy, isHeroDefend) {
 function heroStep() {
   
 	if ((enemyHealth <= 0) || (hero.health <= 0)) {
+		cheakKillerQuest();
 		finish();
 	}
 	
@@ -85,6 +86,7 @@ function heroStep() {
 	}
 	
 	if ((enemyHealth <= 0) || (hero.health <= 0)) {
+		cheakKillerQuest();
 		finish();
 	}
 }
@@ -92,6 +94,7 @@ function heroStep() {
 function enemyStep() {
   
 	if ((enemyHealth <= 0) || (hero.health <= 0)) {
+		cheakKillerQuest();
 		finish();
 	}
 	
@@ -107,7 +110,8 @@ function enemyStep() {
 		heroStep();
 	}
 		if ((enemyHealth <= 0) || (hero.health <= 0)) {
-		finish();
+			cheakKillerQuest();
+			finish();
 	}
 	
 }
