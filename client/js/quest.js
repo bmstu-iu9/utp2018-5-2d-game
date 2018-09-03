@@ -14,14 +14,14 @@ let Quest = [
 		'target_count' : 3,
 		'text' : "Убей 3х варваров",
 		'status' : "active"
-	}
+	},
 	{
 		'count' : 0,
 		'type' : "kill",
 		'target_count' : 4,
 		'text' : "Убей 4х варваров",
 		'status' : "active"
-	}
+	},
 	{
 		'count' : 0,
 		'type' : "kill",
