@@ -342,7 +342,7 @@ const is_join_the_fight_image = new Image();
 is_join_the_fight_image.src = "../design/fight/isJoinTheFight.png";
 
 const you_lose_image = new Image();
-you_lose_image.src = "../design/fight/YouLoseImg.png";
+you_lose_image.src = "../design/fight/youLoseImg.png";
 
 const is_capitulation_image = new Image();
 is_capitulation_image.src = "../design/fight/capitulationImg.png";
