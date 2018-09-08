@@ -64,8 +64,8 @@ function drawDialog1(){
 				context_pop_up_window.fillText("мы в безопасности. Когда варвары", 220, 290);
 				context_pop_up_window.fillText("были убиты, лагерь, в котором они", 220, 310);
 				context_pop_up_window.fillText("хранили награбленное опустел. Жители", 220, 330);
-				context_pop_up_window.fillText("отдать это вам, в благодарность за", 220, 350);
-				context_pop_up_window.fillText("освобождение", 220, 370);
+				context_pop_up_window.fillText("решили отдать это вам, в благодарность", 220, 350);
+				context_pop_up_window.fillText("за освобождение", 220, 370);
 			}
 		}
 	}	
