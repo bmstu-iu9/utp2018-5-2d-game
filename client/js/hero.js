@@ -118,26 +118,29 @@ let cond_bool = false;
 function keyDownHandler(e) {
 
     //movement
-    if ((e.keyCode === 39) || (e.keyCode === 68)) {
+       if ((e.keyCode === 39) || (e.keyCode === 68)) {
         hero.right_pressed = true;
         hero.interaction=false;
+        context_pop_up_window.clearRect(0, 0, canvas_pop_up_window.width, canvas_pop_up_window.height);
     }
 
     if ((e.keyCode === 37) || (e.keyCode === 65)) {
         hero.left_pressed = true;
         hero.interaction=false;
+        context_pop_up_window.clearRect(0, 0, canvas_pop_up_window.width, canvas_pop_up_window.height);
     }
 
     if ((e.keyCode === 38) || (e.keyCode === 87)) {
         hero.up_pressed = true;
         hero.interaction=false;
+        context_pop_up_window.clearRect(0, 0, canvas_pop_up_window.width, canvas_pop_up_window.height);
     }
 
     if ((e.keyCode === 40) || (e.keyCode === 83)) {
         hero.down_pressed = true;
         hero.interaction=false;
+        context_pop_up_window.clearRect(0, 0, canvas_pop_up_window.width, canvas_pop_up_window.height);
     }
-
 
     //condition
     if ((e.keyCode === 90) && cond_bool) {
