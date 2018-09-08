@@ -120,18 +120,22 @@ function keyDownHandler(e) {
     //movement
     if ((e.keyCode === 39) || (e.keyCode === 68)) {
         hero.right_pressed = true;
+        hero.interaction=false;
     }
 
     if ((e.keyCode === 37) || (e.keyCode === 65)) {
         hero.left_pressed = true;
+        hero.interaction=false;
     }
 
     if ((e.keyCode === 38) || (e.keyCode === 87)) {
         hero.up_pressed = true;
+        hero.interaction=false;
     }
 
     if ((e.keyCode === 40) || (e.keyCode === 83)) {
         hero.down_pressed = true;
+        hero.interaction=false;
     }
 
 
@@ -147,9 +151,15 @@ function keyDownHandler(e) {
     }
 
     if (e.keyCode === 70) {
-        hero.interaction = true;
+    	if(hero.interaction){
+    		hero.interaction=false;
+    		context_pop_up_window.clearRect(0, 0, canvas_pop_up_window.width, canvas_pop_up_window.height);
+    	}
+    	else{
+        	hero.interaction = true;
+        	context_pop_up_window.clearRect(0, 0, canvas_pop_up_window.width, canvas_pop_up_window.height);
+        }
     }
-
     if (e.keyCode === 73) {
         if (hero.isQuest == false)
         	hero.isQuest = true;
