@@ -21,7 +21,7 @@ function drawDungeon_1() {
     }
 
     locInitialization = "dungeon-1";
-    hero.health_x2 = 33 + hero.health * 3;
+    hero.health_x2 = 23 + hero.health * 3;
     context_main.clearRect(0, 0, canvas_main.width, canvas_main.height);
     context_main.drawImage(dungeon_image_1, 0, 0);
     drawEnemies();
@@ -64,7 +64,7 @@ function drawDungeon_2() {
     }
     
     locInitialization = "dungeon-2";
-    hero.health_x2 = 33 + hero.health * 3;
+    hero.health_x2 = 23 + hero.health * 3;
     context_main.clearRect(0, 0, canvas_main.width, canvas_main.height);
     context_main.drawImage(dungeon_image_2, 0, 0);
     drawEnemies();
@@ -105,7 +105,7 @@ function drawDungeon_3() {
     }
 
     locInitialization = "dungeon-3";
-    hero.health_x2 = 33 + hero.health * 3;
+    hero.health_x2 = 23 + hero.health * 3;
     context_main.clearRect(0, 0, canvas_main.width, canvas_main.height);
     context_main.drawImage(dungeon_image_3, 0, 0);
     drawEnemies();
@@ -146,7 +146,7 @@ function drawDungeon_4() {
     }
 
     locInitialization = "dungeon-4";
-    hero.health_x2 = 33 + hero.health * 3;
+    hero.health_x2 = 23 + hero.health * 3;
     context_main.clearRect(0, 0, canvas_main.width, canvas_main.height);
     context_main.drawImage(dungeon_image_4, 0, 0);
     drawEnemies();
@@ -180,7 +180,7 @@ function drawTown() {
     }
 
     locInitialization = "town";
-    hero.health_x2 = 33 + hero.health * 3;
+    hero.health_x2 = 23 + hero.health * 3;
     context_main.clearRect(0, 0, canvas_main.width, canvas_main.height);
     context_main.drawImage(town_image, 0, 0);
     drawEnemies();
@@ -416,6 +416,9 @@ function drawStatistic() {
 		context_statistic.lineCap = "round";
 		context_statistic.stroke();
 		context_statistic.closePath();
+		}
+		if (battle) {
+		    drawEnXP();
 		}
 		
 		context_statistic.fillText("Золото: " + hero.gold, hero.health_x1, hero.health_y + 20);
