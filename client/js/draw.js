@@ -27,9 +27,10 @@ function drawDungeon_1() {
     drawHero();
     draw_loots();
     drawStatistic();
-    interaction(loots[locInitialization], enemies[locInitialization]);
+    interaction(loots[locInitialization], enemies[locInitialization],npc[locInitialization]);
     drawConditionOfHero();
     drawQuest();
+    drawNpc();
     collision(barriers_of_the_dungeon_1);
 }
 
