@@ -466,11 +466,34 @@ function town_transition() {
     return transition(town);
 }
 
-function interaction(things, enemies) {
-
+function interaction(things, enemies,npc) {
     let distX = 0;
     let distY = 0;
-
+        for (let i in npc) {  
+            distX = Math.abs(hero.x + hero.radiusW -
+                npc[i].x - npc[i].width / 2);
+            distY = Math.abs(hero.y + hero.radiusH -
+                npc[i].y - npc[i].height / 2);
+            if ((distX <= (npc[i].width / 2) + hero.radiusW) &&
+                (distY <= (npc[i].height / 2) + hero.radiusH)) {
+                if (hero.y + 2 * hero.radiusH < (npc[i].y + 5)) {
+                    hero.y -= hero.dy;
+                } else if (hero.x >(npc[i].x + npc[i].width - 5)) {
+                    hero.x += hero.dx;
+                } else if (hero.x + 2 * hero.radiusW < npc[i].x + 5) {
+                    hero.x -= hero.dx;
+                } else if (hero.y >
+                    npc[i].y + npc[i].height - 5) {
+                    hero.y += hero.dy;
+                }        
+            }
+            if ((distX <= (npc[i].width *0.6 + hero.radiusW)) &&
+                (distY <= (npc[i].height *0.6 + hero.radiusH))){ 
+                if(hero.interaction){
+                    drawDialog1();
+                }
+            }
+        } 
     for (let i in things) {
 		const len = things[i].x.length;
 		for (let k = 0; k < len; k++) { 
