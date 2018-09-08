@@ -70,7 +70,30 @@ const slots = {
     width: 515,
     height: 193
 };
-
+function isCursorOnDialogBranch1(){
+ return (mouse.x > table_data.first_answer_x) &&
+        (mouse.x <  table_data.first_answer_x+table_data.first_answer_width) &&
+        (mouse.y >  table_data.first_answer_y) &&
+        (mouse.y <  table_data.first_answer_y+table_data.first_answer_height)
+}
+function isCursorOnDialogBranch2(){
+ return (mouse.x > table_data.second_answer_x) &&
+        (mouse.x <  table_data.second_answer_x+table_data.second_answer_width) &&
+        (mouse.y >  table_data.second_answer_y) &&
+        (mouse.y <  table_data.second_answer_y+table_data.second_answer_height)
+}
+function isCursorOnDialogBranch3(){
+ return (mouse.x > table_data.third_answer_x) &&
+        (mouse.x <  table_data.third_answer_x+table_data.third_answer_width) &&
+        (mouse.y >  table_data.third_answer_y) &&
+        (mouse.y <  table_data.third_answer_y+table_data.third_answer_height)
+}
+function isCursorOnDialogBranch4(){
+ return (mouse.x > table_data.fourth_answer_x) &&
+        (mouse.x <  table_data.fourth_answer_x+table_data.fourth_answer_width) &&
+        (mouse.y >  table_data.fourth_answer_y) &&
+        (mouse.y <  table_data.fourth_answer_y+table_data.fourth_answer_height)
+}
 function isCursorInItem(item) {
 
     return (mouse.x > item.x) &&
@@ -397,6 +420,26 @@ document.addEventListener('click', function() {
 	}
     }
 }, false);
+document.addEventListener('click', function() {
+    if (isCursorOnDialogBranch1()){
+        Quest[0].status='active'
+        hero.interaction = false;
+        context_pop_up_window.clearRect(0, 0, canvas_fighting.width, canvas_fighting.height);
+    }
+    if (isCursorOnDialogBranch2()){
+        hero.interaction = false;
+       context_pop_up_window.clearRect(0, 0, canvas_fighting.width, canvas_fighting.height);
+    }
+    if ((isCursorOnDialogBranch3())&&(Quest[0].status=="active")){
+        hero.interaction = false;
+        context_pop_up_window.clearRect(0, 0, canvas_fighting.width, canvas_fighting.height);
+        }
+    if ((isCursorOnDialogBranch4())&&(Quest[0].status=="Completed")){
+         hero.interaction = false;
+        context_pop_up_window.clearRect(0, 0, canvas_fighting.width, canvas_fighting.height);
+         hero.gold+=1000;
+    }
+})
 
 function equipment(num) {
 
