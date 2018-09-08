@@ -186,10 +186,6 @@ function keyUpHandler(e) {
     if ((e.keyCode === 40) || (e.keyCode === 83)) {
         hero.down_pressed = false;
     }
-
-    if (e.keyCode === 70) {
-        hero.interaction = false;
-    }
 }
 
 function drawHero() {
