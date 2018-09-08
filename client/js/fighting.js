@@ -16,6 +16,10 @@ let was_defend_bool = false;
 let enemyHealth = 100;
 let damageToEnemy = 0;
 let damageToHero = 0;
+let historyLineX = 308;
+let historyLineY = 750;
+let historySteps = [];
+historySteps[0] = 'Начало боя';
 
 function drawFighting() {
 
@@ -29,6 +33,9 @@ function drawFighting() {
 
 }
 
+const canvas_history = document.getElementById("history");
+const context_history = canvas_history.getContext("2d");
+	
 function drawFightingBg() {
 	if (currentEnemy.isBoss) {
 		context_fighting.clearRect(0, 0, canvas_fighting.width, canvas_fighting.height);
@@ -40,21 +47,21 @@ function drawFightingBg() {
 	}
 }
 
-function historyLine(damageToEnemy, isHeroDefend) {
-	let historyLineX = 308;
-	let historyLineY = 750;
-	context_fighting.fillStyle = "#ffffff";
-        context_fighting.font = '15px Arial';
-        context_fighting.fillText("Начало боя.", historyLineX, historyLineY, 344);
+function historyLine() {
 	
-	if (was_attack_bool) {
-		
-		context_fighting.fillText(hero.name + "нанёс " + damageToEnemy + " урона.", historyLineX, historyLineY, 344);
+        context_history.fillStyle = "#ffffff";
+        context_history.font = '15px Arial';
+	
+	context_history.clearRect(0, 0, canvas_history.width, canvas_history.height);
+	context_history.clearRect(0, 0, canvas_history.width, 600);
+	let dy = 0;
+	
+	let len = historySteps.length;
+	for (let i = len-1; i>=0; i--) {
+		context_history.fillText(historySteps[i], historyLineX, historyLineY+dy, 344);
+		dy -= 20;
 	}
-	else if (was_defend_bool) {
-		
-		context_fighting.fillText(hero.name + "принял защитную стойку.", historyLineX, historyLineY, 344);
-	}
+	context_history.clearRect(0, 0, canvas_history.width, 600);
 }
 
 function heroStep() {
@@ -67,12 +74,13 @@ function heroStep() {
 	else {
 		hero.type = 'fight-position';
 		damageToHero = Math.floor(Math.random() * (currentEnemy.max - currentEnemy.min + 1)) + currentEnemy.min;
-		historyLine();
 		
 		if (was_attack_bool) {
 			was_attack_bool = false;
 			hero.type = 'damaged';
 			hero.health -= damageToHero;
+			let s = hero.name + " нанёс " + damageToEnemy + " урона.";
+			historySteps.push(s);
 			console.log('прошлый ход героя был атакой, жизнь героя: ' + hero.health);
 		}
 		else if (was_defend_bool) {
@@ -80,9 +88,12 @@ function heroStep() {
 			hero.type = 'defend';
 			damageToHero -= hero.skillDefense;
 			hero.health -= damageToHero;
+			let s = hero.name + " принял защитную стойку.";
+			historySteps.push(s);
 			console.log('прошлый ход героя был защитой, жизнь героя: ' + hero.health);
 		}
 		hero.type = 'fight-position';
+		historyLine();
 	}
 	
 	if ((enemyHealth <= 0) || (hero.health <= 0)) {
@@ -102,6 +113,8 @@ function enemyStep() {
 		if (was_attack_bool) {
 		damageToEnemy = Math.floor(Math.random() * (hero.max - hero.min + 1)) + hero.min; //определение урона
 		enemyHealth -= damageToEnemy;
+		let s = currentEnemy.name + " нанёс " + damageToHero + " урона.";
+		historySteps.push(s);
 		console.log('Произошла атака, жизнь врага: ' + enemyHealth);
 		}
 		else if (was_defend_bool) {
@@ -149,7 +162,10 @@ function finish() {
 			currentEnemy.status = 0;
 			battle = false;
 			context_fighting.clearRect(0, 0, canvas_fighting.width, canvas_fighting.height);
+			context_history.clearRect(0, 0, canvas_history.width, canvas_history.height);
 			enemyHealth = 100;
+			historySteps = [];
+			historySteps[0] = 'Начало боя';
 		}
 	}
 		
@@ -157,6 +173,7 @@ function finish() {
 		hero.type = 'dead';
 		battle = false;
 		context_fighting.clearRect(0, 0, canvas_fighting.width, canvas_fighting.height);
+		context_history.clearRect(0, 0, canvas_history.width, canvas_history.height);
 		drawYouLose();
 	}
 }
@@ -171,6 +188,18 @@ function curEnemy(enemy) {
 	else {
 		currentEnemy.type = 'fighting-position';
 	}
+}
+
+function drawEnXP() {
+	let ex = 735 - enemyHealth*3;
+	context_statistic.beginPath();
+	context_statistic.lineWidth = 10;
+	context_statistic.moveTo(ex, 555);
+	context_statistic.lineTo(735, 555);
+	context_statistic.strokeStyle = "blue";
+	context_statistic.lineCap = "round";
+	context_statistic.stroke();
+	context_statistic.closePath();
 }
 
 function drawFightingEnemy() {
