@@ -60,6 +60,60 @@ let inventory = {
             height: 64,
             activity: false
         }
+	    
+		//slot_of_artifacts_1
+        {
+            x: 126,
+            y: 260,
+            width: 64,
+            height: 64,
+            activity: false
+        },
+
+        //slot_of_artifacts_2
+        {
+            x: 191,
+            y: 260,
+            width: 64,
+            height: 64,
+            activity: false
+        },
+
+        //slots_of_artifacts_3
+        {
+            x: 256,
+            y: 260,
+            width: 64,
+            height: 64,
+            activity: false
+        },
+
+        //slot_of_artifacts_4
+        {
+            x: 321,
+            y: 260,
+            width: 64,
+            height: 64,
+            activity: false
+        },
+
+        //slot_of_artifacts_5
+        {
+            x: 386,
+            y: 260,
+            width: 64,
+            height: 64,
+            activity: false
+        },
+
+        //slot_of_artifacts_6
+        {
+            x: 386,
+            y: 196,
+            width: 64,
+            height: 64,
+            activity: false
+        }
     ]
 };
 
@@ -136,6 +190,60 @@ function isCursorInArmorOnLegs() {
         (mouse.x < inventory.equipment[3].x + inventory.equipment[3].width) &&
         (mouse.y > inventory.equipment[3].y) &&
         (mouse.y < inventory.equipment[3].y + inventory.equipment[3].height)
+}
+
+function isCursorInArtifact1() {
+
+    return selected && (selected.type === "artifact") &&
+        (mouse.x > inventory.equipment[4].x) &&
+        (mouse.x < inventory.equipment[4].x + inventory.equipment[4].width) &&
+        (mouse.y > inventory.equipment[4].y) &&
+        (mouse.y < inventory.equipment[4].y + inventory.equipment[4].height)
+}
+
+function isCursorInArtifact2() {
+
+    return selected && (selected.type === "artifact") &&
+        (mouse.x > inventory.equipment[5].x) &&
+        (mouse.x < inventory.equipment[5].x + inventory.equipment[5].width) &&
+        (mouse.y > inventory.equipment[5].y) &&
+        (mouse.y < inventory.equipment[5].y + inventory.equipment[5].height)
+}
+
+function isCursorInArtifact3() {
+
+    return selected && (selected.type === "artifact") &&
+        (mouse.x > inventory.equipment[6].x) &&
+        (mouse.x < inventory.equipment[6].x + inventory.equipment[6].width) &&
+        (mouse.y > inventory.equipment[6].y) &&
+        (mouse.y < inventory.equipment[6].y + inventory.equipment[6].height)
+}
+
+function isCursorInArtifact4() {
+
+    return selected && (selected.type === "artifact") &&
+        (mouse.x > inventory.equipment[7].x) &&
+        (mouse.x < inventory.equipment[7].x + inventory.equipment[7].width) &&
+        (mouse.y > inventory.equipment[7].y) &&
+        (mouse.y < inventory.equipment[7].y + inventory.equipment[7].height)
+}
+
+function isCursorInArtifact5() {
+
+    return selected && (selected.type === "artifact") &&
+        (mouse.x > inventory.equipment[8].x) &&
+        (mouse.x < inventory.equipment[8].x + inventory.equipment[8].width) &&
+        (mouse.y > inventory.equipment[8].y) &&
+        (mouse.y < inventory.equipment[8].y + inventory.equipment[8].height)
+}
+
+function isCursorInArtifact6() {
+
+    return selected && (selected.type === "artifact") &&
+        (mouse.x > inventory.equipment[9].x) &&
+        (mouse.x < inventory.equipment[9].x + inventory.equipment[9].width) &&
+        (mouse.y > inventory.equipment[9].y) &&
+        (mouse.y < inventory.equipment[9].y + inventory.equipment[9].height)
 }
 
 function isCursorInSlots() {
@@ -460,17 +568,61 @@ document.onmouseup = function () {
             bool_pop_up_window = false;
             intervalID_pop_up_window = setInterval(drawIsThrowAway(), speed);
         } else if (isCursorInArmorOnHead()) {
+			
             equipment(0);
+			hero.skillDefense += selected.points;
         } else if (isCursorInArmorOnChest()) {
+			
             equipment(1);
+			hero.skillDefense += selected.points;
         } else if (isCursorInWeapon()) {
+			
             equipment(2);
+			hero.min += selected.points;
+            hero.max += selected.points;
         } else if (isCursorInArmorOnLegs()) {
+			
             equipment(3);
+			hero.skillDefense += selected.points;
+        } else if (isCursorInArtifact1()) {
+
+            equipment(4);
+            //skill
+        } else if (isCursorInArtifact2()) {
+
+            equipment(5);
+            //skill
+        } else if (isCursorInArtifact3()) {
+
+            equipment(6);
+            //skill
+        } else if (isCursorInArtifact4()) {
+
+            equipment(7);
+            //skill
+        } else if (isCursorInArtifact5()) {
+
+            equipment(8);
+            //skill
+        } else if (isCursorInArtifact6()) {
+
+            equipment(9);
+            //skill
         } else if (isCursorInSlots()) {
 
             for (let i = 0; i < 4; i++) {
                 if (inventory.equipment[i].activity === selected) {
+					
+					if ((selected.type === "armor_on_head") ||
+                        (selected.type === "armor_on_chest") ||
+                        (selected.type === "armor_on_legs")) {
+
+                        hero.skillDefense -= selected.points;
+                    } else if (selected.type === "weapon") {
+
+                        hero.min -= selected.points;
+                        hero.max -= selected.points;
+                    }
 
                     inventory.equipment[i].activity = false;
                     break;
