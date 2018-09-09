@@ -28,10 +28,10 @@ function drawElf(image, variable){
 function animation(elf) {
     let i=0;
     let k=5;
-    map.onload = function () { //как только спрайт загружается
-        let interval = setInterval(function() { //запускаем интервал
-            if (i < elf.frames-1) { //для смены позиции изображения
-                i++; // если дошли до конца спрайта
+    map.onload = function () { 
+        let interval = setInterval(function() {
+            if (i < elf.frames-1) { 
+                i++;
                 if (i < elf.frames/2) {
                     drawElf(elf.rightImage, i);
                 }
@@ -45,11 +45,7 @@ function animation(elf) {
                 drawElf(elf.rightImage, i);
                 k=5;
             }
-
-
-
-//меняем позиционирование спрайта
-        },  1000/4) //24 кадра в секунду
+        },  1000/4) 
     }
 }
 animation(elf);
