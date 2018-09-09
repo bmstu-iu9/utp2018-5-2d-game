@@ -1,5 +1,5 @@
 html{
-  background: #c7b39b;
+  background: #c7b39b url(../design/background/log1.jpg);
   background-size: 100%;
   overflow: auto; /* Добавляем полосы прокрутки */
   padding-left: 0px; /* Отступ от текста слева */
@@ -14,7 +14,7 @@ html{
 body{
   align-content: center;
   border: 2px solid black;
-  background: #c7b39b url(../client/design/background/log2.jpg);
+  background: #c7b39b url(../design/background/log2.jpg);
   height: 320px; /* Высота блока */
   width: 400px;
   text-align: center;

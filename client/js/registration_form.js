@@ -4,8 +4,14 @@ function valid(form) {
   var email = form.email.value;
   var name = form.name.value;
   var Person = {
-  "password": form.password.value,
-  "state": form.state.value
+	  "password": form.password.value,
+	  "state": form.state.value,
+	  "health": 100,
+	  "max": 30,
+	  "min": 10,
+	  "skillDefense": 20,
+	  "gold": 0,
+	  "type": 'usual'
 };
   var adr_pattern = /[0-9a-z_-]+@[0-9a-z_-]+\.[a-z]{2,5}/i;
   if (name == "" || name == " ")
@@ -23,6 +29,7 @@ function valid(form) {
     return false;
   }else{
     localStorage.setItem(name, JSON.stringify(Person));
+    window.name = name;
     return true;
   }
 }

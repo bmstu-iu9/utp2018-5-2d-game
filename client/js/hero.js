@@ -8,6 +8,8 @@ const speed = 10;
 const animateImg = new Image();
 animateImg.src = "../design/hero/animation-hero-64px.png";
 
+var name;
+
 let hero = {
 
     x: 256,
@@ -26,7 +28,7 @@ let hero = {
 	skillDefense: 20,
 	gold: 0,
 	type: 'usual',
-	name: 'Имя пользователя',
+	name: name,
 
     right_pressed: false,
     left_pressed: false,
