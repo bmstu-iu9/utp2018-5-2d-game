@@ -23,6 +23,7 @@ function valid(form) {
     return false;
   }else{
     localStorage.setItem(name, JSON.stringify(Person));
+    window.name = name;
     return true;
   }
 }
