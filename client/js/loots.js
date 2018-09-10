@@ -41,8 +41,8 @@ loots['dungeon-1'] = {
 		status: [1],
 		type: ["artifact"],
 		width: 64,
-		height: 64
-		
+		height: 64,
+		points: [10]
 	},
 	'armors': {
 		x: [396, 640],
@@ -54,7 +54,8 @@ loots['dungeon-1'] = {
 		status: [1, 1],
 		type: ["armor_on_chest", "weapon"],
 		width: 64,
-		height: 64
+		height: 64,
+		points: [10, 15]
 		},
 	'health-drinks': {
 		x: [596],
