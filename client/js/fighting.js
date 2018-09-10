@@ -87,7 +87,9 @@ function heroStep() {
 			was_defend_bool = false;
 			hero.type = 'defend';
 			damageToHero -= hero.skillDefense;
-			hero.health -= damageToHero;
+			if (damageToHero > 0) {
+				hero.health -= damageToHero;
+			}
 			let s = hero.name + " принял защитную стойку.";
 			historySteps.push(s);
 			console.log('прошлый ход героя был защитой, жизнь героя: ' + hero.health);
