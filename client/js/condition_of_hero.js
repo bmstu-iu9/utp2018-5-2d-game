@@ -333,10 +333,13 @@ document.onmousemove = function (event) {
     mouse.x = event.clientX - rect.left;
 }
 
+var Person = JSON.parse(localStorage.getItem(window.name));
 
 document.onmousedown = function () {
 
     if (!selected) {
+	    
+	    if (hero.condition) {
 	    
 	for (let i = 0; i < 4; i++) {
             if (isCursorInItem(inventory.equipment[i])) {
@@ -354,13 +357,14 @@ document.onmousedown = function () {
 		return;
             }
         }
+	    }
     }
 	
-    if (isCursorInButtonClose()) {
+    /*if (isCursorInButtonClose()) {
 
         clearInterval(intervalID_shop);
         context_shop.clearRect(0, 0, canvas_shop.width, canvas_shop.height);
-    }
+    }*/
 }
 
 const button_yes = {
@@ -546,6 +550,8 @@ document.addEventListener('click', function() {
          hero.interaction = false;
         context_pop_up_window.clearRect(0, 0, canvas_fighting.width, canvas_fighting.height);
          hero.gold+=1000;
+	    Person.gold +=1000;
+	    localStorage.setItem(window.name, JSON.stringify(Person));
     }
 })
 
@@ -571,19 +577,28 @@ document.onmouseup = function () {
 			
             equipment(0);
 			hero.skillDefense += selected.points;
+			Person.skillDefence += selected.points;
+	    		localStorage.setItem(window.name, JSON.stringify(Person));
         } else if (isCursorInArmorOnChest()) {
 			
             equipment(1);
 			hero.skillDefense += selected.points;
+			Person.skillDefence += selected.points;
+	    		localStorage.setItem(window.name, JSON.stringify(Person));
         } else if (isCursorInWeapon()) {
 			
             equipment(2);
 			hero.min += selected.points;
-            hero.max += selected.points;
+            		hero.max += selected.points;
+			Person.max += selected.points;
+			Person.min += selected.points;
+	    		localStorage.setItem(window.name, JSON.stringify(Person));
         } else if (isCursorInArmorOnLegs()) {
 			
             equipment(3);
 			hero.skillDefense += selected.points;
+			Person.skillDefence += selected.points;
+	    		localStorage.setItem(window.name, JSON.stringify(Person));
         } else if (isCursorInArtifact1()) {
 
             equipment(4);
@@ -618,10 +633,15 @@ document.onmouseup = function () {
                         (selected.type === "armor_on_legs")) {
 
                         hero.skillDefense -= selected.points;
+			Person.skillDefence -= selected.points;
+	    		localStorage.setItem(window.name, JSON.stringify(Person));
                     } else if (selected.type === "weapon") {
 
                         hero.min -= selected.points;
                         hero.max -= selected.points;
+			Person.max -= selected.points;
+			Person.min -= selected.points;
+	    		localStorage.setItem(window.name, JSON.stringify(Person));
                     }
 
                     inventory.equipment[i].activity = false;
