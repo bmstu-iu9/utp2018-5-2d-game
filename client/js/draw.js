@@ -158,6 +158,29 @@ function drawDungeon_4() {
     drawQuest();
     collision(barriers_of_the_dungeon_4);
 }
+//tavern
+function drawTavern() {
+
+    if (transition_town()){
+        clearInterval(tavern_interval);
+        clearInterval(intervalID);
+
+        hero.x = 400;
+        hero.y = 256;
+
+        intervalID = setInterval(drawTown, speed);
+
+        return;
+}
+
+    locInitialization = "tavern";
+
+    hero.health_x2 = 33 + hero.health * 3;
+
+    drawHero();
+    drawConditionOfHero();
+    drawQuest();
+}
 
 //town
 const town_image = new Image();
@@ -167,6 +190,20 @@ const decoration = new Image();
 decoration.src = "../design/map/decoration.png";
 
 function drawTown() {
+    if (transition_tavern()){
+
+        clearInterval(intervalID);
+	    
+        hero.x = 100;
+        hero.y = 680;
+	    
+        context_main.clearRect(0, 0, canvas_main.width, canvas_main.height);
+        animation();
+        intervalID = setInterval(drawTavern, speed);
+	    
+        return;
+
+    }
 
     if (dungeon_4_from_town_transition()) {
 
