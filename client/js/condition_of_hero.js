@@ -59,7 +59,7 @@ let inventory = {
             width: 64,
             height: 64,
             activity: false
-        }
+        },
 	    
 		//slot_of_artifacts_1
         {
