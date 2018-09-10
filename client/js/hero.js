@@ -25,7 +25,7 @@ let hero = {
 	health: 100,
 	max: 30,
 	min: 10,
-	skillDefense: 20,
+	skillDefense: 13,
 	gold: 0,
 	type: 'usual',
 	name: name,
