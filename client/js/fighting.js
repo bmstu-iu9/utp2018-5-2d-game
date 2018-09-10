@@ -88,7 +88,7 @@ function heroStep() {
 			damageToHero -= hero.skillDefense;
 			if (damageToHero > 0){
 				hero.health -= damageToHero;
-				let s = hero.name + " пзаблокировал часть атаки и получил " + damageToHero + "урона";
+				let s = hero.name + " заблокировал часть атаки и получил " + damageToHero + "урона";
 				historySteps.push(s);
 			}
 			else {
@@ -123,7 +123,7 @@ function enemyStep() {
 		if (was_attack_bool) {
 		let damageToEnemy = Math.floor(Math.random() * (hero.max - hero.min + 1)) + hero.min; //определение урона
 		enemyHealth -= damageToEnemy;
-		let s = currentEnemy.name + " получил " + damageToHero + " урона.";
+		let s = currentEnemy.name + " получил " + damageToEnemy + " урона.";
 		historySteps.push(s);
 		console.log('Произошла атака, жизнь врага: ' + enemyHealth);
 		}
