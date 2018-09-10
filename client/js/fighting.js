@@ -14,8 +14,6 @@ let battle = false;
 let was_attack_bool = false;
 let was_defend_bool = false;
 let enemyHealth = 100;
-let damageToEnemy = 0;
-let damageToHero = 0;
 let historyLineX = 308;
 let historyLineY = 750;
 let historySteps = [];
@@ -73,14 +71,15 @@ function heroStep() {
 	
 	else {
 		hero.type = 'fight-position';
-		damageToHero = Math.floor(Math.random() * (currentEnemy.max - currentEnemy.min + 1)) + currentEnemy.min;
+		let damageToHero = Math.floor(Math.random() * (currentEnemy.max - currentEnemy.min + 1)) + currentEnemy.min;
 		
 		if (was_attack_bool) {
 			was_attack_bool = false;
 			hero.type = 'damaged';
 			hero.health -= damageToHero;
-			let s = hero.name + " нанёс " + damageToEnemy + " урона.";
+			let s = hero.name + " получил " + damageToHero + " урона.";
 			historySteps.push(s);
+			enemyStep();
 			console.log('прошлый ход героя был атакой, жизнь героя: ' + hero.health);
 		}
 		else if (was_defend_bool) {
@@ -89,17 +88,18 @@ function heroStep() {
 			damageToHero -= hero.skillDefense;
 			if (damageToHero > 0){
 				hero.health -= damageToHero;
-				let s = hero.name + " принял защитную стойку.";
+				let s = hero.name + " пзаблокировал часть атаки и получил " + damageToHero + "урона";
 				historySteps.push(s);
 			}
 			else {
-				let rebound = damageToHero/5;
+				let rebound = damageToHero/3;
 				enemyHealth += rebound;
 				let s = "Навык защиты героя " + hero.name + " позволил отразить удар.";
 				historySteps.push(s);
 				s = currentEnemy.name + " получил " + (-rebound) + " урона.";
 				historySteps.push(s);
 			}
+			enemyStep();
 			console.log('прошлый ход героя был защитой, жизнь героя: ' + hero.health);
 		}
 		hero.type = 'fight-position';
@@ -121,9 +121,9 @@ function enemyStep() {
 	
 	else {
 		if (was_attack_bool) {
-		damageToEnemy = Math.floor(Math.random() * (hero.max - hero.min + 1)) + hero.min; //определение урона
+		let damageToEnemy = Math.floor(Math.random() * (hero.max - hero.min + 1)) + hero.min; //определение урона
 		enemyHealth -= damageToEnemy;
-		let s = currentEnemy.name + " нанёс " + damageToHero + " урона.";
+		let s = currentEnemy.name + " получил " + damageToHero + " урона.";
 		historySteps.push(s);
 		console.log('Произошла атака, жизнь врага: ' + enemyHealth);
 		}
