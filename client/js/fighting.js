@@ -94,10 +94,10 @@ function heroStep() {
 			}
 			else {
 				let rebound = damageToHero/5;
-				enemyHealth -= rebound;
+				enemyHealth += rebound;
 				let s = "Навык защиты героя " + hero.name + " позволил отразить удар.";
 				historySteps.push(s);
-				s = currentEnemy.name + " получил " + rebound + " урона.";
+				s = currentEnemy.name + " получил " + (-rebound) + " урона.";
 				historySteps.push(s);
 			}
 			console.log('прошлый ход героя был защитой, жизнь героя: ' + hero.health);
