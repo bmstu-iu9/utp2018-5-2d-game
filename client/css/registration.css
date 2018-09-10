@@ -15,7 +15,7 @@ body{
     align-content: center;
     border: 2px solid black;
     background: #c7b39b url(../design/background/log2.jpg);
-    height: 350px; /* Высота блока */
+    height: 250px; /* Высота блока */
     width: 500px;
     text-align: center;
     background-size: 100%;
