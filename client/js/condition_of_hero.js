@@ -339,6 +339,8 @@ document.onmousedown = function () {
 
     if (!selected) {
 	    
+	    if (hero.condition) {
+	    
 	for (let i = 0; i < 4; i++) {
             if (isCursorInItem(inventory.equipment[i])) {
 
@@ -355,13 +357,14 @@ document.onmousedown = function () {
 		return;
             }
         }
+	    }
     }
 	
-    if (isCursorInButtonClose()) {
+    /*if (isCursorInButtonClose()) {
 
         clearInterval(intervalID_shop);
         context_shop.clearRect(0, 0, canvas_shop.width, canvas_shop.height);
-    }
+    }*/
 }
 
 const button_yes = {
