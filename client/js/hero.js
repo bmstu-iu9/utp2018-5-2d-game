@@ -8,7 +8,7 @@ const speed = 10;
 const animateImg = new Image();
 animateImg.src = "../design/hero/animation-hero-64px.png";
 
-var name;
+var name = window.name;
 
 let hero = {
 
