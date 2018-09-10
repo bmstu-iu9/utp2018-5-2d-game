@@ -181,6 +181,33 @@ function drawTavern() {
     drawConditionOfHero();
     drawQuest();
 }
+const town_to_tavern = {
+    x: 570,
+    y: 350,
+    width: 48,
+    height: 5
+};
+
+function transition_tavern(){
+    if ((hero.x >=town_to_tavern.x && hero.x<=(town_to_tavern.x+town_to_tavern.width)) &&
+    (hero.y >= town_to_tavern.y && hero.y <= (town_to_tavern.y + town_to_tavern.width))) {
+        return true;
+    }
+}
+
+const tavern_to_town = {
+    x: 10,
+    y: 650,
+    width: 48,
+    height: 5
+};
+
+function transition_town(){
+    if ((hero.x >=tavern_to_town.x && hero.x<=(tavern_to_town.x+tavern_to_town.width)) &&
+        (hero.y >= tavern_to_town.y && hero.y <= (tavern_to_town.y + tavern_to_town.width))) {
+        return true;
+    }
+}
 
 //town
 const town_image = new Image();
