@@ -182,8 +182,8 @@ function transition_tavern(){
 }
 
 const tavern_to_town = {
-    x: 10,
-    y: 650,
+    x: 400,
+    y: 256,
     width: 48,
     height: 5
 };
@@ -201,6 +201,12 @@ function drawTavern() {
     if (metElf()){
         drawBuyArtefact();
     }
+	
+    collision_tavern(taverna_barrier_1);
+    collision_tavern(taverna_barrier_2);
+    collision_tavern(taverna_barrier_3);
+    collision_tavern(taverna_barrier_4);
+    collision_tavern(elf_obstacle);
 
     if (transition_town()){
         clearInterval(tavern_interval);
