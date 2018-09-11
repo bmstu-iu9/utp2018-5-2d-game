@@ -527,7 +527,7 @@ function interaction(things, enemies,npc) {
 							hero.gold += things[i].value; 
 						}
 						else if (i === 'chests')  {
-							things[i].value = Math.floor(Math.random() * 3000 - 1500 + 1)) + 1500;
+							things[i].value = Math.floor(Math.random() * (3000 - 1500 + 1)) + 1500;
 							hero.gold += things[i].value; 
 						}
 						else if (i === 'health-drinks') {
