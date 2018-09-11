@@ -509,6 +509,34 @@ function clickYesNo() {
                 context_pop_up_window.clearRect(0, 0, canvas_pop_up_window.width, canvas_pop_up_window.height);
 	}
     }
+	else if (buyArtefact.bool) {
+
+        if(isCursorInButtonYes()) {
+            if (hero.gold - 1000 >= 0) {
+                bool_pop_up_window = true;
+                clearInterval(intervalID_pop_up_window);
+                drawYouBought();
+                buyArtefact.bool=false;
+                hero.gold -= 1000;
+                elf.artefact=false;
+                hero.x = elf.x1-50;
+            }
+            else{
+                bool_pop_up_window = true;
+                clearInterval(intervalID_pop_up_window);
+                drawYouDidntBuy();
+                buyArtefact.bool=false;
+                hero.x = elf.x1-50;
+            }
+        }
+        else if (isCursorInButtonNo()) {
+            bool_pop_up_window = true;
+            clearInterval(intervalID_pop_up_window);
+            drawYouDidntBuy();
+            buyArtefact.bool=false;
+            hero.x = elf.x1-50;
+        }
+    }
 }
 
 document.addEventListener('click', function() {
