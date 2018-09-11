@@ -343,7 +343,8 @@ function drawInventory() {
     context_condition.clearRect(0, 0, canvas_condition.width, canvas_condition.height);
     context_condition.drawImage(inventory_image, inventory.x, inventory.y);
 
-    for (let i = 0; i < 4; i++) {
+	let len = inventory.equipment.length;
+    for (let i = 0; i < len; i++) {
         if (inventory.equipment[i].activity) {
 
             if ((inventory.equipment[i].activity === selected) &&
@@ -369,7 +370,7 @@ function drawInventory() {
         }
     }
 	
-    const len = inventory.slots.length;
+    len = inventory.slots.length;
     let bool_size = false;
     for (let i = 0; i < 3; i++) {
         for (let j = 0; j < 8; j++) {
@@ -395,8 +396,8 @@ function drawInventory() {
 
             } else {
 
-                inventory.slots[index].x = 130 + j * 64;
-                inventory.slots[index].y = 325 + i * 64;
+                inventory.slots[index].x = 137 + j * 64;
+                inventory.slots[index].y = 335 + i * 64;
                 context_condition.drawImage(lootsImg,
                     inventory.slots[index].sx, inventory.slots[index].sy,
                     inventory.slots[index].sWidth, inventory.slots[index].sHeight,
