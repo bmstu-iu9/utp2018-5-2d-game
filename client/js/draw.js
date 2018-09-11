@@ -158,29 +158,15 @@ function drawDungeon_4() {
     drawQuest();
     collision(barriers_of_the_dungeon_4);
 }
-//tavern
-function drawTavern() {
 
-    if (transition_town()){
-        clearInterval(tavern_interval);
-        clearInterval(intervalID);
 
-        hero.x = 400;
-        hero.y = 256;
+//town
+const town_image = new Image();
+town_image.src = "../design/map/map_back.png";
 
-        intervalID = setInterval(drawTown, speed);
+const decoration = new Image();
+decoration.src = "../design/map/decoration.png";
 
-        return;
-}
-
-    locInitialization = "tavern";
-
-    hero.health_x2 = 33 + hero.health * 3;
-
-    drawHero();
-    drawConditionOfHero();
-    drawQuest();
-}
 const town_to_tavern = {
     x: 570,
     y: 350,
@@ -209,12 +195,34 @@ function transition_town(){
     }
 }
 
-//town
-const town_image = new Image();
-town_image.src = "../design/map/map_back.png";
+//tavern
+function drawTavern() {
+	
+    if (metElf()){
+        drawBuyArtefact();
+    }
 
-const decoration = new Image();
-decoration.src = "../design/map/decoration.png";
+    if (transition_town()){
+        clearInterval(tavern_interval);
+        clearInterval(intervalID);
+
+        hero.x = 400;
+        hero.y = 256;
+
+        intervalID = setInterval(drawTown, speed);
+
+        return;
+}
+
+    locInitialization = "tavern";
+
+    hero.health_x2 = 33 + hero.health * 3;
+
+    drawHero();
+    drawConditionOfHero();
+    drawQuest();
+}
+
 
 function drawTown() {
     if (transition_tavern()){
@@ -418,6 +426,33 @@ is_capitulation_image.src = "../design/fight/capitulationImg.png";
 const is_capitulation_image_2 = new Image();
 is_capitulation_image_2.src = "../design/fight/capitulationImg2.png";
 
+const buyArtefact_img = new Image();
+buyArtefact_img.src = "../design/fight/buyArtefact.png";
+
+const youBought_img = new Image();
+youBought_img.src = "../design/fight/youBought.png";
+
+const youDidntBuy_img = new Image();
+youDidntBuy_img.src = "../design/fight/youDidnBuy.png";
+
+const youBought = {
+    x: 234,
+    y: 309,
+    width: 313,
+    height: 150,
+    bool: false,
+    image: youBought_img
+}
+
+const youDidntBuy = {
+    x: 234,
+    y: 309,
+    width: 313,
+    height: 150,
+    bool: false,
+    image: youDidntBuy_img
+}
+
 const is_throw_away = {
 
     x: 127.5,
@@ -493,6 +528,26 @@ function drawStatistic() {
 const canvas_pop_up_window = document.getElementById("pop_up_window");
 const context_pop_up_window = canvas_pop_up_window.getContext("2d");
 
+function drawYouBought() {
+
+    context_pop_up_window.clearRect(0, 0, context_pop_up_window.width, context_pop_up_window.height);
+    context_pop_up_window.drawImage(youBought.image, youBought.x, youBought.y);
+    youBought.bool = true;
+}
+
+function drawYouDidntBuy() {
+
+    context_pop_up_window.clearRect(0, 0, context_pop_up_window.width, context_pop_up_window.height);
+    context_pop_up_window.drawImage(youDidntBuy.image, youDidntBuy.x, youDidntBuy.y);
+    youDidntBuy.bool = true;
+}
+
+function drawBuyArtefact() {
+
+    context_pop_up_window.clearRect(0, 0, context_pop_up_window.width, context_pop_up_window.height);
+    context_pop_up_window.drawImage(buyArtefact.image, buyArtefact.x, buyArtefact.y);
+    buyArtefact.bool = true;
+}
 
 function drawIsThrowAway() {
     
