@@ -10,6 +10,11 @@ const s = new Image();
 s.src="../design/elf/animated_elf_2.png";
 
 let elf = {
+    artefact: true,
+    x1:450,
+    x2: 507.05,
+    y1:400,
+    y2:550,
     rightImage : h,
     leftImage : s,
     width : 137,
@@ -18,10 +23,17 @@ let elf = {
 
 };
 
+function metElf(){
+    if ((hero.x <= elf.x2 && hero.x >=elf.x1) && (hero.y <= elf.y2 && hero.x >=elf.y1)){
+        return true;
+    }
+    return false;
+}
+
 function drawElf(image, variable){
     context_main.drawImage(map_tavern, 0, 0);
-    context_main.drawImage(image, elf.width * variable, 0, 137, 300, 450, 400, 68.5 , 200);
-    context_main.drawImage(image, elf.width * variable, 0, 137, 300, 250, 200, 68.5 , 200);
+    context_main.drawImage(image, elf.width * variable, 0, 137, 300, 450, 400, 57.05, 150);
+    context_main.drawImage(image, elf.width * variable, 0, 137, 300, 250, 200, 57.05, 150);
 }
 
 let tavern_interval ;
@@ -45,7 +57,7 @@ function animation() {
                 k=5;
             }
 
-        },  125)
+        },  70)
 }
 
 
