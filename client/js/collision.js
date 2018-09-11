@@ -525,11 +525,13 @@ function interaction(things, enemies,npc) {
 						else if (i === 'gold') {
 							things[i].value = Math.floor(Math.random() * (1200 - 500 + 1)) + 500;
 							hero.gold += things[i].value; 
-							console.log('Собрано: ' + things[i].value + ', всего монет: ' + hero.gold);
+						}
+						else if (i === 'chests')  {
+							things[i].value = Math.floor(Math.random() * 3000 - 1500 + 1)) + 1500;
+							hero.gold += things[i].value; 
 						}
 						else if (i === 'health-drinks') {
 							hero.health = 100;
-							console.log('здоровье героя: ' + hero.health);
 						}
 						things[i].status[k] = 0;
 					}
