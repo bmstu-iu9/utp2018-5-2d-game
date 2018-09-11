@@ -435,6 +435,16 @@ youBought_img.src = "../design/fight/youBought.png";
 const youDidntBuy_img = new Image();
 youDidntBuy_img.src = "../design/fight/youDidnBuy.png";
 
+
+const buyArtefact = {
+    x: 234,
+    y: 309,
+    width: 313,
+    height: 150,
+    bool: false,
+    image: buyArtefact_img
+}
+
 const youBought = {
     x: 234,
     y: 309,
