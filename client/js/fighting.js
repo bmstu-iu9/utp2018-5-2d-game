@@ -244,4 +244,9 @@ function drawLose() {
 	loseImg.src = '../design/fight/loseImg.png';
 	context_statistic.clearRect(0, 0, canvas_statistic.width, canvas_statistic.height);
 	context_statistic.drawImage(loseImg, 0, 0);
+	document.addEventListener("click", function () {
+		if (isCursorInButtonReturn()) {
+			window.open('../html/login.html', '_self');
+		}
+	}, false);
 }
