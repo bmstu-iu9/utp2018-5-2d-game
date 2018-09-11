@@ -35,11 +35,11 @@ function drawDialog1(){
 				context_main.drawImage(dialog_1_image, 185, 100);
 				context_pop_up_window.fillStyle = "#4d4546"; 
 				context_pop_up_window.font = "bold 18px Batang";
-				context_pop_up_window.fillText("Приветствую, ваше величество!", 220, 270);
-				context_pop_up_window.fillText("Селение, наводнили варвары и мы не", 220, 290);
-				context_pop_up_window.fillText("можем им противостоять. Помогите!", 220, 310);
-				context_pop_up_window.fillText("Защитите своих подданных и наша", 220, 330);
-				context_pop_up_window.fillText("благодарность не будет знать границ.", 220, 350);
+				context_pop_up_window.fillText("Приветствую, ваше величество!", 220, 270, 380);
+				context_pop_up_window.fillText("Селение, наводнили варвары и мы не", 220, 290, 380);
+				context_pop_up_window.fillText("можем им противостоять. Помогите!", 220, 310, 380);
+				context_pop_up_window.fillText("Защитите своих подданных и наша", 220, 330, 380);
+				context_pop_up_window.fillText("благодарность не будет знать границ.", 220, 350, 380);
 			}
 		}	
 	}
@@ -49,8 +49,8 @@ function drawDialog1(){
 				let dialog_2_image = new Image();
 				dialog_2_image.src =dialog_branch[i][j].src2;
 				context_main.drawImage(dialog_2_image, 185, 100);
-				context_pop_up_window.fillText("Ваше величество, уничтожили ли вы", 220, 270);
-				context_pop_up_window.fillText("варваров? Могут ли жители вернуться?", 220, 290);	
+				context_pop_up_window.fillText("Ваше величество, уничтожили ли вы", 220, 270, 380);
+				context_pop_up_window.fillText("варваров? Могут ли жители вернуться?", 220, 290, 380);	
 			}
 		}	
 	}
@@ -60,12 +60,12 @@ function drawDialog1(){
 				let dialog_3_image = new Image();
 				dialog_3_image.src =dialog_branch[i][j].src3;
 				context_main.drawImage(dialog_3_image, 185, 100);
-				context_pop_up_window.fillText("Благодарю ваше величество! Теперь", 220, 270);
-				context_pop_up_window.fillText("мы в безопасности. Когда варвары", 220, 290);
-				context_pop_up_window.fillText("были убиты, лагерь, в котором они", 220, 310);
-				context_pop_up_window.fillText("хранили награбленное опустел. Жители", 220, 330);
-				context_pop_up_window.fillText("решили отдать это вам, в благодарность", 220, 350);
-				context_pop_up_window.fillText("за освобождение", 220, 370);
+				context_pop_up_window.fillText("Благодарю ваше величество! Теперь", 220, 270, 380);
+				context_pop_up_window.fillText("мы в безопасности. Когда варвары", 220, 290, 380);
+				context_pop_up_window.fillText("были убиты, лагерь, в котором они", 220, 310, 380);
+				context_pop_up_window.fillText("хранили награбленное опустел. Жители", 220, 330, 380);
+				context_pop_up_window.fillText("решили отдать это вам, в благодарность", 220, 350, 380);
+				context_pop_up_window.fillText("за освобождение", 220, 370, 380);
 			}
 		}
 	}	
