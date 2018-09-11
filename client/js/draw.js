@@ -229,6 +229,7 @@ function drawTavern() {
     drawHero();
     drawConditionOfHero();
     drawQuest();
+    drawStatistic();   
 }
 
 
@@ -445,6 +446,18 @@ youBought_img.src = "../design/fight/youBought.png";
 const youDidntBuy_img = new Image();
 youDidntBuy_img.src = "../design/fight/youDidnBuy.png";
 
+const findArtefact_img = new Image();
+findArtefact_img.src = "../design/fight/findArtefact.png";
+
+const findArtefact = {
+    x: 234,
+    y: 309,
+    width: 313,
+    height: 150,
+    bool: false,
+    image: findArtefact_img
+}
+
 
 const buyArtefact = {
     x: 234,
@@ -547,6 +560,13 @@ function drawStatistic() {
 //pop_up_windows
 const canvas_pop_up_window = document.getElementById("pop_up_window");
 const context_pop_up_window = canvas_pop_up_window.getContext("2d");
+
+function drawFindArtefact() {
+
+    context_pop_up_window.clearRect(0, 0, context_pop_up_window.width, context_pop_up_window.height);
+    context_pop_up_window.drawImage(findArtefact.image, findArtefact.x, findArtefact.y);
+    findArtefact.bool = true;
+}
 
 function drawYouBought() {
 
