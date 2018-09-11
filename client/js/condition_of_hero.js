@@ -477,11 +477,19 @@ function clickYesNo() {
 		
 	if(isCursorInButtonYes()) {
 		
-		is_join_the_fight.bool = false;
-		drawFighting();
-		bool_pop_up_window = true;
-		clearInterval(intervalID_pop_up_window);
+	    if (currentEnemy.type === 'boss' && elf.artefact === true) {                                 //////!
+                drawFindArtefact();
+            }
+            else{
+                drawFighting();
                 context_pop_up_window.clearRect(0, 0, canvas_pop_up_window.width, canvas_pop_up_window.height);
+            }
+            is_join_the_fight.bool = false;
+
+
+
+            bool_pop_up_window = true;
+            clearInterval(intervalID_pop_up_window);
 	}
 	else if (isCursorInButtonNo()) {
 			
@@ -522,6 +530,14 @@ function clickYesNo() {
 		clearInterval(intervalID_pop_up_window);
                 context_pop_up_window.clearRect(0, 0, canvas_pop_up_window.width, canvas_pop_up_window.height);
 	}
+    }
+	else if (findArtefact.bool) {
+        if (isCursorInButtonOk) {
+            findArtefact.bool = false;
+            bool_pop_up_window = true;
+            clearInterval(intervalID_pop_up_window);
+            context_pop_up_window.clearRect(0, 0, canvas_pop_up_window.width, canvas_pop_up_window.height);
+        }
     }
 	else if (buyArtefact.bool) {
 
