@@ -523,11 +523,11 @@ function interaction(things, enemies,npc) {
                             inventory.slots.splice(inventory.slots.length, 0, elem);
 						}
 						else if (i === 'gold') {
-							things[i].value = Math.floor(Math.random() * (1200 - 500 + 1)) + 500;
+							things[i].value = Math.floor(Math.random() * (1200 - 500 + 1)) + 500);
 							hero.gold += things[i].value; 
 						}
 						else if (i === 'chests')  {
-							things[i].value = Math.floor(Math.random() * (3000 - 1500 + 1)) + 1500;
+							things[i].value = Math.floor(Math.random() * (3000 - 1500 + 1)) + 1500);
 							hero.gold += things[i].value; 
 						}
 						else if (i === 'health-drinks') {
