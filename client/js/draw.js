@@ -57,7 +57,8 @@ function drawDungeon_2() {
         clearInterval(intervalID);
 
         hero.x = 650;
-        hero.y = 7;
+        hero.y = 7;	    
+	hero.health -= 20;
 
         intervalID = setInterval(drawDungeon_1, speed);
         return;
@@ -98,7 +99,8 @@ function drawDungeon_3() {
         clearInterval(intervalID);
 
         hero.x = 7;
-        hero.y = 625;
+        hero.y = 625;	    
+	hero.health -= 20;
 
         intervalID = setInterval(drawDungeon_2, speed);
         return;
@@ -251,7 +253,8 @@ function drawTown() {
         clearInterval(intervalID);
 
         hero.x = 60;
-        hero.y = 7; 
+        hero.y = 7;	    
+	hero.health -= 20; 
 
         intervalID = setInterval(drawDungeon_4, speed);
         return;
