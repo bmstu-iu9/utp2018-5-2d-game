@@ -316,6 +316,13 @@ function isCursorInButtonOk() {
 	(mouse.y > button_ok.y) && 
 	(mouse.y < button_ok.y + button_ok.height))
 }
+function isCursorInButtonReturn() {
+
+    return (mouse.x > button_return.x) &&
+        (mouse.x < button_return.x + button_return.width) &&
+        (mouse.y > button_return.y) &&
+        (mouse.y < button_return.y + button_return.height)
+}
 
 function outside_the_inventory() {
 
@@ -419,6 +426,13 @@ const button_ok = {
     y: 114,
     width: 63,
     height: 17
+}
+
+const button_return = {
+	x: 227,
+    y: 588,
+    width: 275,
+    height: 49
 }
 
 document.addEventListener("click", clickYesNo, false);

@@ -80,7 +80,6 @@ function heroStep() {
 			let s = hero.name + " получил " + damageToHero + " урона.";
 			historySteps.push(s);
 			enemyStep();
-			console.log('прошлый ход героя был атакой, жизнь героя: ' + hero.health);
 		}
 		else if (was_defend_bool) {
 			was_defend_bool = false;
@@ -88,7 +87,7 @@ function heroStep() {
 			damageToHero -= hero.skillDefense;
 			if (damageToHero > 0){
 				hero.health -= damageToHero;
-				let s = hero.name + " заблокировал часть атаки и получил " + damageToHero + "урона";
+				let s = hero.name + " заблокировал часть атаки и получил " + damageToHero + " урона";
 				historySteps.push(s);
 			}
 			else {
@@ -100,7 +99,6 @@ function heroStep() {
 				historySteps.push(s);
 			}
 			enemyStep();
-			console.log('прошлый ход героя был защитой, жизнь героя: ' + hero.health);
 		}
 		hero.type = 'fight-position';
 		historyLine();
@@ -125,10 +123,6 @@ function enemyStep() {
 		enemyHealth -= damageToEnemy;
 		let s = currentEnemy.name + " получил " + damageToEnemy + " урона.";
 		historySteps.push(s);
-		console.log('Произошла атака, жизнь врага: ' + enemyHealth);
-		}
-		else if (was_defend_bool) {
-		console.log('Атаки не было, жизнь врага: ' + enemyHealth);
 		}
 		heroStep();
 	}
@@ -250,4 +244,9 @@ function drawLose() {
 	loseImg.src = '../design/fight/loseImg.png';
 	context_statistic.clearRect(0, 0, canvas_statistic.width, canvas_statistic.height);
 	context_statistic.drawImage(loseImg, 0, 0);
+	document.addEventListener("click", function () {
+		if (isCursorInButtonReturn()) {
+			window.open('../html/login.html', '_self');
+		}
+	}, false);
 }
