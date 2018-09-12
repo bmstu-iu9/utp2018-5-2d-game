@@ -201,7 +201,12 @@ function transition_town(){
 function drawTavern() {
 	
     if (metElf()){
-        drawBuyArtefact();
+        if (hero.gold>=150000){
+            drawBuyArtefact();
+        }
+        else {
+            drawCantBuyArtefact();
+        }
     }
 	
     collision_tavern(taverna_barrier_1);
@@ -438,16 +443,40 @@ const is_capitulation_image_2 = new Image();
 is_capitulation_image_2.src = "../design/fight/capitulationImg2.png";
 
 const buyArtefact_img = new Image();
-buyArtefact_img.src = "../design/fight/buyArtefact.png";
+buyArtefact_img.src = "../design/fight/buyArtefact_new.png"; ///!!!
 
 const youBought_img = new Image();
-youBought_img.src = "../design/fight/youBought.png";
+youBought_img.src = "../design/fight/youBought_new.png";
 
 const youDidntBuy_img = new Image();
-youDidntBuy_img.src = "../design/fight/youDidnBuy.png";
+youDidntBuy_img.src = "../design/fight/youDidnBuy_new.png";
 
 const findArtefact_img = new Image();
-findArtefact_img.src = "../design/fight/findArtefact.png";
+findArtefact_img.src = "../design/fight/findArtefact_new.png";
+
+const findArtefactChoose_img = new Image();
+findArtefactChoose_img.src = "../design/fight/findArtefactChoose.png";
+
+const cantBuyArtefact_img = new Image();
+cantBuyArtefact_img.src = "../design/fight/cantBuyArtefact.png";
+
+const findArtefactChoose= {
+    x: 234,
+    y: 309,
+    width: 313,
+    height: 150,
+    bool: false,
+    image: findArtefactChoose_img
+}
+
+const cantBuyArtefact= {
+    x: 234,
+    y: 309,
+    width: 313,
+    height: 150,
+    bool: false,
+    image: cantBuyArtefact_img
+}
 
 const findArtefact = {
     x: 234,
@@ -560,6 +589,20 @@ function drawStatistic() {
 //pop_up_windows
 const canvas_pop_up_window = document.getElementById("pop_up_window");
 const context_pop_up_window = canvas_pop_up_window.getContext("2d");
+
+function drawFindArtefactChoose() {
+
+    context_pop_up_window.clearRect(0, 0, context_pop_up_window.width, context_pop_up_window.height);
+    context_pop_up_window.drawImage(findArtefactChoose.image, findArtefactChoose.x, findArtefactChoose.y);
+    findArtefactChoose.bool = true;
+}
+
+function drawCantBuyArtefact() {
+
+    context_pop_up_window.clearRect(0, 0, context_pop_up_window.width, context_pop_up_window.height);
+    context_pop_up_window.drawImage(cantBuyArtefact.image, cantBuyArtefact.x, cantBuyArtefact.y);
+    cantBuyArtefact.bool = true;
+}
 
 function drawFindArtefact() {
 
