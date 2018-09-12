@@ -549,6 +549,7 @@ function clickYesNo() {
                 drawYouBought();
                 buyArtefact.bool=false;
                 hero.gold -= 150000;
+		cheakArtefactQuest();
                 elf.artefact=false;
                 hero.x = elf.x1-50;
             }
