@@ -512,6 +512,7 @@ function clickYesNo() {
 			battle = false;
 			hero.type = 'usual';
 			context_fighting.clearRect(0, 0, canvas_fighting.width, canvas_fighting.height);
+			context_history.clearRect(0, 0, canvas_history.width, canvas_history.height);
 		}
     }
     else if (isCursorInButtonNo()) {
