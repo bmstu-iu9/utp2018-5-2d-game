@@ -340,7 +340,6 @@ document.onmousemove = function (event) {
     mouse.x = event.clientX - rect.left;
 }
 
-var Person = JSON.parse(localStorage.getItem(window.name));
 
 document.onmousedown = function () {
 
@@ -637,28 +636,19 @@ document.onmouseup = function () {
 			
             equipment(0);
 			hero.skillDefense += selected.points;
-			Person.skillDefence += selected.points;
-	    		localStorage.setItem(window.name, JSON.stringify(Person));
         } else if (isCursorInArmorOnChest()) {
 			
             equipment(1);
 			hero.skillDefense += selected.points;
-			Person.skillDefence += selected.points;
-	    		localStorage.setItem(window.name, JSON.stringify(Person));
         } else if (isCursorInWeapon()) {
 			
             equipment(2);
 			hero.min += selected.points;
             		hero.max += selected.points;
-			Person.max += selected.points;
-			Person.min += selected.points;
-	    		localStorage.setItem(window.name, JSON.stringify(Person));
         } else if (isCursorInArmorOnLegs()) {
 			
             equipment(3);
 			hero.skillDefense += selected.points;
-			Person.skillDefence += selected.points;
-	    		localStorage.setItem(window.name, JSON.stringify(Person));
         } else if (isCursorInArtifact1()) {
 
             equipment(4);
@@ -693,15 +683,10 @@ document.onmouseup = function () {
                         (selected.type === "armor_on_legs")) {
 
                         hero.skillDefense -= selected.points;
-			Person.skillDefence -= selected.points;
-	    		localStorage.setItem(window.name, JSON.stringify(Person));
                     } else if (selected.type === "weapon") {
 
                         hero.min -= selected.points;
                         hero.max -= selected.points;
-			Person.max -= selected.points;
-			Person.min -= selected.points;
-	    		localStorage.setItem(window.name, JSON.stringify(Person));
                     }
 
                     inventory.equipment[i].activity = false;
