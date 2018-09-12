@@ -330,18 +330,18 @@ function drawQuest() {
       
         context_condition.beginPath();
         for (let i = 0 ; i < questtable.length ; i++){
-            context_condition.strokeStyle = "red";
+            context_condition.strokeStyle = "black";
             context_condition.lineWidth = 5;
-            context_condition.rect(questtable[i].x, questtable[i].y, 800 , 80);
-            context_condition.font = "24px Arial";
-            context_condition.fillStyle = "red";
+            context_condition.rect(questtable[i].x, questtable[i].y + 45, 800 , 80);
+            context_condition.font = "20px Arial";
+            context_condition.fillStyle = "black";
             let str;
             if (Quest[questtable[i].questNomber].status == "active")
                 str = 'Осталось : ' + (Quest[questtable[i].questNomber].target_count - Quest[questtable[i].questNomber].count).toString();
             else 
                 str = 'Выполнен';
-            context_condition.fillText(Quest[questtable[i].questNomber].text,questtable[i].x + 10, questtable[i].y + 40); 
-            context_condition.fillText(str , 600 , questtable[i].y + 40);
+            context_condition.fillText(Quest[questtable[i].questNomber].text,questtable[i].x + 10, questtable[i].y + 90); 
+            context_condition.fillText(str , 600 , questtable[i].y + 90);
             context_condition.stroke(); 
         }
         context_condition.closePath();
