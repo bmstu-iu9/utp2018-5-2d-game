@@ -239,15 +239,21 @@ function drawWin() {
 	context_statistic.drawImage(winImg, 0, 0);
 }
 
+let loseFlag = false;
+
 function drawLose() {
 	clearInterval(intervalID);
 	const loseImg = new Image();
 	loseImg.src = '../design/fight/loseImg.png';
 	context_statistic.clearRect(0, 0, canvas_statistic.width, canvas_statistic.height);
 	context_statistic.drawImage(loseImg, 0, 0);
-	document.addEventListener("click", function () {
-		if (isCursorInButtonReturn()) {
-			window.open('../html/login.html', '_self');
-		}
-	}, false);
+	loseFlag = true;
+	
+	if (loseFlag) {
+		document.addEventListener("click", function () {
+			if (isCursorInButtonReturn()) {
+				window.open('../html/login.html', '_self');
+			}
+		}, false);
+	}
 }
