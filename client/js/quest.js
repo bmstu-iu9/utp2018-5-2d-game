@@ -28,6 +28,13 @@ let Quest = [
 		'target_count' : 5,
 		'text' : "Убей 5х варваров",
 		'status' : "No active"
+	},
+	{
+		'count' : 0,
+		'type' : "find",
+		'target_count' : 1,
+		'text' : "Купите у эльфа схему замка для финальной битвы",
+		'status' : "active"
 	}
 ];
 
@@ -38,4 +45,8 @@ function cheakKillerQuest() {
 		if (Quest[i].count == Quest[i].target_count)
 			Quest[i].status = "Completed";
 	}
+}
+
+function cheakArtefactQuest() {
+	Quest[4].status = "Completed";
 }
