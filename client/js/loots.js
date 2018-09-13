@@ -97,9 +97,101 @@ loots['dungeon-2'] = {
 		height: 44
 	},
 	'health-drinks': {
-		x: [640],
+		x: [656],
 		y: [640],
 		sx: [64],
+		sy: 228,
+		sWidth: 32,
+		sHeight: 32,
+		status: [1, 1],
+		width: 32,
+		height: 32
+	}
+}
+
+loots['dungeon-3'] = {
+	'gold': { 
+		x: [0, 64, 128, 0, 64, 128],
+		y: [285, 285, 285, 336, 336, 336],
+		sx: [0, 0, 0, 0, 0, 0],
+		sy: 91,
+		sWidth: 64,
+		sHeight: 37,
+		status: [1, 1, 1, 1, 1, 1],
+		width: 64,
+		height: 37,
+		value: 0
+		
+	},
+	'chests': {
+		x: [552, 625, 625],
+		y: [0, 0, 64],
+		sx: [0, 0, 0],
+		sy: 128,
+		sWidth: 64,
+		sHeight: 64,
+		status: [1, 1, 1],
+		width: 64,
+		height: 64,
+		value: 0
+		
+	},
+	'artifacts': {
+		x: [576],
+		y: [64],
+		sx: [64],
+		sy: 0,
+		sWidth: 44,
+		sHeight: 44,
+		status: [1],
+		type: ["artifact"],
+		width: 44,
+		height: 44
+		
+	},
+	'armors': {
+		x: [0],
+		y: [640],
+		sx: [192],
+		sy: 256,
+		sWidth: 44,
+		sHeight: 44,
+		status: [1],
+		type: ["armor_on_legs"],
+		width: 44,
+		height: 44
+	},
+	'health-drinks': {
+		x: [144, 656],
+		y: [528, 144],
+		sx: [64, 64],
+		sy: 228,
+		sWidth: 32,
+		sHeight: 32,
+		status: [1, 1],
+		width: 32,
+		height: 32
+	}
+}
+
+loots['dungeon-4'] = {
+	'gold': { 
+		x: [0, 0, 0, 64, 128, 192, 0, 64, 128, 192, 346, 400, 464, 528, 592, 656, 720],
+		y: [325, 365, 600, 600, 600, 600, 650, 650, 650, 650, 258, 258, 258, 258, 258, 258, 258],
+		sx: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+		sy: 91,
+		sWidth: 64,
+		sHeight: 37,
+		status: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+		width: 64,
+		height: 37,
+		value: 0
+		
+	},
+	'health-drinks': {
+		x: [530, 192],
+		y: [536, 16],
+		sx: [64, 64],
 		sy: 228,
 		sWidth: 32,
 		sHeight: 32,
@@ -113,7 +205,7 @@ loots['town'] = {
 	'gold': { 
 		x: [704, 704, 640, 192, 192, 0, 0, 640, 704, 640, 704],
 		y: [669, 625, 625, 669, 735, 283, 347, 155, 155, 209, 209],
-		sx: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+		sx: [0, 0, 0, 0, 0],
 		sy: 91,
 		sWidth: 64,
 		sHeight: 37,
@@ -131,7 +223,7 @@ loots['town'] = {
 		sWidth: 44,
 		sHeight: 44,
 		status: [1],
-		type: ["artifact"],
+		type: [""],
 		width: 44,
 		height: 44
 		
@@ -148,6 +240,7 @@ loots['town'] = {
 		height: 32
 	}
 }
+
 function draw_loots() {
 	for (let i in loots) {
 		if (locInitialization == i) {
