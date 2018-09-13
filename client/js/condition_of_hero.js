@@ -120,7 +120,7 @@ let inventory = {
 const slots = {
 
     x: 126,
-    y: 324,
+    y: 448,
     width: 515,
     height: 193
 };
@@ -348,7 +348,7 @@ document.onmousedown = function () {
 	    if (hero.condition) {
 	    
 		    let len = inventory.equipment.length;
-	for (let i = 0; i < 4; i++) {
+	for (let i = 0; i < len; i++) {
             if (isCursorInItem(inventory.equipment[i])) {
 
                 selected = inventory.equipment[i].activity;
@@ -708,7 +708,8 @@ document.onmouseup = function () {
             //skill
         } else if (isCursorInSlots()) {
 
-            for (let i = 0; i < 4; i++) {
+		const len = inventory.equipment.length;
+            for (let i = 0; i < len; i++) {
                 if (inventory.equipment[i].activity === selected) {
 					
 					if ((selected.type === "armor_on_head") ||
