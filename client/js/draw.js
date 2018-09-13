@@ -429,7 +429,7 @@ function drawInventory() {
             } else {
 
                 inventory.slots[index].x = 137 + j * 64;
-                inventory.slots[index].y = 335 + i * 64;
+                inventory.slots[index].y = 460 + i * 64;
                 context_condition.drawImage(lootsImg,
                     inventory.slots[index].sx, inventory.slots[index].sy,
                     inventory.slots[index].sWidth, inventory.slots[index].sHeight,
