@@ -17,7 +17,7 @@ let selected = false;
 let inventory = {
 
     x: 124,
-    y: 0,
+    y: 124,
     width: 519,
     height: 519,
 
@@ -27,8 +27,8 @@ let inventory = {
 
         //slot_of_armor_on_head
         {
-            x: 126.5,
-            y: 3,
+            x: 136,
+            y: 138,
             width: 64,
             height: 64,
             activity: false
@@ -36,8 +36,8 @@ let inventory = {
 
         //slot_of_armor_on_chest
         {
-            x: 126.5,
-            y: 68,
+            x: 136,
+            y: 202,
             width: 64,
             height: 64,
             activity: false
@@ -45,8 +45,8 @@ let inventory = {
 
         //slot_of_weapon
         {
-            x: 126.5,
-            y: 132,
+            x: 136,
+            y: 266,
             width: 64,
             height: 64,
             activity: false
@@ -54,8 +54,8 @@ let inventory = {
 
         //slot_of_armor_on_legs
         {
-            x: 126.5,
-            y: 196,
+            x: 136,
+            y: 330,
             width: 64,
             height: 64,
             activity: false
@@ -63,8 +63,8 @@ let inventory = {
 	    
 		//slot_of_artifacts_1
         {
-            x: 126,
-            y: 260,
+            x: 136,
+            y: 394,
             width: 64,
             height: 64,
             activity: false
@@ -72,8 +72,8 @@ let inventory = {
 
         //slot_of_artifacts_2
         {
-            x: 191,
-            y: 260,
+            x: 200,
+            y: 394,
             width: 64,
             height: 64,
             activity: false
@@ -81,8 +81,8 @@ let inventory = {
 
         //slots_of_artifacts_3
         {
-            x: 256,
-            y: 260,
+            x: 264,
+            y: 394,
             width: 64,
             height: 64,
             activity: false
@@ -90,8 +90,8 @@ let inventory = {
 
         //slot_of_artifacts_4
         {
-            x: 321,
-            y: 260,
+            x: 328,
+            y: 394,
             width: 64,
             height: 64,
             activity: false
@@ -99,8 +99,8 @@ let inventory = {
 
         //slot_of_artifacts_5
         {
-            x: 386,
-            y: 260,
+            x: 392,
+            y: 394,
             width: 64,
             height: 64,
             activity: false
@@ -108,8 +108,8 @@ let inventory = {
 
         //slot_of_artifacts_6
         {
-            x: 386,
-            y: 196,
+            x: 392,
+            y: 330,
             width: 64,
             height: 64,
             activity: false
@@ -347,6 +347,7 @@ document.onmousedown = function () {
 	    
 	    if (hero.condition) {
 	    
+		    let len = inventory.equipment.length;
 	for (let i = 0; i < 4; i++) {
             if (isCursorInItem(inventory.equipment[i])) {
 
@@ -355,7 +356,7 @@ document.onmousedown = function () {
             }
         }
 
-        const len = inventory.slots.length;
+        len = inventory.slots.length;
         for (let i = 0; i < len; i++) {
             if (isCursorInItem(inventory.slots[i])) {
 		    
@@ -634,7 +635,22 @@ document.addEventListener('click', function() {
 function equipment(num) {
 
     const index = findInArray(inventory.slots, selected);
-    inventory.slots.splice(index, 1);
+
+    if (index !== undefined) {
+        inventory.slots.splice(index, 1);
+    } else {
+        
+        const len = inventory.equipment.length;
+        for (let i = 0; i < len; i++) {
+
+            if (inventory.equipment[i].activity === selected) {
+
+                inventory.equipment[i].activity = false;
+                break;
+            }
+        }
+    }
+	
     selected.x = inventory.equipment[num].x;
     selected.y = inventory.equipment[num].y;
     inventory.equipment[num].activity = selected;
@@ -704,6 +720,9 @@ document.onmouseup = function () {
 
                         hero.min -= selected.points;
                         hero.max -= selected.points;
+                    } else if (selected.type === "artifact") {
+
+                        //-skill
                     }
 
                     inventory.equipment[i].activity = false;
