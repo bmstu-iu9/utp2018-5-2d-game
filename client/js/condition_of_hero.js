@@ -476,19 +476,21 @@ function clickYesNo() {
 		
 	if(isCursorInButtonYes()) {
 		
-	    if (currentEnemy.type === 'boss' && elf.artefact === true) {                                 //////!
+	    if (currentEnemy.type === 'boss') {
+	        if (elf.artefact === true){
                 drawFindArtefact();
-            }
-            else{
-                drawFighting();
-                context_pop_up_window.clearRect(0, 0, canvas_pop_up_window.width, canvas_pop_up_window.height);
-            }
-            is_join_the_fight.bool = false;
-
-
-
-            bool_pop_up_window = true;
-            clearInterval(intervalID_pop_up_window);
+                }
+                else {
+	            drawFindArtefactChoose();
+                }
+	   }
+           else{
+               drawFighting();
+               context_pop_up_window.clearRect(0, 0, canvas_pop_up_window.width, canvas_pop_up_window.height);
+           }
+           is_join_the_fight.bool = false;
+           bool_pop_up_window = true;
+           clearInterval(intervalID_pop_up_window);
 	}
 	else if (isCursorInButtonNo()) {
 			
@@ -539,26 +541,41 @@ function clickYesNo() {
             context_pop_up_window.clearRect(0, 0, canvas_pop_up_window.width, canvas_pop_up_window.height);
         }
     }
+	else if (findArtefactChoose.bool) {
+        if (isCursorInButtonNo()) {
+            findArtefact.bool = false;
+            bool_pop_up_window = true;
+            clearInterval(intervalID_pop_up_window);
+            context_pop_up_window.clearRect(0, 0, canvas_pop_up_window.width, canvas_pop_up_window.height);
+        }
+        else if (isCursorInButtonYes()){
+            bool_pop_up_window = true;
+            clearInterval(intervalID_pop_up_window);
+            context_pop_up_window.clearRect(0, 0, canvas_pop_up_window.width, canvas_pop_up_window.height);
+            drawFighting();
+            findArtefact.bool = false;
+        }
+    }
+	else if (cantBuyArtefact.bool){
+        if(isCursorInButtonNo()) {
+            bool_pop_up_window = true;
+            clearInterval(intervalID_pop_up_window);
+            drawYouDidntBuy();
+            cantBuyArtefact.bool=false;
+            hero.x = elf.x1-50;
+        }
+    }
 	else if (buyArtefact.bool) {
 
         if(isCursorInButtonYes()) {
-           if (hero.gold - 150000 >= 0) {
-                bool_pop_up_window = true;
-                clearInterval(intervalID_pop_up_window);
-                drawYouBought();
-                buyArtefact.bool=false;
-                hero.gold -= 150000;
+            bool_pop_up_window = true;
+            clearInterval(intervalID_pop_up_window);
+            drawYouBought();
+            buyArtefact.bool=false;
+            hero.gold -= 150000;
 		cheakArtefactQuest();
-                elf.artefact=false;
-                hero.x = elf.x1-50;
-            }
-            else{
-                bool_pop_up_window = true;
-                clearInterval(intervalID_pop_up_window);
-                drawYouDidntBuy();
-                buyArtefact.bool=false;
-                hero.x = elf.x1-50;
-            }
+            elf.artefact=false;
+            hero.x = elf.x1-50;
         }
         else if (isCursorInButtonNo()) {
             bool_pop_up_window = true;
