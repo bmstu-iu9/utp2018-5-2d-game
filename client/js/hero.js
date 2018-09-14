@@ -8,7 +8,7 @@ const speed = 10;
 const animateImg = new Image();
 animateImg.src = "../design/hero/animation-hero-64px.png";
 
-var name = window.name;
+const name = window.name;
 
 let hero = {
 
@@ -23,8 +23,10 @@ let hero = {
 	FW: 221,
 	FH: 300,
 	health: 100,
+	maxHealth: 100,
 	max: 30,
 	min: 10,
+	skillLuck: 10,
 	skillDefense: 13,
 	gold: 0,
 	type: 'usual',
