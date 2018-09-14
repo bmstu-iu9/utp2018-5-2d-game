@@ -63,49 +63,49 @@ function historyLine() {
 }
 
 function heroStep() {
-	if (Math.floor(Math.random() * (120 - hero.skillLuck + 1)) + hero.skillLuck <= hero.skillLuck + 10) {
+  
+	if ((enemyHealth <= 0) || (hero.health <= 0)) {
+		cheakKillerQuest();
+		finish();
+	}
+	
+	else if (Math.floor(Math.random() * (120 - hero.skillLuck + 1)) + hero.skillLuck <= hero.skillLuck + 5) {
 		let s = hero.name + " уклонился от удара и не получил урона.";
 		historySteps.push(s);
 		enemyStep();
 	}
-  
 	else {
-		if ((enemyHealth <= 0) || (hero.health <= 0)) {
-			cheakKillerQuest();
-			finish();
+		hero.type = 'fight-position';
+		let damageToHero = Math.floor(Math.random() * (currentEnemy.max - currentEnemy.min + 1)) + currentEnemy.min;
+		
+		if (was_attack_bool) {
+			was_attack_bool = false;
+			hero.type = 'damaged';
+			hero.health -= damageToHero;
+			let s = hero.name + " получил " + damageToHero + " урона.";
+			historySteps.push(s);
+			enemyStep();
+			console.log('прошлый ход героя был атакой, жизнь героя: ' + hero.health);
 		}
-
-		else {
-			hero.type = 'fight-position';
-			let damageToHero = Math.floor(Math.random() * (currentEnemy.max - currentEnemy.min + 1)) + currentEnemy.min;
-
-			if (was_attack_bool) {
-				was_attack_bool = false;
-				hero.type = 'damaged';
+		else if (was_defend_bool) {
+			was_defend_bool = false;
+			hero.type = 'defend';
+			damageToHero -= hero.skillDefense;
+			if (damageToHero > 0){
 				hero.health -= damageToHero;
-				let s = hero.name + " получил " + damageToHero + " урона.";
+				let s = hero.name + " заблокировал часть атаки и получил " + damageToHero + "урона";
 				historySteps.push(s);
-				enemyStep();
 			}
-			else if (was_defend_bool) {
-				was_defend_bool = false;
-				hero.type = 'defend';
-				damageToHero -= hero.skillDefense;
-				if (damageToHero > 0){
-					hero.health -= damageToHero;
-					let s = hero.name + " заблокировал часть атаки и получил " + damageToHero + " урона";
-					historySteps.push(s);
-				}
-				else {
-					let rebound = damageToHero/3;
-					enemyHealth += rebound;
-					let s = "Навык защиты героя " + hero.name + " позволил отразить удар.";
-					historySteps.push(s);
-					s = currentEnemy.name + " получил " + (-rebound) + " урона.";
-					historySteps.push(s);
-				}
-				enemyStep();
+			else {
+				let rebound = damageToHero/3;
+				enemyHealth += rebound;
+				let s = "Навык защиты героя " + hero.name + " позволил отразить удар.";
+				historySteps.push(s);
+				s = currentEnemy.name + " получил " + (-rebound) + " урона.";
+				historySteps.push(s);
 			}
+			enemyStep();
+			console.log('прошлый ход героя был защитой, жизнь героя: ' + hero.health);
 		}
 		hero.type = 'fight-position';
 		historyLine();
@@ -118,18 +118,15 @@ function heroStep() {
 }
 
 function enemyStep() {
-	if (Math.floor(Math.random() * (120 - hero.skillLuck + 1)) + hero.skillLuck == hero.skillLuck) {
+	if ((enemyHealth <= 0) || (hero.health <= 0)) {
+			cheakKillerQuest();
+			finish();
+	}
+	else if (Math.floor(Math.random() * (120 - hero.skillLuck + 1)) + hero.skillLuck == hero.skillLuck) {
 		let s = currentEnemy.name + " уклонился от удара и не получил урона";
 		historySteps.push(s);
 	}
 	else {
-  
-		if ((enemyHealth <= 0) || (hero.health <= 0)) {
-			cheakKillerQuest();
-			finish();
-		}
-
-		else {
 			if (was_attack_bool) {
 			let damageToEnemy = Math.floor(Math.random() * (hero.max - hero.min + 1)) + hero.min; //определение урона
 			enemyHealth -= damageToEnemy;
@@ -139,7 +136,8 @@ function enemyStep() {
 			heroStep();
 		}
 	}
-		if ((enemyHealth <= 0) || (hero.health <= 0)) {
+
+	if ((enemyHealth <= 0) || (hero.health <= 0)) {
 			cheakKillerQuest();
 			finish();
 	}
