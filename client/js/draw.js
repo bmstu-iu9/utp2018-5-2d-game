@@ -14,7 +14,7 @@ function drawDungeon_1() {
 
         hero.x = 650;
         hero.y = 690; 
-	if (hero.health <= 180) {
+	if (hero.health <= hero.maxHealth) {
 		hero.health += 20;
 	}
 
@@ -50,7 +50,7 @@ function drawDungeon_2() {
 
         hero.x = 710;
         hero.y = 625; 
-	if (hero.health <= 180) {
+	if (hero.health <= hero.maxHealth) {
 		hero.health += 20;
 	}
 
@@ -96,7 +96,7 @@ function drawDungeon_3() {
 
         hero.x = 710;
         hero.y = 490; 
-	if (hero.health <= 180) {
+	if (hero.health <= hero.maxHealth) {
 		hero.health += 20;
 	}
 
@@ -142,7 +142,7 @@ function drawDungeon_4() {
 
         hero.x = 665;
         hero.y = 635; 
-	if (hero.health <= 180) {
+	if (hero.health <= hero.maxHealth) {
 		hero.health += 20;
 	}
 
