@@ -532,7 +532,7 @@ function interaction(things, enemies,npc) {
 							hero.gold += things[i].value; 
 						}
 						else if (i === 'health-drinks') {
-							hero.health = 100;
+							hero.health =  hero.maxHealth;
 						}
 						things[i].status[k] = 0;
 					}
