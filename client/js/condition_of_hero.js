@@ -667,21 +667,21 @@ document.onmouseup = function () {
             intervalID_pop_up_window = setInterval(drawIsThrowAway(), speed);
         } else if (isCursorInArmorOnHead()) {
 			
-            equipment(0);
 			hero.skillDefense += selected.points;
+		equipment(0);
         } else if (isCursorInArmorOnChest()) {
 			
-            equipment(1);
 			hero.skillDefense += selected.points;
+		equipment(1);
         } else if (isCursorInWeapon()) {
 			
-            equipment(2);
 			hero.min += selected.points;
             		hero.max += selected.points;
+		equipment(2);
         } else if (isCursorInArmorOnLegs()) {
 			
-            equipment(3);
 			hero.skillDefense += selected.points;
+		equipment(3);
         } else if (isCursorInArtifact1()) {
 
             equipment(4);
