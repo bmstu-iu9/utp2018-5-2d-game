@@ -43,6 +43,7 @@ loots['dungeon-1'] = {
 		type: ["artifact"],
 		width: 44,
 		height: 44,
+		skill: ["skillLucky"],
 		points: [10]
 	},
 	'armors': {
@@ -149,6 +150,7 @@ loots['dungeon-3'] = {
 		type: ["artifact"],
 		width: 44,
 		height: 44,
+		skill: ["maxHealth"],
 		points: [15]
 		
 	},
@@ -230,6 +232,7 @@ loots['town'] = {
 		type: ["artifact"],
 		width: 44,
 		height: 44,
+		skill: ["defense+atack"],
 		points: [25]
 		
 	},
