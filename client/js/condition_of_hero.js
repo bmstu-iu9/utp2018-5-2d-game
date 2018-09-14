@@ -683,27 +683,27 @@ document.onmouseup = function () {
 			hero.skillDefense += selected.points;
 		equipment(3);
         } else if (isCursorInArtifact1()) {
-
+		skillPlus(selected.points, selected.skill, 0);
             equipment(4);
             //skill
         } else if (isCursorInArtifact2()) {
-
+		skillPlus(selected.points, selected.skill, 0);
             equipment(5);
             //skill
         } else if (isCursorInArtifact3()) {
-
+		skillPlus(selected.points, selected.skill, 0);
             equipment(6);
             //skill
         } else if (isCursorInArtifact4()) {
-
+		skillPlus(selected.points, selected.skill, 0);
             equipment(7);
             //skill
         } else if (isCursorInArtifact5()) {
-
+		skillPlus(selected.points, selected.skill, 0);
             equipment(8);
             //skill
         } else if (isCursorInArtifact6()) {
-
+		skillPlus(selected.points, selected.skill, 0);
             equipment(9);
             //skill
         } else if (isCursorInSlots()) {
@@ -723,6 +723,7 @@ document.onmouseup = function () {
                         hero.max -= selected.points;
                     } else if (selected.type === "artifact") {
 
+			    skillPlus(selected.points, selected.skill, 1);
                         //-skill
                     }
 
@@ -748,4 +749,33 @@ function findInArray(array, value) {
     }
 
     return undefined;
+}
+
+function skillPlus(points, skill, n) {
+	if (n === 0) {
+		if (skill === "skillLucky") {
+			hero.skillLucky += points;
+		}
+		else if (skill === "maxHealth") {
+			hero.maxHealth += points;
+		}
+		else {
+			hero.max += points;
+			hero.min += points;
+			hero.skillDefense += points;
+		}
+	}
+	else if (n === 1) {
+		if (skill === "skillLucky") {
+			hero.skillLucky -= points;
+		}
+		else if (skill === "maxHealth") {
+			hero.maxHealth -= points;
+		}
+		else {
+			hero.max -= points;
+			hero.min -= points;
+			hero.skillDefense -= points;
+		}
+	}
 }
