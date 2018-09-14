@@ -753,8 +753,8 @@ function findInArray(array, value) {
 
 function skillPlus(points, skill, n) {
 	if (n === 0) {
-		if (skill === "skillLucky") {
-			hero.skillLucky += points;
+		if (skill === "skillLuck") {
+			hero.skillLuck += points;
 		}
 		else if (skill === "maxHealth") {
 			hero.maxHealth += points;
@@ -766,8 +766,8 @@ function skillPlus(points, skill, n) {
 		}
 	}
 	else if (n === 1) {
-		if (skill === "skillLucky") {
-			hero.skillLucky -= points;
+		if (skill === "skillLuck") {
+			hero.skillLuck -= points;
 		}
 		else if (skill === "maxHealth") {
 			hero.maxHealth -= points;
