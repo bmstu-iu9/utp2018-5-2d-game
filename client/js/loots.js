@@ -43,7 +43,8 @@ loots['dungeon-1'] = {
 		type: ["artifact"],
 		width: 44,
 		height: 44,
-		points: [10]
+		skill: ["skillLuck"],
+		points: [30]
 	},
 	'armors': {
 		x: [396, 640],
@@ -56,7 +57,7 @@ loots['dungeon-1'] = {
 		type: ["armor_on_chest", "weapon"],
 		width: 44,
 		height: 44,
-		points: [10, 15]
+		points: [9, 7]
 		},
 	'health-drinks': {
 		x: [596],
@@ -95,7 +96,8 @@ loots['dungeon-2'] = {
 		status: [1],
 		type: ["armor_on_head"],
 		width: 44,
-		height: 44
+		height: 44,
+		points: [5]
 	},
 	'health-drinks': {
 		x: [656],
@@ -147,7 +149,9 @@ loots['dungeon-3'] = {
 		status: [1],
 		type: ["artifact"],
 		width: 44,
-		height: 44
+		height: 44,
+		skill: ["maxHealth"],
+		points: [15]
 		
 	},
 	'armors': {
@@ -160,7 +164,8 @@ loots['dungeon-3'] = {
 		status: [1],
 		type: ["armor_on_legs"],
 		width: 44,
-		height: 44
+		height: 44,
+		points: [4]
 	},
 	'health-drinks': {
 		x: [144, 656],
@@ -224,9 +229,11 @@ loots['town'] = {
 		sWidth: 44,
 		sHeight: 44,
 		status: [1],
-		type: [""],
+		type: ["artifact"],
 		width: 44,
-		height: 44
+		height: 44,
+		skill: ["defense+atack"],
+		points: [25]
 		
 	},
 	'health-drinks': {
