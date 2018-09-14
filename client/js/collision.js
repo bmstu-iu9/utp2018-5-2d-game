@@ -518,6 +518,7 @@ function interaction(things, enemies,npc) {
                                 type: things[i].type[k],
                                 width: things[i].width,
                                 height: things[i].height,
+				points: things[i].points[k]
                             }
                             
                             inventory.slots.splice(inventory.slots.length, 0, elem);
