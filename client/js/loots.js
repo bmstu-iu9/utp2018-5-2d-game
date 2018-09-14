@@ -43,8 +43,8 @@ loots['dungeon-1'] = {
 		type: ["artifact"],
 		width: 44,
 		height: 44,
-		skill: ["skillLucky"],
-		points: [10]
+		skill: ["skillLuck"],
+		points: [30]
 	},
 	'armors': {
 		x: [396, 640],
