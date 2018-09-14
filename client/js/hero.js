@@ -23,7 +23,7 @@ let hero = {
 	FW: 221,
 	FH: 300,
 	health: 100,
-	maxHealth: 100,
+	maxHealth: 180,
 	max: 30,
 	min: 10,
 	skillLuck: 10,
