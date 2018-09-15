@@ -134,7 +134,6 @@ function enemyStep() {
 			historySteps.push(s);
 			}
 			heroStep();
-		}
 	}
 
 	if ((enemyHealth <= 0) || (hero.health <= 0)) {
