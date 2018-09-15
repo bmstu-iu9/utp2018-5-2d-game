@@ -17,7 +17,6 @@ let enemyHealth = 100;
 let historyLineX = 308;
 let historyLineY = 750;
 let historySteps = [];
-historySteps[0] = 'Начало боя';
 
 function drawFighting() {
 
@@ -25,6 +24,7 @@ function drawFighting() {
 	was_attack_bool = false;
 	was_defend_bool = false;
 	drawFightingBg();
+	historySteps[0] = 'Начало боя';
 	historyLine();
 	drawFightingEnemy();
 	heroStep();
@@ -46,7 +46,7 @@ function drawFightingBg() {
 }
 
 function historyLine() {
-	
+
         context_history.fillStyle = "#ffffff";
         context_history.font = '15px Arial';
 	
@@ -81,7 +81,6 @@ function heroStep() {
 		
 		if (was_attack_bool) {
 			was_attack_bool = false;
-			hero.type = 'damaged';
 			hero.health -= damageToHero;
 			let s = hero.name + " получил " + damageToHero + " урона.";
 			historySteps.push(s);
@@ -90,7 +89,6 @@ function heroStep() {
 		}
 		else if (was_defend_bool) {
 			was_defend_bool = false;
-			hero.type = 'defend';
 			damageToHero -= hero.skillDefense;
 			if (damageToHero > 0){
 				hero.health -= damageToHero;
@@ -108,7 +106,6 @@ function heroStep() {
 			enemyStep();
 			console.log('прошлый ход героя был защитой, жизнь героя: ' + hero.health);
 		}
-		hero.type = 'fight-position';
 		historyLine();
 	}
 	
@@ -180,11 +177,10 @@ function finish() {
 			hero.type = 'usual';
 			currentEnemy.status = 0;
 			battle = false;
-			context_fighting.clearRect(0, 0, canvas_fighting.width, canvas_fighting.height);
-			context_history.clearRect(0, 0, canvas_history.width, canvas_history.height);
 			enemyHealth = 100;
 			historySteps = [];
-			historySteps[0] = 'Начало боя';
+			context_fighting.clearRect(0, 0, canvas_fighting.width, canvas_fighting.height);
+			context_history.clearRect(0, 0, canvas_history.width, canvas_history.height);
 		}
 	}
 		
