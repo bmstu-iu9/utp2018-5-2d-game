@@ -63,17 +63,18 @@ function historyLine() {
 }
 
 function heroStep() {
+	
+	if (Math.floor(Math.random() * (120 - hero.skillLuck + 1)) + hero.skillLuck <= hero.skillLuck + 5) {
+		let s = hero.name + " уклонился от удара и не получил урона.";
+		historySteps.push(s);
+		enemyStep();
+	}
   
 	if ((enemyHealth <= 0) || (hero.health <= 0)) {
 		cheakKillerQuest();
 		finish();
 	}
 	
-	else if (Math.floor(Math.random() * (120 - hero.skillLuck + 1)) + hero.skillLuck <= hero.skillLuck + 5) {
-		let s = hero.name + " уклонился от удара и не получил урона.";
-		historySteps.push(s);
-		enemyStep();
-	}
 	else {
 		hero.type = 'fight-position';
 		let damageToHero = Math.floor(Math.random() * (currentEnemy.max - currentEnemy.min + 1)) + currentEnemy.min;
@@ -118,14 +119,17 @@ function heroStep() {
 }
 
 function enemyStep() {
+	
+	if (Math.floor(Math.random() * (120 - hero.skillLuck + 1)) + hero.skillLuck == hero.skillLuck) {
+		let s = currentEnemy.name + " уклонился от удара и не получил урона";
+		historySteps.push(s);
+	}
+	
 	if ((enemyHealth <= 0) || (hero.health <= 0)) {
 			cheakKillerQuest();
 			finish();
 	}
-	else if (Math.floor(Math.random() * (120 - hero.skillLuck + 1)) + hero.skillLuck == hero.skillLuck) {
-		let s = currentEnemy.name + " уклонился от удара и не получил урона";
-		historySteps.push(s);
-	}
+	
 	else {
 			if (was_attack_bool) {
 			let damageToEnemy = Math.floor(Math.random() * (hero.max - hero.min + 1)) + hero.min; //определение урона
