@@ -24,6 +24,7 @@ function drawFighting() {
 	was_attack_bool = false;
 	was_defend_bool = false;
 	drawFightingBg();
+	hero.type = 'fight-position';
 	historySteps[0] = 'Начало боя';
 	historyLine();
 	drawFightingEnemy();
@@ -47,17 +48,22 @@ function drawFightingBg() {
 
 function historyLine() {
 
-        context_history.fillStyle = "#ffffff";
-        context_history.font = '15px Arial';
+    context_history.fillStyle = "#ffffff";
+    context_history.font = '15px Arial';
 	
 	context_history.clearRect(0, 0, canvas_history.width, canvas_history.height);
 	context_history.clearRect(0, 0, canvas_history.width, 600);
-	let dy = 0;
-	
-	let len = historySteps.length;
-	for (let i = len-1; i>=0; i--) {
-		context_history.fillText(historySteps[i], historyLineX, historyLineY+dy, 344);
-		dy -= 20;
+	if ((hero.health > 0) || (enemyHealth > 0)) {
+		let dy = 0;
+		
+		let len = historySteps.length;
+		for (let i = len-1; i>=0; i--) {
+			context_history.fillText(historySteps[i], historyLineX, historyLineY+dy, 344);
+			dy -= 20;
+		}
+	}
+	else {
+		context_history.clearRect(0, 0, canvas_history.width, canvas_history.height);
 	}
 	context_history.clearRect(0, 0, canvas_history.width, 600);
 }
@@ -71,19 +77,22 @@ function heroStep() {
 	}
   
 	if ((enemyHealth <= 0) || (hero.health <= 0)) {
+		historySteps = [];
+		context_fighting.clearRect(0, 0, canvas_fighting.width, canvas_fighting.height);
+		context_history.clearRect(0, 0, canvas_history.width, canvas_history.height);
 		cheakKillerQuest();
 		finish();
 	}
 	
 	else {
-		hero.type = 'fight-position';
 		let damageToHero = Math.floor(Math.random() * (currentEnemy.max - currentEnemy.min + 1)) + currentEnemy.min;
 		
 		if (was_attack_bool) {
 			was_attack_bool = false;
 			hero.health -= damageToHero;
 			let s = hero.name + " получил " + damageToHero + " урона.";
-			historySteps.push(s);
+			historySteps.push(s);			
+			historyLine();
 			enemyStep();
 			console.log('прошлый ход героя был атакой, жизнь героя: ' + hero.health);
 		}
@@ -103,13 +112,16 @@ function heroStep() {
 				s = currentEnemy.name + " получил " + (-rebound) + " урона.";
 				historySteps.push(s);
 			}
+			historyLine();
 			enemyStep();
 			console.log('прошлый ход героя был защитой, жизнь героя: ' + hero.health);
 		}
-		historyLine();
 	}
 	
 	if ((enemyHealth <= 0) || (hero.health <= 0)) {
+		historySteps = [];
+		context_fighting.clearRect(0, 0, canvas_fighting.width, canvas_fighting.height);
+		context_history.clearRect(0, 0, canvas_history.width, canvas_history.height);
 		cheakKillerQuest();
 		finish();
 	}
@@ -123,8 +135,11 @@ function enemyStep() {
 	}
 	
 	if ((enemyHealth <= 0) || (hero.health <= 0)) {
-			cheakKillerQuest();
-			finish();
+		historySteps = [];
+		context_fighting.clearRect(0, 0, canvas_fighting.width, canvas_fighting.height);
+		context_history.clearRect(0, 0, canvas_history.width, canvas_history.height);
+		cheakKillerQuest();
+		finish();
 	}
 	
 	else {
@@ -138,8 +153,11 @@ function enemyStep() {
 	}
 
 	if ((enemyHealth <= 0) || (hero.health <= 0)) {
-			cheakKillerQuest();
-			finish();
+		historySteps = [];
+		context_fighting.clearRect(0, 0, canvas_fighting.width, canvas_fighting.height);
+		context_history.clearRect(0, 0, canvas_history.width, canvas_history.height);
+		cheakKillerQuest();
+		finish();
 	}
 	
 }
@@ -174,6 +192,9 @@ function finish() {
 			setInterval(drawWin, 10);
 		}
 		else if (!currentEnemy.isBoss) {
+			historySteps = [];
+			context_fighting.clearRect(0, 0, canvas_fighting.width, canvas_fighting.height);
+			context_history.clearRect(0, 0, canvas_history.width, canvas_history.height);
 			hero.type = 'usual';
 			currentEnemy.status = 0;
 			battle = false;
@@ -185,6 +206,9 @@ function finish() {
 	}
 		
 	else if (hero.health <= 0) {
+		historySteps = [];
+		context_fighting.clearRect(0, 0, canvas_fighting.width, canvas_fighting.height);
+		context_history.clearRect(0, 0, canvas_history.width, canvas_history.height);
 		hero.type = 'dead';
 		battle = false;
 		context_fighting.clearRect(0, 0, canvas_fighting.width, canvas_fighting.height);
