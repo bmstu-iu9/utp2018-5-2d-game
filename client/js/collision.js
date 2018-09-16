@@ -32,9 +32,127 @@ const barrier_walls_of_the_dungeon_2 = {
     height: 485
 };
 
+const fence1_of_the_dungeon_2 = {
+
+    x: 0,
+    y: 682,
+    width: 14,
+    height: 87
+};
+
+const fence2_of_the_dungeon_2 = {
+
+    x: 0,
+    y: 665,
+    width: 236,
+    height: 10
+};
+
+const fence3_of_the_dungeon_2 = {
+
+    x: 241,
+    y: 491,
+    width: 15,
+    height: 190
+};
+
+const fence4_of_the_dungeon_2 = {
+
+    x: 260,
+    y: 466,
+    width: 140,
+    height: 15
+};
+
+const fence6_of_the_dungeon_2 = {
+
+    x: 375,
+    y: 564,
+    width: 21,
+    height: 127
+};
+
+const fence7_of_the_dungeon_2 = {
+
+    x: 395,
+    y: 666,
+    width: 179,
+    height: 24
+};
+
+const fence8_of_the_dungeon_2 = {
+
+    x: 567,
+    y: 681,
+    width: 27,
+    height: 87
+};
+
+const fence9_of_the_dungeon_2 = {
+
+    x: 127,
+    y: 0,
+    width: 13,
+    height: 169
+};
+
+const fence10_of_the_dungeon_2 = {
+
+    x: 127,
+    y: 178,
+    width: 378,
+    height: 84
+};
+
+const fence11_of_the_dungeon_2 = {
+
+    x: 319,
+    y: 0,
+    width: 15,
+    height: 81
+};
+
+const fence12_of_the_dungeon_2 = {
+
+    x: 319,
+    y: 81,
+    width: 404,
+    height: 18
+};
+
+
+const lava1_of_the_dungeon_2 = {
+
+    x: 585,
+    y: 215,
+    width: 46,
+    height: 35
+};
+
+const lava2_of_the_dungeon_2 = {
+
+    x: 708,
+    y: 215,
+    width: 60,
+    height: 35
+};
+
 const barriers_of_the_dungeon_2 = [
 
-    barrier_walls_of_the_dungeon_2
+    barrier_walls_of_the_dungeon_2,
+	fence1_of_the_dungeon_2,
+	fence2_of_the_dungeon_2,
+	fence3_of_the_dungeon_2,
+	fence4_of_the_dungeon_2,
+	fence6_of_the_dungeon_2,
+	fence7_of_the_dungeon_2,
+	fence8_of_the_dungeon_2,
+	fence9_of_the_dungeon_2,
+	fence10_of_the_dungeon_2,
+	fence11_of_the_dungeon_2,
+	fence12_of_the_dungeon_2,
+	lava1_of_the_dungeon_2,
+	lava2_of_the_dungeon_2
 ];
 
 //dungeon_3
