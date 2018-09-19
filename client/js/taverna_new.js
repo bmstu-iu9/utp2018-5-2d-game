@@ -87,6 +87,20 @@ let taverna_barrier_4 ={
     y2: 384
 };
 
+let taverna_barrier_5 ={
+    x1: 460,
+    y1: 0,
+    x2: 560,
+    y2: 284
+};
+
+let taverna_barrier_6 ={
+    x1: 384,
+    y1: 0,
+    x2: 460,
+    y2: 240
+};
+
 let elf_obstacle={
     x1: 230,
     y1: 180,
@@ -95,16 +109,16 @@ let elf_obstacle={
 };
 
 function collision_tavern(obstacle) {
-    if (hero.x==obstacle.x1 && (hero.y>=obstacle.y1 && hero.y <=obstacle.y2)){
-        hero.x-=10;
-    }
-    if (hero.x==obstacle.x2 && (hero.y>=obstacle.y1 && hero.y <=obstacle.y2)){
-        hero.x+=10;
-    }
     if (hero.y == obstacle.y1 && (hero.x >= obstacle.x1 && hero.x<= obstacle.x2)){
         hero.y-=10;
     }
     if (hero.y == obstacle.y2 && (hero.x >= obstacle.x1 && hero.x<= obstacle.x2)){
         hero.y+=10;
+    }
+    if (hero.x==obstacle.x1 && (hero.y>=obstacle.y1 && hero.y <=obstacle.y2)){
+        hero.x-=10;
+    }
+    if (hero.x==obstacle.x2 && (hero.y>=obstacle.y1 && hero.y <=obstacle.y2)){
+        hero.x+=10;
     }
 }
