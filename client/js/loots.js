@@ -3,7 +3,7 @@
 let loots = {};
 
 const lootsImg = new Image();
-lootsImg.src = "../design/loots/loots.png";
+lootsImg.src = "../design/loots/loots_2.png";
 
 loots['dungeon-1'] = {
 	'gold': { 
