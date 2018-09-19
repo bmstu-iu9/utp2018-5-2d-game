@@ -262,6 +262,57 @@ loots['town'] = {
 	}
 }
 
+loots['market'] = {
+    'gold': {
+        x: [650, 650, 550],
+        y: [600, 560, 450],
+        sx: [0, 0, 0],
+        sy: 91,
+        sWidth: 64,
+        sHeight: 37,
+        status: [1, 1, 1],
+        width: 64,
+        height: 37,
+        value: 0
+
+    },
+    'fruits': {
+        x: [150, 310, 370, 640],
+        y: [325, 420, 420, 350],
+        sx: [57, 205, 57, 205],
+        sy: 80,
+        sWidth: 80,
+        sHeight: 60,
+        status: [1, 1, 1, 1],
+        width: 64,
+        height: 37,
+        value: 0
+
+    },
+    'potions': {
+        x: [110, 250],
+        y: [320, 350],
+        sx: [128, 128],
+        sy: 57,
+        sWidth: 75,
+        sHeight: 90,
+        status: [1, 1],
+        width: 38,
+        height: 45
+    },
+    'toxic-potions': {
+        x: [700],
+        y: [340],
+        sx: [128],
+        sy: 150,
+        sWidth: 75,
+        sHeight: 90,
+        status: [1],
+        width: 38,
+        height: 45
+    }
+}
+
 function draw_loots() {
 	for (let i in loots) {
 		if (locInitialization == i) {
