@@ -188,15 +188,8 @@ const town_to_tavern = {
     x: 570,
     y: 350,
     width: 48,
-    height: 5
+    height: 48
 };
-
-function transition_tavern(){
-    if ((hero.x >=town_to_tavern.x && hero.x<=(town_to_tavern.x+town_to_tavern.width)) &&
-    (hero.y >= town_to_tavern.y && hero.y <= (town_to_tavern.y + town_to_tavern.width))) {
-        return true;
-    }
-}
 
 const tavern_to_town = {
     x: 400,
@@ -204,13 +197,6 @@ const tavern_to_town = {
     width: 48,
     height: 5
 };
-
-function transition_town(){
-    if ((hero.x >=tavern_to_town.x && hero.x<=(tavern_to_town.x+tavern_to_town.width)) &&
-        (hero.y >= tavern_to_town.y && hero.y <= (tavern_to_town.y + tavern_to_town.width))) {
-        return true;
-    }
-}
 
 //tavern
 function drawTavern() {
@@ -228,9 +214,11 @@ function drawTavern() {
     collision_tavern(taverna_barrier_2);
     collision_tavern(taverna_barrier_3);
     collision_tavern(taverna_barrier_4);
+    collision_tavern(taverna_barrier_5);
+    collision_tavern(taverna_barrier_6);
     collision_tavern(elf_obstacle);
 
-    if (transition_town()){
+    if (transitions(tavern_to_town)){
         clearInterval(tavern_interval);
         clearInterval(intervalID);
 
@@ -251,10 +239,67 @@ function drawTavern() {
     drawQuest();
     drawStatistic();   
 }
+//market
+
+function transitions(object){
+    if ((hero.x >=object.x && hero.x<=(object.x+object.width)) &&
+        (hero.y >= object.y && hero.y <= (object.y + object.width))) {
+        return true;
+    }
+}
+
+const town_to_market = {
+    x: 128,
+    y: 170,
+    width: 48,
+    height: 48
+};
+
+const market_to_town = {
+    x: 350,
+    y: 700,
+    width: 100,
+    height: 48
+};
+
+
+function drawMarket() {
+
+    collision_tavern(market_barrier_1);
+    collision_tavern(market_barrier_2);
+    collision_tavern(market_barrier_3);
+    collision_tavern(market_barrier_4);
+    collision_tavern(market_barrier_5);
+    collision_tavern(market_barrier_6);
+    collision_tavern(market_barrier_7);
+
+    if (transitions(market_to_town)){
+        clearInterval(intervalID);
+
+        hero.x = 200;
+        hero.y = 200;
+
+        intervalID = setInterval(drawTown, speed);
+
+        return;
+    }
+
+    locInitialization = 'market';
+
+    hero.health_x2 = 33 + hero.health * 3;
+    market();
+
+    drawHero();
+    drawConditionOfHero();
+    drawQuest();
+    draw_loots();
+    interaction(loots[locInitialization], enemies[locInitialization]);
+    drawStatistic();
+}
 
 
 function drawTown() {
-    if (transition_tavern()){
+    if (transitions(town_to_tavern)){
 
         clearInterval(intervalID);
 	    
@@ -265,6 +310,19 @@ function drawTown() {
         animation();
         intervalID = setInterval(drawTavern, speed);
 	    
+        return;
+
+    }
+    
+    if (transitions(town_to_market)){
+
+        clearInterval(intervalID);
+
+        hero.x = 468;
+        hero.y = 650;
+        
+        intervalID = setInterval(drawMarket, speed);
+
         return;
 
     }
