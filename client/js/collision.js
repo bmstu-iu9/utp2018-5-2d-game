@@ -672,6 +672,15 @@ function interaction(things, enemies,npc) {
 						else if (i === 'health-drinks') {
 							hero.health =  hero.maxHealth;
 						}
+						else if (i === 'potions') {
+                            				hero.health += 10;
+                        			}
+                      				else if (i === 'toxic-potions') {
+                          				hero.health -= 50;
+                        			}
+                       				else if (i === 'fruits') {
+                          			hero.health += 5;
+                       				}
 						things[i].status[k] = 0;
 					}
 					if (hero.y + 2 * hero.radiusH <
