@@ -78,8 +78,9 @@ function drawDungeon_2() {
     drawHero();
     draw_loots();
     drawStatistic();
-    interaction(loots[locInitialization], enemies[locInitialization]);
+    interaction(loots[locInitialization], enemies[locInitialization],npc[locInitialization]);
     drawConditionOfHero();
+    drawNpc();
     drawQuest();
     collision(barriers_of_the_dungeon_2);
 }
@@ -124,8 +125,9 @@ function drawDungeon_3() {
     drawHero();
     draw_loots();
     drawStatistic();
-    interaction(loots[locInitialization], enemies[locInitialization]);
+    interaction(loots[locInitialization], enemies[locInitialization],npc[locInitialization]);
     drawConditionOfHero();
+    drawNpc();
     drawQuest();
     collision(barriers_of_the_dungeon_3);
 }
@@ -170,8 +172,9 @@ function drawDungeon_4() {
     drawHero();
     draw_loots();
     drawStatistic();
-    interaction(loots[locInitialization], enemies[locInitialization]);
+    interaction(loots[locInitialization], enemies[locInitialization],npc[locInitialization]);
     drawConditionOfHero();
+    drawNpc();
     drawQuest();
     collision(barriers_of_the_dungeon_4);
 }

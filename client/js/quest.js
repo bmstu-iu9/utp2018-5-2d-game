@@ -35,6 +35,13 @@ let Quest = [
 		'target_count' : 1,
 		'text' : "Купите у эльфа схему замка для финальной битвы",
 		'status' : "active"
+	},
+	{
+		'count' : 0,
+		'type' : "kill_group",
+		'target_count' : 3,
+		'text' : "Убей варваров, что засели в лагере",
+		'status' : "No active"
 	}
 ];
 
@@ -42,6 +49,9 @@ function cheakKillerQuest() {
 	for (let i = 0 ; i < Quest.length ; i++) {
 		if (Quest[i].status == "active" && Quest[i].type == "kill")
 			Quest[i].count++;
+		if (Quest[i].status == "active" && Quest[i].type == "kill_group")
+			if ((hero.x > 0 && hero.x < 580 && hero.y > 680 && hero.y < 780) || (hero.x > 200 && hero.x < 380 && hero.y > 370 && hero.y < 690))
+				Quest[i].count++;	
 		if (Quest[i].count == Quest[i].target_count)
 			Quest[i].status = "Completed";
 	}
