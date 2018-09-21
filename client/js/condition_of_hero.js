@@ -627,7 +627,7 @@ document.addEventListener('click', function() {
         Quest[hero.nomberOfNpc].status = "Finished";
         hero.interaction = false;
         context_pop_up_window.clearRect(0, 0, canvas_fighting.width, canvas_fighting.height);
-        hero.gold+=1000;
+        hero.gold+=10000;
     }
 })
 
