@@ -608,7 +608,8 @@ function interaction(things, enemies,npc) {
             if ((distX <= (npc[i].width *0.6 + hero.radiusW)) &&
                 (distY <= (npc[i].height *0.6 + hero.radiusH))){ 
                 if(hero.interaction){
-                    drawDialog1();
+                    hero.nomberOfNpc = npc[i].nomber - 1;
+                    drawDialog1(npc[i].nomber - 1);
                 }
             }
         } 

@@ -611,7 +611,7 @@ document.addEventListener('click', function() {
 }, false);
 document.addEventListener('click', function() {
     if (isCursorOnDialogBranch1()){
-        Quest[0].status='active'
+        Quest[hero.nomberOfNpc].status='active'
         hero.interaction = false;
         context_pop_up_window.clearRect(0, 0, canvas_fighting.width, canvas_fighting.height);
     }
@@ -619,16 +619,15 @@ document.addEventListener('click', function() {
         hero.interaction = false;
        context_pop_up_window.clearRect(0, 0, canvas_fighting.width, canvas_fighting.height);
     }
-    if ((isCursorOnDialogBranch3())&&(Quest[0].status=="active")){
+    if ((isCursorOnDialogBranch3())&&(Quest[hero.nomberOfNpc].status=="active")){
         hero.interaction = false;
         context_pop_up_window.clearRect(0, 0, canvas_fighting.width, canvas_fighting.height);
         }
-    if ((isCursorOnDialogBranch4())&&(Quest[0].status=="Completed")){
-         hero.interaction = false;
+    if ((isCursorOnDialogBranch4())&&(Quest[hero.nomberOfNpc].status=="Completed")){
+        Quest[hero.nomberOfNpc].status = "Finished";
+        hero.interaction = false;
         context_pop_up_window.clearRect(0, 0, canvas_fighting.width, canvas_fighting.height);
-         hero.gold+=1000;
-	    Person.gold +=1000;
-	    localStorage.setItem(window.name, JSON.stringify(Person));
+        hero.gold+=1000;
     }
 })
 

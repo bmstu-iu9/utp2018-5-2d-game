@@ -43,7 +43,9 @@ let hero = {
 
     health_x1: 23,
     health_y: 30,
-    health_x2: 333
+    health_x2: 333,
+
+    nomberOfNpc: 0
 };
 let animate = {};
 

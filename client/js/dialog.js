@@ -25,9 +25,9 @@ const table_data= {
 	fourth_answer_width:64,
 	fourth_answer_height:17,
 }
-function drawDialog1(){
+function drawDialog1(nomer){
 	context_pop_up_window.clearRect(0, 0, 768, 768);
-	if(Quest[0].status=="No active"){
+	if(Quest[nomer].status=="No active"){
 		for(let i in dialog_branch){
 			for(let j in dialog_branch[i]){
 				let dialog_1_image = new Image();
@@ -43,7 +43,7 @@ function drawDialog1(){
 			}
 		}	
 	}
-	if(Quest[0].status=="active"){
+	if(Quest[nomer].status=="active"){
 		for(let i in dialog_branch){
 			for(let j in dialog_branch[i]){
 				let dialog_2_image = new Image();
@@ -54,7 +54,7 @@ function drawDialog1(){
 			}
 		}	
 	}
-	if(Quest[0].status=="Completed"){
+	if(Quest[nomer].status=="Completed"){
 		for(let i in dialog_branch){
 			for(let j in dialog_branch[i]){
 				let dialog_3_image = new Image();
