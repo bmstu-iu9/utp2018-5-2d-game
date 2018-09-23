@@ -32,7 +32,7 @@ function drawDialog1(nomer){
 			for(let j in dialog_branch[i]){
 				let dialog_1_image = new Image();
 				dialog_1_image.src =dialog_branch[i][j].src1;
-				context_main.drawImage(dialog_1_image, 185, 100);
+				context_pop_up_window.drawImage(dialog_1_image, 185, 100);
 				context_pop_up_window.fillStyle = "#4d4546"; 
 				context_pop_up_window.font = "bold 18px Batang";
 				context_pop_up_window.fillText("Приветствую, ваше величество!", 220, 270);
@@ -48,7 +48,7 @@ function drawDialog1(nomer){
 			for(let j in dialog_branch[i]){
 				let dialog_2_image = new Image();
 				dialog_2_image.src =dialog_branch[i][j].src2;
-				context_main.drawImage(dialog_2_image, 185, 100);
+				context_pop_up_window.drawImage(dialog_2_image, 185, 100);
 				context_pop_up_window.fillText("Ваше величество, уничтожили ли вы", 220, 270);
 				context_pop_up_window.fillText("варваров? Могут ли жители вернуться?", 220, 290);	
 			}
@@ -59,7 +59,7 @@ function drawDialog1(nomer){
 			for(let j in dialog_branch[i]){
 				let dialog_3_image = new Image();
 				dialog_3_image.src =dialog_branch[i][j].src3;
-				context_main.drawImage(dialog_3_image, 185, 100);
+				context_pop_up_window.drawImage(dialog_3_image, 185, 100);
 				context_pop_up_window.fillText("Благодарю ваше величество! Теперь", 220, 270);
 				context_pop_up_window.fillText("мы в безопасности. Когда варвары", 220, 290);
 				context_pop_up_window.fillText("были убиты, лагерь, в котором они", 220, 310);
