@@ -1,7 +1,9 @@
 
-
+let questSortType = "time";
+let time = 2;
 let Quest = [
 	{
+		'time' : 0,
 		'count' : 0,
 		'type' : "kill",
 		'target_count' : 2,
@@ -9,6 +11,7 @@ let Quest = [
 		'status' : "No active"
 	},
 	{
+		'time' : 0,
 		'count' : 0,
 		'type' : "kill",
 		'target_count' : 3,
@@ -16,6 +19,7 @@ let Quest = [
 		'status' : "No active"
 	},
 	{
+		'time' : 0,
 		'count' : 0,
 		'type' : "kill",
 		'target_count' : 4,
@@ -23,6 +27,7 @@ let Quest = [
 		'status' : "No active"
 	},
 	{
+		'time' : 0,
 		'count' : 0,
 		'type' : "kill",
 		'target_count' : 5,
@@ -30,6 +35,7 @@ let Quest = [
 		'status' : "No active"
 	},
 	{
+		'time' : 1,
 		'count' : 0,
 		'type' : "find",
 		'target_count' : 1,
@@ -37,10 +43,11 @@ let Quest = [
 		'status' : "active"
 	},
 	{
+		'time' : 0,
 		'count' : 0,
 		'type' : "kill_group",
 		'target_count' : 3,
-		'text' : "Убей варваров, что засели в лагере",
+		'text' : "Убей варваров, что засели в нижнем лагере",
 		'status' : "No active"
 	}
 ];
@@ -58,5 +65,30 @@ function cheakKillerQuest() {
 }
 
 function cheakArtefactQuest() {
-	Quest[4].status = "Completed";
+	let i = 0;
+	for (q = 0 ; q < Quest.length ; q++)
+		if (Quest[q].type == "find") {
+			Quest[q].status = "Completed";
+			break;
+		}
+	
+}
+
+function questSort(a,b) {
+	if (questSortType == "type")
+		if (Quest[a.questNomber].type.localeCompare(Quest[b.questNomber].type))
+			return 1;
+		else
+			return -1;
+	if (questSortType == "text")
+		if (!(Quest[a.questNomber].text.localeCompare(Quest[b.questNomber].text)))
+			return 1;
+		else
+			return -1;
+	if (questSortType == "time")
+		if (!(Quest[a.questNomber].time < Quest[b.questNomber].time))
+			return 1;
+		else
+			return -1;
+
 }
