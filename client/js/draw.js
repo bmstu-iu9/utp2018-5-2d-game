@@ -394,30 +394,44 @@ quest_image.src = "../design/quest/quest_test.png";
 function drawQuest() {
 
     if (hero.isQuest) {
-        console.log(1);
         context_condition.clearRect(0, 0, canvas_condition.width, canvas_condition.height);
         context_condition.drawImage(quest_image, 0, 0);
         let questtable = [];
-        
+     //   Quest.sort(questSort);
         let j = 0;
 
         for (let i = 0 ; i < Quest.length ; i++)
             if (Quest[i].status != "No active" && Quest[i].status != "Finished") {
                 questtable[j] = {
                     questNomber : i,
-                    x : 15,
-                    y : 15 + j * 100
+                    x : 0,
+                    y : 0 + 0 * 100
                 };
                 j++;
             }
-      
+        questtable.sort(questSort);
+        for (let i = 0 ; i < questtable.length ; i++) {
+            questtable[i].x = 15;
+            questtable[i].y = 15 + i * 100;
+        }
+
         context_condition.beginPath();
+        context_condition.strokeStyle = "black";
+        context_condition.fillStyle = "black";
+        context_condition.font = "16px Arial";
+        let questSortTypeRU;
+        if (questSortType == "type")
+            questSortTypeRU = "типу задания";
+        if (questSortType == "time")
+            questSortTypeRU = "порядку принятия";
+        if (questSortType == "text")
+            questSortTypeRU = "тексту";
+        context_condition.fillText("Сортировка по   " + questSortTypeRU, 500 , 35);
+        context_condition.rect(615, 14 , 145, 34);
         for (let i = 0 ; i < questtable.length ; i++){
-            context_condition.strokeStyle = "black";
             context_condition.lineWidth = 5;
-            context_condition.rect(questtable[i].x, questtable[i].y + 45, 800 , 80);
+            context_condition.rect(questtable[i].x, questtable[i].y + 45, 745 , 80);
             context_condition.font = "20px Arial";
-            context_condition.fillStyle = "black";
             let str;
             if (Quest[questtable[i].questNomber].status == "active")
                 str = 'Осталось : ' + (Quest[questtable[i].questNomber].target_count - Quest[questtable[i].questNomber].count).toString();
