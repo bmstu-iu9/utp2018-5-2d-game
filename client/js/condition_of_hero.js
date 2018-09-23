@@ -310,6 +310,13 @@ function isCursorInButtonEscape() {
 	(mouse.y < button_escape.y + button_escape.height))
 }
 
+function isCursorOnQuestSortType() {
+    return (hero.isQuest && (mouse.x > 615) && 
+    (mouse.x < 735 ) && 
+    (mouse.y > 14) && 
+    (mouse.y < 48))
+}
+
 function isCursorInButtonOk() {
 	return ((mouse.x > button_ok.x) && 
 	(mouse.x < button_ok.x + button_ok.width) && 
@@ -610,8 +617,21 @@ document.addEventListener('click', function() {
     }
 }, false);
 document.addEventListener('click', function() {
+    if (isCursorOnQuestSortType()) {
+        console.log(1);
+        if (questSortType == "type")
+            questSortType = "text";
+        else
+            if (questSortType == "text")
+                questSortType = "time";
+            else
+                if (questSortType == "time")
+                    questSortType = "type";
+    }
     if (isCursorOnDialogBranch1()){
-        Quest[hero.nomberOfNpc].status='active'
+        Quest[hero.nomberOfNpc].status='active';
+        Quest[hero.nomberOfNpc].time=time;
+        time++;
         hero.interaction = false;
         context_pop_up_window.clearRect(0, 0, canvas_fighting.width, canvas_fighting.height);
     }
@@ -627,7 +647,10 @@ document.addEventListener('click', function() {
         Quest[hero.nomberOfNpc].status = "Finished";
         hero.interaction = false;
         context_pop_up_window.clearRect(0, 0, canvas_fighting.width, canvas_fighting.height);
-        hero.gold+=10000;
+        if (Quest[hero.nomberOfNpc].type == "kill" )
+            hero.gold += 6000 * Quest[hero.nomberOfNpc].target_count ;
+        if (Quest[hero.nomberOfNpc].type == "group_kill" )
+            hero.gold += 20000;
     }
 })
 
